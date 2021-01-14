@@ -326,8 +326,6 @@ const currentDayCheck =
   day > 5 || day < 1 || (day === 5 && currentTime > 17) ? 1 : day;
 let currentDay = timeTable[currentDayCheck];
 
-console.log(currentDayCheck);
-
 function ongoingClassUpdate() {
   if (currentTime > 17) {
     upcomingClassArr =
@@ -543,7 +541,6 @@ function contextMenuForTimeTable(e) {
     Clicked_Class.meetingId,
     Clicked_Class.meetingPass,
   ];
-  console.log(Clicked_Class);
 
   ContextMenu_JoinLink.href = linkGenrator(meeting_id, meeting_pass);
 
