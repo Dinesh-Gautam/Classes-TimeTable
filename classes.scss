@@ -1,0 +1,375 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+:root {
+  --default-margin: 12px;
+  --default-padding: 12px;
+  // --text-color: #fff;
+  --text-size: 12px;
+  --border-radius: 1px;
+  --border-radius2: 10px;
+  --less-padding: 6px;
+  --dark-black: rgb(20, 20, 20);
+  --light-dark-black: rgb(32, 32, 32);
+  --light-black2: rgb(43, 43, 43);
+  --light-black: rgb(77, 77, 77);
+  --light2: rgb(184, 184, 184);
+  --light: rgba(249, 249, 249, 1);
+}
+
+body {
+  background-color: var(--dark-black);
+  color: var(--light);
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  main {
+    height: 50%;
+  }
+}
+input,
+button,
+a {
+  outline: none;
+}
+a {
+  text-decoration: none;
+}
+button,
+a {
+  background-color: var(--light-black2);
+  color: var(--light2);
+  cursor: pointer;
+  transition: all 200ms ease-in-out !important;
+  &:hover {
+    background-color: var(--light-black);
+    color: var(--light);
+  }
+}
+
+.edit-modal {
+  position: absolute;
+  overflow: hidden;
+  left: 50%;
+  top: 0%;
+  transform: translatex(-50%);
+  transition: all 300ms ease-out;
+  opacity: 1;
+  padding: var(--default-padding);
+  background-color: grey;
+  z-index: 10;
+  max-width: 18rem;
+  background-color: var(--light-dark-black);
+  box-shadow: 0 4px 6px rgba($color: #000000, $alpha: 0.4);
+
+  form {
+    label {
+      font-size: var(--text-size);
+      color: var(--light2);
+    }
+    input {
+      width: 100%;
+      background: var(--light-black2);
+      border: none;
+      padding: 2px 4px;
+      color: var(--light);
+      border-radius: var(--border-radius);
+    }
+  }
+  input,
+  label,
+  button {
+    transform: translateY(0%);
+    opacity: 1;
+    transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
+  }
+  .control-btns {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      margin: var(--default-padding) 0 0 var(--default-padding);
+      padding: 4px var(--default-padding);
+      font-size: var(--text-size);
+      cursor: pointer;
+      border-radius: var(--border-radius);
+      border: none;
+    }
+  }
+  &.display {
+    opacity: 0;
+    pointer-events: none;
+    top: -15%;
+    label,
+    input,
+    button {
+      opacity: 0;
+      transform: translateY(200%);
+    }
+  }
+}
+
+header {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .timeTableCloser {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+    border-width: 0px;
+    * {
+      pointer-events: none;
+    }
+  }
+}
+
+table {
+  border-collapse: collapse;
+  position: relative;
+  opacity: 1;
+  border-radius: 0 0 0 0%;
+  pointer-events: all;
+  transition: all 0.3s ease-in-out;
+  &.timeTableClosed {
+    opacity: 0;
+    border-radius: 0 0 0 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  td {
+    border: 1.5px solid var(--dark-black);
+    border-radius: var(--border-radius);
+    padding: var(--less-padding) var(--default-padding);
+    margin: 0 var(--default-margin);
+    background: var(--light-black2);
+    position: relative;
+    &.ongoing-active::after,
+    &.upcoming-active ::after {
+      content: "";
+      top: 4px;
+      left: 4px;
+      position: absolute;
+      height: 4px;
+      width: 4px;
+      border-radius: 50%;
+    }
+    &.ongoing-active::after {
+      background: red;
+    }
+    &.upcoming-active ::after {
+      background: rgb(143, 255, 143);
+    }
+    p {
+      padding: 0 var(--less-padding);
+      font-size: var(--text-size);
+      pointer-events: none;
+    }
+    * {
+      pointer-events: none;
+    }
+    span {
+      pointer-events: none;
+    }
+    &.subjectBox:hover {
+      background: var(--light-black);
+      cursor: pointer;
+    }
+    .liveClassProgress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      .liveProgressBar {
+        // width: 100%;
+        height: 100%;
+        background: red;
+      }
+    }
+  }
+  .border-TopRight {
+    border-radius: var(--border-radius2) 0 0 0;
+  }
+  .border-TopLeft {
+    border-radius: 0 var(--border-radius2) 0 0;
+  }
+  .border-bottomLeft {
+    border-radius: 0 0 var(--border-radius2) 0;
+  }
+  .border-bottomRight {
+    border-radius: 0 0 0 var(--border-radius2);
+  }
+  .noClassBox {
+    background: var(--light-dark-black);
+  }
+  .timeBox,
+  .dayBox {
+    background: var(--light-dark-black);
+    &:hover {
+      background: var(--light-dark-black);
+      cursor: initial;
+    }
+  }
+  #emptyTableBox {
+    background: var(--dark-black);
+    border: none;
+  }
+}
+
+.class-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  max-width: 20rem;
+  margin: auto;
+  .info-view-popup {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    max-width: 14rem;
+    background: var(--light);
+    color: var(--dark-black);
+    padding: var(--default-padding);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(50%);
+    transition: all 200ms ease-in-out;
+    box-shadow: 0 0px 16px rgba($color: #000000, $alpha: 0.4);
+
+    .info-container {
+      display: flex;
+      justify-content: flex-start;
+      text-align: left;
+      p {
+        font-size: var(--text-size);
+        opacity: 0;
+        transform: translateY(100%);
+        transition: opacity 500ms ease-in-out, transform 400ms ease-in-out;
+      }
+      span {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .class {
+    display: flex;
+    background: var(--light-black2);
+    align-items: center;
+    margin: var(--default-margin);
+    border-radius: var(--border-radius2);
+    width: 100%;
+    flex-wrap: nowrap;
+    box-shadow: 0 4px 6px rgba($color: #000000, $alpha: 0.4);
+    .class-wraper {
+      position: relative;
+      flex: 1;
+      box-shadow: 4px 0 4px rgba($color: #000000, $alpha: 0.3);
+      z-index: 9;
+      .time-container {
+        background: var(--light-black2);
+        height: 18px;
+        display: flex;
+        padding: 0 var(--default-padding);
+        align-items: center;
+        font-size: var(--text-size);
+        color: var(--light2);
+        border-radius: var(--border-radius2);
+      }
+      .class-subject {
+        background: var(--light-dark-black);
+        padding: var(--less-padding) var(--default-padding);
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        text-transform: capitalize;
+        box-shadow: -2px 0 3px 2px rgba($color: #000000, $alpha: 0.3);
+        border-radius: var(--border-radius2) 0 0 var(--border-radius2);
+        .view-btn:hover .info-view-popup {
+          opacity: 1;
+          transform: translateY(0%);
+          pointer-events: all;
+          p {
+            opacity: 1;
+            transform: translateY(0%);
+          }
+        }
+      }
+      .text-wraper {
+        flex: 1;
+      }
+      button {
+        border-radius: 50%;
+        height: 2rem;
+        width: 2rem;
+        border-width: 0px;
+        background: transparent;
+        &:hover {
+          background: var(--light-black2);
+        }
+        i {
+          font-size: var(--text-size);
+          pointer-events: none;
+        }
+      }
+    }
+    .join-link {
+      background: var(--light-black);
+      height: 100%;
+      text-align: center;
+      border-radius: 0 var(--border-radius2) var(--border-radius2) 0 !important;
+      overflow: hidden;
+      a {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 var(--default-padding);
+        text-decoration: none;
+        color: var(--light);
+      }
+    }
+  }
+}
+
+.custom_contextMenu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: var(--less-padding) 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: calc(var(--border-radius2) - 6px);
+  background-color: var(--light-black2);
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: top left;
+  transform: scale(0);
+  transition: transform 0.1s ease-in-out;
+  box-shadow: 0 0px 8px rgba($color: #000000, $alpha: 0.6);
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: scale(1);
+  }
+  .topContextMenu_container {
+    display: flex;
+    align-items: center;
+  }
+  a {
+    padding: var(--less-padding) calc(var(--default-padding) * 2);
+    font-size: calc(var(--text-size) - 1px);
+  }
+}
