@@ -357,7 +357,7 @@ table {
   pointer-events: none;
   transform-origin: top left;
   transform: scale(0);
-  transition: transform 0.1s ease-in-out;
+  transition: transform 0.1s ease-in-out, opacity 0.1s ease-in-out;
   box-shadow: 0 0px 8px rgba($color: #000000, $alpha: 0.6);
   &.active {
     opacity: 1;

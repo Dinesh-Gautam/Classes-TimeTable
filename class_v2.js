@@ -503,6 +503,7 @@ timeTableTogglerBtn.addEventListener("click", (e) => {
 
 window.oncontextmenu = (e) => {
   const clicked_subject = e.path[0];
+  contextMenu.classList.remove("active");
   if (clicked_subject.tagName === "TD" && clicked_subject.id) {
     contextMenuForTimeTable(e);
     return false;
@@ -513,7 +514,6 @@ const contextMenu = document.querySelector(".custom_contextMenu ");
 const ContextMenu_JoinLink = document.querySelector(".TimeTable_joinBtn");
 
 contextMenu.oncontextmenu = () => {
-  contextMenu.classList.remove("active");
   return false;
 };
 
