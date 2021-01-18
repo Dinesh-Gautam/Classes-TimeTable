@@ -323,15 +323,16 @@ const CURRENT_STATUS = {
   day: new Date().getDay(),
   time: 0,
   TimeUpdate() {
-    this.time = Number(new Date().getHours() + "." + new Date().getMinutes());
+    const hours = new Date().getHours();
+    const minutes = new Date().getMinutes();
+    this.time = Number(hours + "." + (minutes < 10 ? "0" + minutes : minutes));
   },
 };
 
-CURRENT_STATUS.time === 0
-  ? CURRENT_STATUS.TimeUpdate()
-  : setInterval(() => {
-      compelete_update();
-    }, 60000);
+CURRENT_STATUS.TimeUpdate();
+setInterval(() => {
+  compelete_update();
+}, 60000);
 
 const CLASS = {
   ongoingClass: null,
@@ -362,8 +363,11 @@ const CLASS = {
           }
         } else {
           this.upcomingClass = timeTable[day].filter(
-            (e) => e.Id === this.ongoingClass.Id
-          );
+            (e) => e.Id === this.ongoingClass.Id + 1
+          )[0];
+          if (this.upcomingClass === undefined) {
+            this.upcomingClass = timeTable[day + 1][0];
+          }
         }
       }
     }
