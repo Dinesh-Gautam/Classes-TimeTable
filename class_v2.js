@@ -354,20 +354,19 @@ const CLASS = {
     this.upcomingClass = null;
     const { day, time } = CURRENT_STATUS;
     if (day >= 1 && day <= 5) {
-      if (day !== 5 && time > !17) {
-        if (this.ongoingClass === null) {
-          if (time < 9) {
-            this.upcomingClass = timeTable[day][0];
-          } else if (time > 17) {
-            this.upcomingClass = timeTable[day + 1][0];
-          }
-        } else {
-          this.upcomingClass = timeTable[day].filter(
-            (e) => e.Id === this.ongoingClass.Id + 1
-          )[0];
-          if (this.upcomingClass === undefined) {
-            this.upcomingClass = timeTable[day + 1][0];
-          }
+      console.log("this is executing");
+      if (this.ongoingClass === null) {
+        if (time < 9) {
+          this.upcomingClass = timeTable[day][0];
+        } else if (time > 17) {
+          this.upcomingClass = timeTable[day + 1][0];
+        }
+      } else {
+        this.upcomingClass = timeTable[day].filter(
+          (e) => e.Id === this.ongoingClass.Id + 1
+        )[0];
+        if (this.upcomingClass === undefined) {
+          this.upcomingClass = timeTable[day + 1][0];
         }
       }
     }
