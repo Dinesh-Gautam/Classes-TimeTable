@@ -359,7 +359,9 @@ const CLASS = {
         if (time < 9) {
           this.upcomingClass = timeTable[day][0];
         } else if (time > 17) {
-          this.upcomingClass = timeTable[day + 1][0];
+          if (day !== 5) {
+            this.upcomingClass = timeTable[day + 1][0];
+          }
         }
       } else {
         this.upcomingClass = timeTable[day].filter(
