@@ -182,6 +182,18 @@
                 <button onclick="EDIT_MODAL.save()">Save</button>
             </div>
         </div>
+        <div id="undefined" class="edit-modal note-modal display">
+            <form>
+                <label for="note-field">Note :</label><textarea placeholder="Type here" class="note-input"
+                    name="note-field" type="text"></textarea>
+            </form>
+            <div class="control-btns">
+                <button class="note-delete-btn display" onclick="NOTE_MODAL.save({deleteNote : true})">Delete
+                    Note</button>
+                <button onclick="NOTE_MODAL.cancle()">Cancel</button>
+                <button class="note-svae-btn" onclick="NOTE_MODAL.save()">Add</button>
+            </div>
+        </div>
         <div class="class-container">
             <div class="ongoingClass class">
                 <div class="class-wraper">
@@ -238,6 +250,7 @@
         <div class="custom_contextMenu">
             <div class="topContextMenu_container">
                 <a class="TimeTable_joinBtn" href="undefined">Join</a>
+                <a class="TimeTable_addNoteBtn" onclick="CUSTOM_contextmenu.AddNote()">Add Note</a>
             </div>
         </div>
     </main>

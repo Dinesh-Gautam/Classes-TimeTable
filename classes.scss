@@ -71,12 +71,14 @@ a {
       font-size: var(--text-size);
       color: var(--light2);
     }
-    input {
+    input,
+    textarea {
       width: 100%;
       background: var(--light-black2);
       border: none;
       padding: 2px 4px;
       color: var(--light);
+      outline: none;
       border-radius: var(--border-radius);
     }
   }
@@ -90,8 +92,9 @@ a {
   .control-btns {
     display: flex;
     justify-content: flex-end;
+    gap: var(--default-padding);
     button {
-      margin: var(--default-padding) 0 0 var(--default-padding);
+      margin-top: var(--default-padding);
       padding: 4px var(--default-padding);
       font-size: var(--text-size);
       cursor: pointer;
@@ -105,13 +108,29 @@ a {
     top: -15%;
     label,
     input,
-    button {
+    button,
+    textarea {
       opacity: 0;
       transform: translateY(200%);
     }
   }
 }
+.note-delete-btn.display {
+  display: none;
+}
+.note-input {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 5rem;
+  max-height: 80vh;
+  font-size: calc(var(--text-size) - 1px);
+}
 
+.note-delete-btn {
+  flex: 1;
+  background-color: rgba($color: red, $alpha: 0.3);
+}
 header {
   width: 100%;
   height: 50%;
@@ -367,8 +386,11 @@ table {
   .topContextMenu_container {
     display: flex;
     align-items: center;
+    flex-direction: column;
   }
   a {
+    text-align: center;
+    width: 100%;
     padding: var(--less-padding) calc(var(--default-padding) * 2);
     font-size: calc(var(--text-size) - 1px);
   }

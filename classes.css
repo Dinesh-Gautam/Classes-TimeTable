@@ -81,12 +81,14 @@ a:hover {
   color: var(--light2);
 }
 
-.edit-modal form input {
+.edit-modal form input,
+.edit-modal form textarea {
   width: 100%;
   background: var(--light-black2);
   border: none;
   padding: 2px 4px;
   color: var(--light);
+  outline: none;
   border-radius: var(--border-radius);
 }
 
@@ -109,10 +111,11 @@ a:hover {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  gap: var(--default-padding);
 }
 
 .edit-modal .control-btns button {
-  margin: var(--default-padding) 0 0 var(--default-padding);
+  margin-top: var(--default-padding);
   padding: 4px var(--default-padding);
   font-size: var(--text-size);
   cursor: pointer;
@@ -128,10 +131,31 @@ a:hover {
 
 .edit-modal.display label,
 .edit-modal.display input,
-.edit-modal.display button {
+.edit-modal.display button,
+.edit-modal.display textarea {
   opacity: 0;
   -webkit-transform: translateY(200%);
           transform: translateY(200%);
+}
+
+.note-delete-btn.display {
+  display: none;
+}
+
+.note-input {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 5rem;
+  max-height: 80vh;
+  font-size: calc(var(--text-size) - 1px);
+}
+
+.note-delete-btn {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background-color: rgba(255, 0, 0, 0.3);
 }
 
 header {
@@ -495,9 +519,15 @@ table #emptyTableBox {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .custom_contextMenu a {
+  text-align: center;
+  width: 100%;
   padding: var(--less-padding) calc(var(--default-padding) * 2);
   font-size: calc(var(--text-size) - 1px);
 }

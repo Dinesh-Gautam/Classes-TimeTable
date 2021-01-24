@@ -312,11 +312,12 @@ const [upcomingClassIdView, upcomingClassPassView] = document.querySelectorAll(
 
 const meetingIdValue = document.querySelector(".meeting-id-input");
 const meetingPassValue = document.querySelector(".meeting-pass-input");
+const NoteValue = document.querySelector(".note-input");
 const editBtn = document.querySelectorAll(".edit-btn");
 const [ongoing_editBtn, upcoming_editBtn] = document.querySelectorAll(
   ".ongoingClass .edit-btn, .upcomingClass .edit-btn"
 );
-const EditModal = document.querySelector(".edit-modal");
+const [EditModal, NoteModal] = document.querySelectorAll(".edit-modal");
 const TimeTableEdit = document.querySelectorAll(".subjectBox");
 
 const CURRENT_STATUS = {
@@ -435,21 +436,6 @@ const EDIT_MODAL = {
     this.set_values();
     this.visible(true);
   },
-  find_class(get_id) {
-    let getClass;
-    for (key in timeTable) {
-      timeTable[key].forEach((e) => {
-        if (e.uid == get_id) {
-          getClass = e;
-        }
-      });
-    }
-    return getClass;
-  },
-  set_values({ clear = false } = {}) {
-    meetingIdValue.value = clear ? "" : this.class.meetingId;
-    meetingPassValue.value = clear ? "" : this.class.meetingPass;
-  },
   visible(visible) {
     visible
       ? EditModal.classList.remove("display")
@@ -475,6 +461,21 @@ const EDIT_MODAL = {
       compelete_update();
       this.cancle();
     }
+  },
+  find_class(get_id) {
+    let getClass;
+    for (key in timeTable) {
+      timeTable[key].forEach((e) => {
+        if (e.uid == get_id) {
+          getClass = e;
+        }
+      });
+    }
+    return getClass;
+  },
+  set_values({ clear = false } = {}) {
+    meetingIdValue.value = clear ? "" : this.class.meetingId;
+    meetingPassValue.value = clear ? "" : this.class.meetingPass;
   },
 };
 
@@ -510,7 +511,7 @@ window.oncontextmenu = (e) => {
   const clicked_subject = e.path[0];
   contextMenu.classList.remove("active");
   if (clicked_subject.tagName === "TD" && clicked_subject.id) {
-    contextMenuForTimeTable(e);
+    CUSTOM_contextmenu.contextMenuForTimeTable(e);
     return false;
   }
 };
@@ -529,37 +530,102 @@ window.addEventListener("resize", () => {
   contextMenu.classList.remove("active");
 });
 
-function contextMenuForTimeTable(e) {
-  contextMenu.classList.add("active");
+const CUSTOM_contextmenu = {
+  Target_UID: null,
+  Clicked_Class: null,
+  contextMenuForTimeTable(event) {
+    contextMenu.classList.add("active");
 
-  const Target_UID = e.path[0].id;
+    this.Target_UID = event.path[0].id;
 
-  let Clicked_Class;
+    for (key in timeTable) {
+      timeTable[key].forEach((e) => {
+        if (e.uid == this.Target_UID) {
+          this.Clicked_Class = e;
+        }
+      });
+    }
+    this.joinBtn();
+    this.setPosition(event);
+    this.modifier();
+  },
 
-  for (key in timeTable) {
-    timeTable[key].forEach((e) => {
-      if (e.uid == Target_UID) {
-        Clicked_Class = e;
+  setPosition(event) {
+    const { X_possition, Y_possition } = {
+      X_possition: event.clientX,
+      Y_possition: event.clientY,
+    };
+
+    const contextMenu_position = contextMenu.style;
+    contextMenu_position.top = Y_possition + "px";
+    contextMenu_position.left = X_possition + "px";
+  },
+
+  joinBtn() {
+    const [meeting_id, meeting_pass] = [
+      this.Clicked_Class.meetingId,
+      this.Clicked_Class.meetingPass,
+    ];
+
+    ContextMenu_JoinLink.href = CLASS.linkGenrator(meeting_id, meeting_pass);
+  },
+  modifier() {
+    document.querySelector(".TimeTable_addNoteBtn").innerText = this
+      .Clicked_Class.note
+      ? "Edit Note"
+      : "Add Note";
+  },
+  AddNote(event) {
+    NOTE_MODAL.open(this.Clicked_Class);
+  },
+};
+
+const NOTE_MODAL = {
+  class: null,
+  open(givenClass) {
+    this.class = givenClass;
+    this.visible(true);
+    this.button_modifer();
+    this.set_values({ clear: false });
+  },
+  button_modifer() {
+    if (this.class.note) {
+      document.querySelector(".note-svae-btn").innerText = "Save";
+      document.querySelector(".note-delete-btn").classList.remove("display");
+    } else {
+      document.querySelector(".note-svae-btn").innerText = "Add";
+      document.querySelector(".note-delete-btn").classList.add("display");
+    }
+  },
+  set_values({ clear = false } = {}) {
+    NoteValue.value = clear || !this.class.note ? "" : this.class.note;
+  },
+  visible(visible) {
+    visible
+      ? NoteModal.classList.remove("display")
+      : NoteModal.classList.add("display");
+  },
+  cancle() {
+    this.set_values({ clear: true });
+    this.visible(false);
+  },
+  save({ deleteNote = false } = {}) {
+    if (NoteValue.value) {
+      for (key in timeTable) {
+        timeTable[key].forEach((e) => {
+          if (e.uid === this.class.uid) {
+            e.note = deleteNote ? "" : NoteValue.value;
+          }
+        });
       }
-    });
-  }
-
-  const [meeting_id, meeting_pass] = [
-    Clicked_Class.meetingId,
-    Clicked_Class.meetingPass,
-  ];
-
-  ContextMenu_JoinLink.href = CLASS.linkGenrator(meeting_id, meeting_pass);
-
-  const { X_possition, Y_possition } = {
-    X_possition: e.clientX,
-    Y_possition: e.clientY,
-  };
-
-  const contextMenu_position = contextMenu.style;
-  contextMenu_position.top = Y_possition + "px";
-  contextMenu_position.left = X_possition + "px";
-}
+      localStorage.setItem("timeTable", JSON.stringify(timeTable));
+      compelete_update();
+      this.cancle();
+    } else {
+      alert("value can't be empty");
+    }
+  },
+};
 
 editBtn.forEach((element) => {
   element.addEventListener("click", (event) => {
