@@ -491,7 +491,50 @@ const DOM_timeTable = {
     classInfo &&
       document.getElementById(`${classInfo.uid}`).classList.add(classActive);
   },
+  note_update() {
+    const note_add_uid = [];
+    document
+      .querySelectorAll(".subjectBox")
+      .forEach((e) => e.classList.remove("note-added"));
+    for (key in timeTable) {
+      timeTable[key].forEach((element) => {
+        element.note && note_add_uid.push(element.uid);
+      });
+    }
+    note_add_uid.forEach((e) => {
+      document.getElementById(`${e}`).classList.add("note-added");
+    });
+  },
 };
+
+document.querySelectorAll(".subjectBox").forEach((e) => {
+  e.addEventListener("mouseover", check_note);
+});
+
+function check_note(event) {
+  Target_UID = event.target.id;
+  msg = "";
+  for (key in timeTable) {
+    timeTable[key].forEach((e) => {
+      if (Target_UID == e.uid) {
+        if (e.note) {
+          msg = e.note;
+          document.querySelector(".note-view").classList.add("active");
+          document.querySelector(".note-view-paragraph").innerText = msg;
+
+          let rect = event.target.getBoundingClientRect();
+
+          document.querySelector(".note-view").style.top = rect.top + "px";
+          document.querySelector(".note-view").style.left = rect.right + "px";
+        } else {
+          document.querySelector(".note-view").classList.remove("active");
+        }
+      }
+    });
+  }
+}
+
+window.addEventListener("mouseover", check_note);
 
 const timeTableTogglerBtn = document.querySelector(".timeTableCloser");
 
@@ -608,6 +651,7 @@ const NOTE_MODAL = {
   cancle() {
     this.set_values({ clear: true });
     this.visible(false);
+    DOM_timeTable.note_update();
   },
   save({ deleteNote = false } = {}) {
     if (NoteValue.value) {
@@ -646,3 +690,8 @@ function compelete_update() {
   DOM_timeTable.update();
 }
 compelete_update();
+
+function initial() {
+  DOM_timeTable.note_update();
+}
+initial();
