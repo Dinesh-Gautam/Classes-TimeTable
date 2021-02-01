@@ -491,51 +491,16 @@ const DOM_timeTable = {
     classInfo &&
       document.getElementById(`${classInfo.uid}`).classList.add(classActive);
   },
-  note_update() {
-    const note_add_uid = [];
+  note_exists_update() {
     document
       .querySelectorAll(".subjectBox")
       .forEach((e) => e.classList.remove("note-added"));
-    for (key in timeTable) {
-      timeTable[key].forEach((element) => {
-        element.note && note_add_uid.push(element.uid);
-      });
-    }
-    note_add_uid.forEach((e) => {
-      document.getElementById(`${e}`).classList.add("note-added");
+    NOTE_MODAL.getNotes();
+    NOTE_MODAL.notes.forEach((e) => {
+      document.getElementById(`${e.id}`).classList.add("note-added");
     });
   },
 };
-
-document.querySelectorAll(".subjectBox").forEach((e) => {
-  e.addEventListener("mouseover", check_note);
-});
-
-function check_note(event) {
-  Target_UID = event.target.id;
-  msg = "";
-  for (key in timeTable) {
-    timeTable[key].forEach((e) => {
-      if (Target_UID == e.uid) {
-        if (e.note) {
-          msg = e.note;
-          document.querySelector(".note-view").classList.add("active");
-          document.querySelector(".note-view-paragraph").innerText = msg;
-
-          let rect = event.target.getBoundingClientRect();
-
-          document.querySelector(".note-view").style.top = rect.top + "px";
-          document.querySelector(".note-view").style.left = rect.right + "px";
-        } else {
-          document.querySelector(".note-view").classList.remove("active");
-        }
-      }
-    });
-  }
-}
-
-window.addEventListener("mouseover", check_note);
-
 const timeTableTogglerBtn = document.querySelector(".timeTableCloser");
 
 timeTableTogglerBtn.addEventListener("click", (e) => {
@@ -625,6 +590,32 @@ const CUSTOM_contextmenu = {
 
 const NOTE_MODAL = {
   class: null,
+  notes: [],
+  set_note_view_postion(event) {
+    const e = NOTE_MODAL.notes.find((element) => element.id == event.target.id);
+    const noteViewModal = document.querySelector(".note-view");
+    if (e && e.note) {
+      msg = e.note;
+      noteViewModal.classList.add("active");
+      noteViewModal.querySelector(".note-view-paragraph").innerText = e.note;
+      let rect = event.target.getBoundingClientRect();
+      noteViewModal.style.top = rect.top + "px";
+      noteViewModal.style.left = rect.right + "px";
+    } else {
+      noteViewModal.classList.remove("active");
+    }
+  },
+  getNotes: function () {
+    for (key in timeTable) {
+      timeTable[key].forEach((e) => {
+        if (e.note) {
+          this.notes = [];
+          this.notes.push({ id: e.uid, note: e.note });
+        }
+      });
+    }
+  },
+
   open(givenClass) {
     this.class = givenClass;
     this.visible(true);
@@ -651,7 +642,7 @@ const NOTE_MODAL = {
   cancle() {
     this.set_values({ clear: true });
     this.visible(false);
-    DOM_timeTable.note_update();
+    DOM_timeTable.note_exists_update();
   },
   save({ deleteNote = false } = {}) {
     if (NoteValue.value) {
@@ -670,6 +661,10 @@ const NOTE_MODAL = {
     }
   },
 };
+
+document
+  .getElementById("timeTable")
+  .addEventListener("mouseover", NOTE_MODAL.set_note_view_postion);
 
 editBtn.forEach((element) => {
   element.addEventListener("click", (event) => {
@@ -692,6 +687,6 @@ function compelete_update() {
 compelete_update();
 
 function initial() {
-  DOM_timeTable.note_update();
+  DOM_timeTable.note_exists_update();
 }
 initial();
