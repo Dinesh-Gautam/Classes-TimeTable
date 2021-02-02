@@ -344,9 +344,9 @@ const CLASS = {
     const { day, time } = CURRENT_STATUS;
     if (day >= 1 && day <= 5) {
       if (time >= 9 && time <= 17) {
-        this.ongoingClass = timeTable[day].filter(
+        this.ongoingClass = timeTable[day].find(
           (e) => e.startTime <= time && e.endTime >= time
-        )[0];
+        );
       }
     }
   },
@@ -365,9 +365,9 @@ const CLASS = {
           }
         }
       } else {
-        this.upcomingClass = timeTable[day].filter(
+        this.upcomingClass = timeTable[day].find(
           (e) => e.Id === this.ongoingClass.Id + 1
-        )[0];
+        );
         if (this.upcomingClass === undefined) {
           this.upcomingClass = timeTable[day + 1][0];
         }
