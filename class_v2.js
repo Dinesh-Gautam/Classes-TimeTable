@@ -606,10 +606,10 @@ const NOTE_MODAL = {
     }
   },
   getNotes: function () {
+    this.notes = [];
     for (key in timeTable) {
       timeTable[key].forEach((e) => {
         if (e.note) {
-          this.notes = [];
           this.notes.push({ id: e.uid, note: e.note });
         }
       });
