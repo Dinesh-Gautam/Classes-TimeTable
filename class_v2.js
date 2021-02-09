@@ -320,6 +320,8 @@ const [ongoing_editBtn, upcoming_editBtn] = document.querySelectorAll(
 const [EditModal, NoteModal] = document.querySelectorAll(".edit-modal");
 const TimeTableEdit = document.querySelectorAll(".subjectBox");
 
+const autoJoin_checkbox = document.getElementById("auto_join_checkbox");
+
 const CURRENT_STATUS = {
   day: new Date().getDay(),
   time: 0,
@@ -340,14 +342,43 @@ const CLASS = {
   upcomingClass: null,
 
   ongoingClassUpdate() {
-    this.ongoingClass = null;
     const { day, time } = CURRENT_STATUS;
     if (day >= 1 && day <= 5) {
       if (time >= 9 && time <= 17) {
-        this.ongoingClass = timeTable[day].find(
+        const toBe = timeTable[day].find(
           (e) => e.startTime <= time && e.endTime >= time
         );
+        if (this.ongoingClass) {
+          if (
+            this.ongoingClass.meetingId !== toBe.meetingId &&
+            this.ongoingClass.meetingPass !== toBe.meetingPass
+          ) {
+            console.log("udated when calss actually changes");
+            this.ongoingClass = toBe;
+            toBe.autoJoin &&
+              window.open(
+                CLASS.linkGenrator(toBe.meetingId, toBe.meetingPass),
+                "_self"
+              );
+            toBe.autoJoin && console.log("joining");
+          } else {
+            console.log(CURRENT_STATUS.time);
+          }
+        } else {
+          console.log("updated when ongoing class is null");
+          this.ongoingClass = toBe;
+          toBe.autoJoin &&
+            window.open(
+              CLASS.linkGenrator(toBe.meetingId, toBe.meetingPass),
+              "_self"
+            );
+          toBe.autoJoin && console.log("joining");
+        }
+      } else {
+        this.ongoingClass = null;
       }
+    } else {
+      this.ongoingClass = null;
     }
   },
 
@@ -355,7 +386,6 @@ const CLASS = {
     this.upcomingClass = null;
     const { day, time } = CURRENT_STATUS;
     if (day >= 1 && day <= 5) {
-      console.log("this is executing");
       if (this.ongoingClass === null) {
         if (time < 9) {
           this.upcomingClass = timeTable[day][0];
@@ -368,7 +398,7 @@ const CLASS = {
         this.upcomingClass = timeTable[day].find(
           (e) => e.Id === this.ongoingClass.Id + 1
         );
-        if (time > 17) {
+        if (time > this.ongoingClass.startTime) {
           if (day !== 5) {
             if (this.upcomingClass === undefined) {
               this.upcomingClass = timeTable[day + 1][0];
@@ -487,6 +517,7 @@ const DOM_timeTable = {
   update() {
     this.class_update(CLASS.ongoingClass, "ongoing-active");
     this.class_update(CLASS.upcomingClass, "upcoming-active");
+    AUTO_JOIN.DOM_autoJoin();
   },
   class_update(classInfo, classActive) {
     document
@@ -496,9 +527,9 @@ const DOM_timeTable = {
       document.getElementById(`${classInfo.uid}`).classList.add(classActive);
   },
   note_exists_update() {
-    document
-      .querySelectorAll(".subjectBox")
-      .forEach((e) => e.classList.remove("note-added"));
+    document.querySelectorAll(".subjectBox").forEach((e) => {
+      e.classList.remove("note-added");
+    });
     NOTE_MODAL.getNotes();
     NOTE_MODAL.notes.forEach((e) => {
       document.getElementById(`${e.id}`).classList.add("note-added");
@@ -518,6 +549,39 @@ timeTableTogglerBtn.addEventListener("click", (e) => {
     BtnIcon.classList.remove("fa-times");
   }
 });
+
+const AUTO_JOIN = {
+  check(CLASS) {
+    autoJoin_checkbox.checked = CLASS.autoJoin ? true : false;
+  },
+  execute(id) {
+    for (key in timeTable) {
+      timeTable[key].forEach((e) => {
+        if (e.uid == id) {
+          e.autoJoin = autoJoin_checkbox.checked;
+        }
+      });
+    }
+    this.save();
+  },
+  save() {
+    localStorage.setItem("timeTable", JSON.stringify(timeTable));
+    compelete_update();
+  },
+  DOM_autoJoin() {
+    for (key in timeTable) {
+      timeTable[key].forEach((e) => {
+        if (e.autoJoin) {
+          document.getElementById(`${e.uid}`).classList.add("autoJoin-active");
+        } else {
+          document
+            .getElementById(`${e.uid}`)
+            .classList.remove("autoJoin-active");
+        }
+      });
+    }
+  },
+};
 
 window.oncontextmenu = (e) => {
   const clicked_subject = e.path[0];
@@ -560,6 +624,7 @@ const CUSTOM_contextmenu = {
     this.joinBtn();
     this.setPosition(event);
     this.modifier();
+    AUTO_JOIN.check(this.Clicked_Class);
   },
 
   setPosition(event) {
@@ -589,6 +654,9 @@ const CUSTOM_contextmenu = {
   },
   AddNote(event) {
     NOTE_MODAL.open(this.Clicked_Class);
+  },
+  autoJoin(event) {
+    AUTO_JOIN.execute(this.Target_UID);
   },
 };
 

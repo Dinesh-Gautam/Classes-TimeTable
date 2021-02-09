@@ -252,6 +252,12 @@
                 <a class="TimeTable_joinBtn" href="undefined">Join</a>
                 <a class="TimeTable_addNoteBtn" onclick="CUSTOM_contextmenu.AddNote()">Add Note</a>
             </div>
+            <div class="middleContexMenu_container">
+                <form class="TimeTable_autoJoinCheckBox">
+                    <label for="auto_join_checkbox">Auto Join</label>
+                    <input id="auto_join_checkbox" onclick="CUSTOM_contextmenu.autoJoin()" type="checkbox">
+                </form>
+            </div>
         </div>
         <div class="note-view">
             <p class="note-view-paragraph">-</p>
