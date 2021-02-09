@@ -368,9 +368,6 @@ const CLASS = {
         this.upcomingClass = timeTable[day].find(
           (e) => e.Id === this.ongoingClass.Id + 1
         );
-        // if (this.upcomingClass === undefined) {
-        //   this.upcomingClass = timeTable[day + 1][0];
-        // }
         if (time > 17) {
           if (day !== 5) {
             if (this.upcomingClass === undefined) {
