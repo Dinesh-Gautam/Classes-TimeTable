@@ -50,7 +50,34 @@ a {
     color: var(--light);
   }
 }
+input[type="checkbox"] {
+  --width: 20px;
+  position: relative;
+  height: calc(var(--width) / 2);
+  width: var(--width);
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: var(--light-black);
+  box-shadow: inset 0 0 1px 1px rgba($color: #000000, $alpha: 0.2);
+  appearance: none;
 
+  &::after {
+    content: "";
+    left: 0;
+    height: calc(var(--width) / 2);
+    width: calc(var(--width) / 2);
+    transform: scale(0.9);
+    border-radius: 50%;
+    position: absolute;
+    background-color: var(--light-black2);
+  }
+  &:checked {
+    background: white;
+    &::after {
+      left: calc(var(--width) / 2);
+    }
+  }
+}
 .edit-modal {
   position: absolute;
   overflow: hidden;
@@ -195,7 +222,7 @@ table {
       height: 4px;
       width: 4px;
       border-radius: 50%;
-      background: blue;
+      background: rgb(48, 86, 255);
     }
     &.note-added::before {
       --border-size: 3px;
@@ -421,7 +448,7 @@ table {
   .middleContexMenu_container {
     width: 100%;
     padding: var(--less-padding);
-    border-top: 1px solid black;
+    border-top: 1.5px solid var(--dark-black);
     .TimeTable_autoJoinCheckBox {
       display: flex;
       align-items: center;
@@ -451,13 +478,25 @@ table {
   opacity: 0;
   pointer-events: none;
   z-index: 22;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.1s ease-out, opacity 0.2s ease-in-out;
   p {
+    opacity: 0;
     width: 100%;
+    transform: translateX(30%);
     font-size: calc(var(--text-size) - 2px);
     padding: var(--default-padding);
+    transition: all 0.4s ease-in-out;
+    transition-delay: 0.1s;
   }
   &.active {
+    transform: scaleX(1);
     opacity: 1;
     pointer-events: all;
+    p {
+      transform: translateX(0%);
+      opacity: 1;
+    }
   }
 }

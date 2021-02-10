@@ -320,6 +320,8 @@ const [ongoing_editBtn, upcoming_editBtn] = document.querySelectorAll(
 const [EditModal, NoteModal] = document.querySelectorAll(".edit-modal");
 const TimeTableEdit = document.querySelectorAll(".subjectBox");
 
+const noteViewModal = document.querySelector(".note-view");
+
 const autoJoin_checkbox = document.getElementById("auto_join_checkbox");
 
 const CURRENT_STATUS = {
@@ -665,7 +667,6 @@ const NOTE_MODAL = {
   notes: [],
   set_note_view_postion(event) {
     const e = NOTE_MODAL.notes.find((element) => element.id == event.target.id);
-    const noteViewModal = document.querySelector(".note-view");
     if (e && e.note) {
       msg = e.note;
       noteViewModal.classList.add("active");
@@ -734,9 +735,16 @@ const NOTE_MODAL = {
   },
 };
 
-document
-  .getElementById("timeTable")
-  .addEventListener("mouseover", NOTE_MODAL.set_note_view_postion);
+// document
+//   .getElementById("timeTable")
+//   .addEventListener("mouseover", NOTE_MODAL.set_note_view_postion);
+
+TimeTableEdit.forEach((element) => {
+  element.addEventListener("mouseenter", NOTE_MODAL.set_note_view_postion);
+  element.addEventListener("mouseleave", () =>
+    noteViewModal.classList.remove("active")
+  );
+});
 
 editBtn.forEach((element) => {
   element.addEventListener("click", (event) => {
