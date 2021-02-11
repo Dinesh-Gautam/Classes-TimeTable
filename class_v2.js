@@ -2,288 +2,340 @@ let timeTable = {
   1: [
     {
       startTime: 9,
-      endTime: 9.5,
+      endTime: 9.48,
       subject: "chemistry",
-      meetingId: 1231231,
-      meetingPass: 123123,
+      meetingId: "4427721704",
+      meetingPass: "321321",
       Id: 0,
+      uid: 0,
     },
     {
-      startTime: 9.5,
-      endTime: 10.4,
+      startTime: 9.48,
+      endTime: 10.38,
       subject: "ECS",
-      meetingId: 1231,
-      meetingPass: 1231,
+      meetingId: "5044549661",
+      meetingPass: "722363",
       Id: 1,
+      uid: 1,
+      note: "",
     },
     {
-      startTime: 10.4,
-      endTime: 11.3,
+      startTime: 10.38,
+      endTime: 11.28,
       subject: "Math",
-      meetingId: 23123123,
-      meetingPass: 12312,
+      meetingId: 3099473001,
+      meetingPass: 12345,
       Id: 2,
+      uid: 2,
     },
     {
-      startTime: 11.3,
-      endTime: 12.2,
+      startTime: 11.28,
+      endTime: 12.18,
       subject: "SCA",
-      meetingId: 1231231231,
-      meetingPass: 12312,
+      meetingId: 3099473001,
+      meetingPass: 12345,
       Id: 3,
+      uid: 3,
     },
     {
-      startTime: 12.2,
-      endTime: 13.2,
+      startTime: 12.18,
+      endTime: 14.18,
       subject: "ECS",
-      meetingId: 123123,
-      meetingPass: 12312,
+      meetingId: "5044549661",
+      meetingPass: "722363",
       Id: 4,
+      uid: 4,
+      note:
+        "Add a general note (global note) and moveon event listener on each subjectbox and whenever user leaves the box the note view should be display none and a copy a note feature, add automatic link opener in contexte menu to enable it, Replace class ",
     },
     {
-      startTime: 13.2,
-      endTime: 15.1,
+      startTime: 14.18,
+      endTime: 15.08,
       subject: "physics",
-      meetingId: 1123123,
-      meetingPass: 1223,
+      meetingId: 8271406865,
+      meetingPass: 123456,
       Id: 5,
+      uid: 5,
+      note: "",
     },
     {
-      startTime: 15.1,
+      startTime: 15.08,
       endTime: 17,
       subject: "CFIT LAB",
-      meetingId: 1231231,
-      meetingPass: 123,
+      meetingId: "77371587217",
+      meetingPass: "thapar",
       Id: 6,
+      uid: 6,
+      note: "",
     },
   ],
   2: [
     {
       startTime: 9,
-      endTime: 9.5,
+      endTime: 9.48,
       subject: "Math",
-      meetingId: 1231231,
-      meetingPass: 123123,
+      meetingId: 3099473001,
+      meetingPass: 12345,
       Id: 0,
+      uid: 7,
+      note: "",
     },
     {
-      startTime: 9.5,
-      endTime: 10.4,
+      startTime: 9.48,
+      endTime: 10.38,
       subject: "chemistry",
-      meetingId: 1231,
-      meetingPass: 1231,
+      meetingId: "4427721704",
+      meetingPass: "321321",
       Id: 1,
+      uid: 8,
+      note: "",
     },
     {
-      startTime: 10.4,
-      endTime: 12.2,
+      startTime: 10.38,
+      endTime: 12.18,
       subject: "physics lab",
-      meetingId: 23123123,
-      meetingPass: 12312,
+      meetingId: "4639101625",
+      meetingPass: "90121",
       Id: 2,
+      uid: 9,
     },
     {
-      startTime: 12.2,
-      endTime: 13.2,
+      startTime: 12.18,
+      endTime: 14.18,
       subject: "physics",
-      meetingId: 1231231231,
-      meetingPass: 12312,
+      meetingId: 8271406865,
+      meetingPass: 123456,
       Id: 3,
+      uid: 10,
     },
     {
-      startTime: 13.2,
-      endTime: 15.1,
+      startTime: 14.18,
+      endTime: 15.08,
       subject: "CFIT",
-      meetingId: 123123,
-      meetingPass: 12312,
+      meetingId: "8072876058",
+      meetingPass: "amansclass",
       Id: 4,
+      uid: 11,
+      note: "",
     },
     {
-      startTime: 15.1,
-      endTime: 16,
+      startTime: 15.08,
+      endTime: 15.58,
       subject: "Math",
-      meetingId: 1123123,
-      meetingPass: 1223,
+      meetingId: 3099473001,
+      meetingPass: 12345,
       Id: 5,
+      uid: 12,
     },
     {
-      startTime: 16,
+      startTime: 15.58,
       endTime: 17,
       subject: "SCA",
-      meetingId: 1231231,
-      meetingPass: 123,
+      meetingId: 3099473001,
+      meetingPass: 12345,
       Id: 6,
+      uid: 13,
+      autoJoin: false,
     },
   ],
   3: [
     {
       startTime: 9,
-      endTime: 9.5,
+      endTime: 9.48,
       subject: "ECS",
-      meetingId: 1231231,
-      meetingPass: 123123,
+      meetingId: "5044549661",
+      meetingPass: "722363",
       Id: 0,
+      uid: 14,
+      note: "This is chemistry class",
+      autoJoin: false,
     },
     {
-      startTime: 9.5,
-      endTime: 10.4,
+      startTime: 9.48,
+      endTime: 10.38,
       subject: "physics",
-      meetingId: 1231,
-      meetingPass: 1231,
+      meetingId: 8271406865,
+      meetingPass: 123456,
       Id: 1,
+      uid: 15,
+      autoJoin: true,
     },
     {
-      startTime: 10.4,
-      endTime: 13.2,
+      startTime: 10.38,
+      endTime: 14.18,
       subject: "GWP",
-      meetingId: 23123123,
-      meetingPass: 12312,
+      meetingId: "76756518856",
+      meetingPass: "f4BgpQ",
       Id: 2,
+      uid: 16,
     },
     {
-      startTime: 13.2,
+      startTime: 14.18,
       endTime: 17,
       subject: "ED",
-      meetingId: 1231231231,
-      meetingPass: 12312,
+      meetingId: "2611381495",
+      meetingPass: "047993",
       Id: 3,
+      uid: 17,
+      note: "",
     },
   ],
   4: [
     {
       startTime: 9,
-      endTime: 9.5,
+      endTime: 9.48,
       subject: "CFIT",
-      meetingId: 1231231,
-      meetingPass: 123123,
+      meetingId: "8072876058",
+      meetingPass: "amansclass",
       Id: 0,
+      uid: 18,
+      autoJoin: true,
     },
     {
-      startTime: 9.5,
-      endTime: 10.4,
+      startTime: 9.48,
+      endTime: 10.38,
       subject: "Math",
-      meetingId: 1231,
-      meetingPass: 1231,
+      meetingId: 3099473001,
+      meetingPass: 12345,
       Id: 1,
+      uid: 19,
+      autoJoin: true,
     },
     {
-      startTime: 10.4,
-      endTime: 13.2,
+      startTime: 10.38,
+      endTime: 14.18,
       subject: "GWP",
-      meetingId: 23123123,
-      meetingPass: 12312,
+      meetingId: "76756518856",
+      meetingPass: "f4BgpQ",
       Id: 2,
+      uid: 20,
     },
     {
-      startTime: 13.2,
-      endTime: 15.1,
+      startTime: 14.18,
+      endTime: 15.08,
       subject: "chemistry",
-      meetingId: 1231231231,
-      meetingPass: 12312,
+      meetingId: "4427721704",
+      meetingPass: "321321",
       Id: 3,
+      uid: 21,
+      autoJoin: true,
     },
     {
-      startTime: 15.1,
+      startTime: 15.08,
       endTime: 17,
       subject: "ECS LAB",
-      meetingId: 123123,
-      meetingPass: 12312,
+      meetingId: "5044549661",
+      meetingPass: "722363",
       Id: 4,
+      uid: 22,
+      note: "viva",
+      autoJoin: true,
     },
   ],
   5: [
     {
       startTime: 9,
-      endTime: 9.5,
+      endTime: 9.48,
       subject: "physics",
-      meetingId: 1231231,
-      meetingPass: 123123,
+      meetingId: 8271406865,
+      meetingPass: 123456,
       Id: 0,
+      uid: 23,
+      autoJoin: true,
     },
     {
-      startTime: 9.5,
-      endTime: 10.4,
+      startTime: 9.48,
+      endTime: 10.38,
       subject: "Math",
-      meetingId: 1231,
-      meetingPass: 1231,
+      meetingId: 3099473001,
+      meetingPass: 12345,
       Id: 1,
+      uid: 24,
+      autoJoin: true,
     },
     {
-      startTime: 10.4,
-      endTime: 12.2,
+      startTime: 10.38,
+      endTime: 12.18,
       subject: "Chemistry Lab",
-      meetingId: 23123123,
-      meetingPass: 12312,
+      meetingId: 4427721704,
+      meetingPass: 321321,
       Id: 2,
+      uid: 25,
+      note:
+        "video ON\nall 3 assignment and seminar show on video\nand seminar viva.",
+      autoJoin: true,
     },
     {
-      startTime: 12.2,
-      endTime: 13.2,
+      startTime: 12.18,
+      endTime: 14.18,
       subject: "chemistry",
-      meetingId: 1231231231,
-      meetingPass: 12312,
+      meetingId: "4427721704",
+      meetingPass: "321321",
       Id: 3,
+      uid: 26,
+      autoJoin: true,
     },
     {
-      startTime: 13.2,
+      startTime: 14.18,
       endTime: 17,
       subject: "ED",
-      meetingId: 123123,
-      meetingPass: 12312,
+      meetingId: "2611381495",
+      meetingPass: "047993",
       Id: 4,
+      uid: 27,
     },
   ],
 };
 
-for (key in timeTable) {
-  timeTable[key].forEach((e) => {
-    switch (e.subject.toLowerCase()) {
-      case "math":
-        e.meetingId = 3099473001;
-        e.meetingPass = 12345;
-        break;
-      case "sca":
-        e.meetingId = 3099473001;
-        e.meetingPass = 12345;
-        break;
-      case "ecs":
-        e.meetingId = 5054549661;
-        e.meetingPass = 722363;
-        break;
-      case "physics":
-        e.meetingId = 8271406865;
-        e.meetingPass = 123456;
-        break;
-      case "chemistry":
-        e.meetingId = 4427721704;
-        e.meetingPass = 321321;
-        break;
-      case "chemistry lab":
-        e.meetingId = 4427721704;
-        e.meetingPass = 321321;
-        break;
-      case "ecs lab":
-        e.meetingId = 5054549661;
-        e.meetingPass = 722363;
-        break;
-      default:
-        break;
-    }
-  });
-}
+// for (key in timeTable) {
+//   timeTable[key].forEach((e) => {
+//     switch (e.subject.toLowerCase()) {
+//       case "math":
+//         e.meetingId = 3099473001;
+//         e.meetingPass = 12345;
+//         break;
+//       case "sca":
+//         e.meetingId = 3099473001;
+//         e.meetingPass = 12345;
+//         break;
+//       case "ecs":
+//         e.meetingId = 5054549661;
+//         e.meetingPass = 722363;
+//         break;
+//       case "physics":
+//         e.meetingId = 8271406865;
+//         e.meetingPass = 123456;
+//         break;
+//       case "chemistry":
+//         e.meetingId = 4427721704;
+//         e.meetingPass = 321321;
+//         break;
+//       case "chemistry lab":
+//         e.meetingId = 4427721704;
+//         e.meetingPass = 321321;
+//         break;
+//       case "ecs lab":
+//         e.meetingId = 5054549661;
+//         e.meetingPass = 722363;
+//         break;
+//       default:
+//         break;
+//     }
+//   });
+// }
 
 let i = 0;
-// localStorage.setItem("timeTable", JSON.stringify(timeTable));
+localStorage.setItem("timeTable", JSON.stringify(timeTable));
 if (localStorage.getItem("timeTable") === null) {
   localStorage.setItem("timeTable", JSON.stringify(timeTable));
 } else {
   timeTable = JSON.parse(localStorage.getItem("timeTable"));
-  for (key in timeTable) {
-    timeTable[key].forEach((e) => {
-      e.uid = i;
-      i++;
-    });
-  }
+  // for (key in timeTable) {
+  //   timeTable[key].forEach((e) => {
+  //     e.uid = i;
+  //     i++;
+  //   });
+  // }
 }
 
 const ongoingClass_DOM_selector = document.querySelector(".ongoingClass");
