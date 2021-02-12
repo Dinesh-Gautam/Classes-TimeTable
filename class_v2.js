@@ -325,7 +325,7 @@ let timeTable = {
 // }
 
 let i = 0;
-localStorage.setItem("timeTable", JSON.stringify(timeTable));
+// localStorage.setItem("timeTable", JSON.stringify(timeTable));
 if (localStorage.getItem("timeTable") === null) {
   localStorage.setItem("timeTable", JSON.stringify(timeTable));
 } else {
@@ -337,6 +337,12 @@ if (localStorage.getItem("timeTable") === null) {
   //   });
   // }
 }
+
+const PERMISSIONS = {
+  ONE_TIME: {
+    autoJoin_permission: false,
+  },
+};
 
 const ongoingClass_DOM_selector = document.querySelector(".ongoingClass");
 const upcomingClass_DOM_selector = document.querySelector(".upcomingClass");
@@ -415,13 +421,12 @@ const CLASS = {
                 "_self"
               );
             toBe.autoJoin && console.log("joining");
-          } else {
-            console.log(CURRENT_STATUS.time);
           }
         } else {
           console.log("updated when ongoing class is null");
           this.ongoingClass = toBe;
           toBe.autoJoin &&
+            confirm(`would you like to join your ${toBe.subject} class`) &&
             window.open(
               CLASS.linkGenrator(toBe.meetingId, toBe.meetingPass),
               "_self"
