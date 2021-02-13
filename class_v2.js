@@ -611,7 +611,7 @@ timeTableTogglerBtn.addEventListener("click", (e) => {
 
 const AUTO_JOIN = {
   check(CLASS) {
-    autoJoin_checkbox.checked = CLASS.autoJoin ? true : false;
+    autoJoin_checkbox.checked = CLASS.autoJoin;
   },
   execute(id) {
     for (key in timeTable) {
@@ -628,17 +628,17 @@ const AUTO_JOIN = {
     compelete_update();
   },
   DOM_autoJoin() {
-    for (key in timeTable) {
-      timeTable[key].forEach((e) => {
-        if (e.autoJoin) {
-          document.getElementById(`${e.uid}`).classList.add("autoJoin-active");
-        } else {
-          document
-            .getElementById(`${e.uid}`)
-            .classList.remove("autoJoin-active");
-        }
-      });
-    }
+    // for (key in timeTable) {
+    //   timeTable[key].forEach((e) => {
+    //     if (e.autoJoin) {
+    //       document.getElementById(`${e.uid}`).classList.add("autoJoin-active");
+    //     } else {
+    //       document
+    //         .getElementById(`${e.uid}`)
+    //         .classList.remove("autoJoin-active");
+    //     }
+    //   });
+    // }
   },
 };
 
