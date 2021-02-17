@@ -368,6 +368,8 @@ const [upcomingClassIdView, upcomingClassPassView] = document.querySelectorAll(
   ".upcomingClass-info .meeting-ID-view, .upcomingClass-info .meeting-pass-view"
 );
 
+const dayBoxTimeTable = document.querySelectorAll(".dayBox");
+
 const meetingIdValue = document.querySelector(".meeting-id-input");
 const meetingPassValue = document.querySelector(".meeting-pass-input");
 const NoteValue = document.querySelector(".note-input");
@@ -509,7 +511,16 @@ const CLASS = {
       }
     }
     function timeStringCreator(classTime) {
-      return classTime.startTime + " - " + classTime.endTime;
+      const { startTime, endTime } = classTime;
+
+      function formateTime(time) {
+        return time > 12 ? (time -= 12) + " PM" : time + " AM";
+      }
+      return (
+        formateTime(startTime).toString().replace(".", ":") +
+        " - " +
+        formateTime(endTime).toString().replace(".", ":")
+      );
     }
   },
 
@@ -593,6 +604,20 @@ const DOM_timeTable = {
     NOTE_MODAL.notes.forEach((e) => {
       document.getElementById(`${e.id}`).classList.add("note-added");
     });
+  },
+  day_date_update() {
+    dayBoxTimeTable.forEach(
+      (e, index) =>
+        (e.innerHTML += `<span class="timeTable_day_definer">${(function () {
+          const currentDate = new Date();
+          currentDate.setDate(currentDate.getDate() + index);
+          return (
+            currentDate.getDate() +
+            " " +
+            currentDate.toLocaleString("default", { month: "short" })
+          );
+        })()}</span>`)
+    );
   },
 };
 const timeTableTogglerBtn = document.querySelector(".timeTableCloser");
@@ -825,5 +850,6 @@ compelete_update();
 
 function initial() {
   DOM_timeTable.note_exists_update();
+  DOM_timeTable.day_date_update();
 }
 initial();

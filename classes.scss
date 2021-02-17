@@ -283,6 +283,7 @@ table {
   .timeBox,
   .dayBox {
     background: var(--light-dark-black);
+
     &:hover {
       background: var(--light-dark-black);
       cursor: initial;
@@ -291,6 +292,16 @@ table {
   #emptyTableBox {
     background: var(--dark-black);
     border: none;
+  }
+  .dayBox {
+    p {
+      display: inline-block;
+    }
+    .timeTable_day_definer {
+      color: rgba($color: #ffffff, $alpha: 0.5);
+      font-size: var(--text-size);
+      font-weight: bold;
+    }
   }
 }
 
