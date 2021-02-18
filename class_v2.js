@@ -514,7 +514,7 @@ const CLASS = {
       const { startTime, endTime } = classTime;
 
       function formateTime(time) {
-        return time > 12 ? (time -= 12) + " PM" : time + " AM";
+        return time > 12 ? (time -= 12).toFixed(2) + " PM" : time + " AM";
       }
       return (
         formateTime(startTime).toString().replace(".", ":") +
