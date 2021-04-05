@@ -3,286 +3,165 @@ let timeTable = {
     {
       startTime: 9,
       endTime: 9.48,
-      subject: "chemistry",
-      meetingId: "4427721704",
-      meetingPass: "321321",
-      Id: 0,
-      uid: 0,
+      subject: "Physics",
     },
     {
       startTime: 9.48,
       endTime: 10.38,
-      subject: "ECS",
-      meetingId: "5044549661",
-      meetingPass: "722363",
-      Id: 1,
-      uid: 1,
-      note: "",
+      subject: "SCA",
     },
     {
       startTime: 10.38,
       endTime: 11.28,
-      subject: "Math",
-      meetingId: 3099473001,
-      meetingPass: 12345,
-      Id: 2,
-      uid: 2,
+      subject: "ECS",
     },
     {
       startTime: 11.28,
       endTime: 12.18,
-      subject: "SCA",
-      meetingId: 3099473001,
-      meetingPass: 12345,
-      Id: 3,
-      uid: 3,
+      subject: "BE",
     },
     {
       startTime: 12.18,
       endTime: 14.18,
-      subject: "ECS",
-      meetingId: "5044549661",
-      meetingPass: "722363",
-      Id: 4,
-      uid: 4,
-      note:
-        "Add a general note (global note) and moveon event listener on each subjectbox and whenever user leaves the box the note view should be display none and a copy a note feature, add automatic link opener in contexte menu to enable it, Replace class ",
+      subject: "Math",
     },
     {
       startTime: 14.18,
-      endTime: 15.08,
-      subject: "physics",
-      meetingId: 8271406865,
-      meetingPass: 123456,
-      Id: 5,
-      uid: 5,
-      note: "",
-    },
-    {
-      startTime: 15.08,
       endTime: 17,
-      subject: "CFIT LAB",
-      meetingId: "77371587217",
-      meetingPass: "thapar",
-      Id: 6,
-      uid: 6,
-      note: "",
+      subject: "Computer ws",
     },
   ],
   2: [
     {
       startTime: 9,
       endTime: 9.48,
-      subject: "Math",
-      meetingId: 3099473001,
-      meetingPass: 12345,
-      Id: 0,
-      uid: 7,
-      note: "",
+      subject: "Physics",
     },
     {
       startTime: 9.48,
       endTime: 10.38,
-      subject: "chemistry",
-      meetingId: "4427721704",
-      meetingPass: "321321",
-      Id: 1,
-      uid: 8,
-      note: "",
+      subject: "SCA",
     },
     {
       startTime: 10.38,
+      endTime: 11.28,
+      subject: "Math",
+    },
+    {
+      startTime: 11.28,
       endTime: 12.18,
-      subject: "physics lab",
-      meetingId: "4639101625",
-      meetingPass: "90121",
-      Id: 2,
-      uid: 9,
+      subject: "ECS",
     },
     {
       startTime: 12.18,
       endTime: 14.18,
-      subject: "physics",
-      meetingId: 8271406865,
-      meetingPass: 123456,
-      Id: 3,
-      uid: 10,
+      subject: "EVS",
     },
     {
       startTime: 14.18,
       endTime: 15.08,
-      subject: "CFIT",
-      meetingId: "8072876058",
-      meetingPass: "amansclass",
-      Id: 4,
-      uid: 11,
-      note: "",
+      subject: "BE",
     },
     {
       startTime: 15.08,
-      endTime: 15.58,
-      subject: "Math",
-      meetingId: 3099473001,
-      meetingPass: 12345,
-      Id: 5,
-      uid: 12,
-    },
-    {
-      startTime: 15.58,
       endTime: 17,
-      subject: "SCA",
-      meetingId: 3099473001,
-      meetingPass: 12345,
-      Id: 6,
-      uid: 13,
-      autoJoin: false,
+      subject: "BE",
     },
   ],
   3: [
     {
       startTime: 9,
-      endTime: 9.48,
-      subject: "ECS",
-      meetingId: "5044549661",
-      meetingPass: "722363",
-      Id: 0,
-      uid: 14,
-      note: "This is chemistry class",
-      autoJoin: false,
+      endTime: 11.28,
+      subject: "Computer ws",
     },
     {
-      startTime: 9.48,
-      endTime: 10.38,
-      subject: "physics",
-      meetingId: 8271406865,
-      meetingPass: 123456,
-      Id: 1,
-      uid: 15,
-      autoJoin: true,
-    },
-    {
-      startTime: 10.38,
+      startTime: 11.28,
       endTime: 14.18,
-      subject: "GWP",
-      meetingId: "76756518856",
-      meetingPass: "f4BgpQ",
-      Id: 2,
-      uid: 16,
+      subject: "DTP",
     },
     {
       startTime: 14.18,
+      endTime: 15.08,
+      subject: "Math",
+    },
+    {
+      startTime: 15.08,
+      endTime: 15.58,
+      subject: "Physics",
+    },
+    {
+      startTime: 15.58,
       endTime: 17,
-      subject: "ED",
-      meetingId: "2611381495",
-      meetingPass: "047993",
-      Id: 3,
-      uid: 17,
-      note: "",
+      subject: "SCA",
     },
   ],
   4: [
     {
       startTime: 9,
       endTime: 9.48,
-      subject: "CFIT",
-      meetingId: "8072876058",
-      meetingPass: "amansclass",
-      Id: 0,
-      uid: 18,
-      autoJoin: true,
+      subject: "Math",
     },
     {
       startTime: 9.48,
       endTime: 10.38,
-      subject: "Math",
-      meetingId: 3099473001,
-      meetingPass: 12345,
-      Id: 1,
-      uid: 19,
-      autoJoin: true,
+      subject: "EVS",
     },
     {
       startTime: 10.38,
-      endTime: 14.18,
-      subject: "GWP",
-      meetingId: "76756518856",
-      meetingPass: "f4BgpQ",
-      Id: 2,
-      uid: 20,
+      endTime: 11.28,
+      subject: "SCA",
     },
     {
-      startTime: 14.18,
+      startTime: 11.28,
+      endTime: 13.18,
+      subject: "BE",
+    },
+    {
+      startTime: 13.18,
       endTime: 15.08,
-      subject: "chemistry",
-      meetingId: "4427721704",
-      meetingPass: "321321",
-      Id: 3,
-      uid: 21,
-      autoJoin: true,
+      subject: "DTP",
     },
     {
       startTime: 15.08,
       endTime: 17,
-      subject: "ECS LAB",
-      meetingId: "5044549661",
-      meetingPass: "722363",
-      Id: 4,
-      uid: 22,
-      note: "viva",
-      autoJoin: true,
+      subject: "physics",
     },
   ],
   5: [
     {
       startTime: 9,
       endTime: 9.48,
-      subject: "physics",
-      meetingId: 8271406865,
-      meetingPass: 123456,
-      Id: 0,
-      uid: 23,
-      autoJoin: true,
+      subject: "Math",
     },
     {
       startTime: 9.48,
       endTime: 10.38,
-      subject: "Math",
-      meetingId: 3099473001,
-      meetingPass: 12345,
-      Id: 1,
-      uid: 24,
-      autoJoin: true,
+      subject: "Physics",
     },
     {
       startTime: 10.38,
       endTime: 12.18,
-      subject: "Chemistry Lab",
-      meetingId: 4427721704,
-      meetingPass: 321321,
-      Id: 2,
-      uid: 25,
-      note:
-        "video ON\nall 3 assignment and seminar show on video\nand seminar viva.",
-      autoJoin: true,
+      subject: "ECS",
     },
     {
       startTime: 12.18,
       endTime: 14.18,
-      subject: "chemistry",
-      meetingId: "4427721704",
-      meetingPass: "321321",
-      Id: 3,
-      uid: 26,
-      autoJoin: true,
+      subject: "SCA",
     },
     {
       startTime: 14.18,
+      endTime: 15.08,
+      subject: "ECS",
+    },
+    {
+      startTime: 15.08,
+      endTime: 15.58,
+      subject: "BE",
+    },
+    {
+      startTime: 15.58,
       endTime: 17,
-      subject: "ED",
-      meetingId: "2611381495",
-      meetingPass: "047993",
-      Id: 4,
-      uid: 27,
+      subject: "EVS",
     },
   ],
 };
@@ -325,17 +204,19 @@ let timeTable = {
 // }
 
 let i = 0;
-// localStorage.setItem("timeTable", JSON.stringify(timeTable));
+
+localStorage.clear(timeTable);
+for (key in timeTable) {
+  timeTable[key].forEach((e) => {
+    e.uid = i;
+    i++;
+  });
+}
+
 if (localStorage.getItem("timeTable") === null) {
   localStorage.setItem("timeTable", JSON.stringify(timeTable));
 } else {
   timeTable = JSON.parse(localStorage.getItem("timeTable"));
-  // for (key in timeTable) {
-  //   timeTable[key].forEach((e) => {
-  //     e.uid = i;
-  //     i++;
-  //   });
-  // }
 }
 
 const PERMISSIONS = {
@@ -610,7 +491,9 @@ const DOM_timeTable = {
       (e, index) =>
         (e.innerHTML += `<span class="timeTable_day_definer">${(function () {
           const currentDate = new Date();
-          currentDate.setDate(currentDate.getDate() + index);
+          currentDate.setDate(
+            currentDate.getDate() + index - (CURRENT_STATUS.day - 1)
+          );
           return (
             currentDate.getDate() +
             " " +
