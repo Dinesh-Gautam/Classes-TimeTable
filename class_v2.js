@@ -205,13 +205,14 @@ let timeTable = {
 
 let i = 0;
 
-localStorage.clear(timeTable);
-for (key in timeTable) {
-  timeTable[key].forEach((e) => {
-    e.uid = i;
-    i++;
-  });
-}
+// localStorage.clear(timeTable);
+// for (key in timeTable) {
+//   timeTable[key].forEach((e, index) => {
+//     e.Id = index;
+//     e.uid = i;
+//     i++;
+//   });
+// }
 
 if (localStorage.getItem("timeTable") === null) {
   localStorage.setItem("timeTable", JSON.stringify(timeTable));
@@ -395,7 +396,11 @@ const CLASS = {
       const { startTime, endTime } = classTime;
 
       function formateTime(time) {
-        return time > 12 ? (time -= 12).toFixed(2) + " PM" : time + " AM";
+        return time > 12
+          ? (time - 12).toFixed(2) < 1
+            ? time.toFixed(2) + " PM"
+            : (time - 12).toFixed(2) + " PM"
+          : time + " AM";
       }
       return (
         formateTime(startTime).toString().replace(".", ":") +

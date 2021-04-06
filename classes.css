@@ -469,7 +469,7 @@ table .dayBox .timeTable_day_definer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: var(--text-size);
+  font-size: calc(var(--text-size) - 2px);
   color: var(--light2);
   border-radius: var(--border-radius2);
 }

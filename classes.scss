@@ -363,7 +363,7 @@ table {
         display: flex;
         padding: 0 var(--default-padding);
         align-items: center;
-        font-size: var(--text-size);
+        font-size: calc(var(--text-size) - 2px);
         color: var(--light2);
         border-radius: var(--border-radius2);
       }
