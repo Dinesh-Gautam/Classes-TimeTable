@@ -25,9 +25,17 @@
 body {
   background-color: var(--dark-black);
   color: var(--light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-family: "Roboto", sans-serif;
   height: 100vh;
   main {
+    height: 50%;
+    width: 100%;
+  }
+  header {
     height: 50%;
   }
 }
@@ -183,6 +191,8 @@ header {
     height: 3rem;
     width: 3rem;
     border-width: 0px;
+    z-index: 999;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
     i {
       font-size: var(--text-size);
     }
@@ -351,7 +361,8 @@ table {
       overflow: hidden;
       p {
         overflow: hidden;
-        font-size: var(--text-size);
+        font-size: calc(var(--text-size) - 4px);
+        font-weight: normal;
         opacity: 0;
         text-overflow: ellipsis;
         transform: translateY(100%);
@@ -359,7 +370,7 @@ table {
       }
       span {
         text-overflow: ellipsis;
-        font-size: 16px;
+        font-size: var(--text-size);
         margin-right: var(--default-padding);
       }
     }
@@ -540,3 +551,9 @@ table {
     }
   }
 }
+
+// @media (max-width: 1200px) {
+//   #timeTable {
+//     display: none;
+//   }
+// }

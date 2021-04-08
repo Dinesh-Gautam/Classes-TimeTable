@@ -24,11 +24,29 @@
 body {
   background-color: var(--dark-black);
   color: var(--light);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-family: "Roboto", sans-serif;
   height: 100vh;
 }
 
 body main {
+  height: 50%;
+  width: 100%;
+}
+
+body header {
   height: 50%;
 }
 
@@ -221,6 +239,9 @@ header .timeTableCloser {
   height: 3rem;
   width: 3rem;
   border-width: 0px;
+  z-index: 999;
+  -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+          box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
 }
 
 header .timeTableCloser i {
@@ -430,7 +451,8 @@ table .dayBox .timeTable_day_definer {
 
 .class-container .info-view-popup .info-container p {
   overflow: hidden;
-  font-size: var(--text-size);
+  font-size: calc(var(--text-size) - 4px);
+  font-weight: normal;
   opacity: 0;
   text-overflow: ellipsis;
   -webkit-transform: translateY(100%);
@@ -443,7 +465,7 @@ table .dayBox .timeTable_day_definer {
 
 .class-container .info-view-popup .info-container span {
   text-overflow: ellipsis;
-  font-size: 16px;
+  font-size: var(--text-size);
   margin-right: var(--default-padding);
 }
 
