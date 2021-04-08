@@ -392,28 +392,29 @@ const CLASS = {
         editBtn_id.id = classObj.uid;
       }
     }
-    function timeStringCreator(classTime) {
-      const { startTime, endTime } = classTime;
-
-      function formateTime(time) {
-        return time > 12
-          ? (time - 12).toFixed(2) < 1
-            ? time.toFixed(2) + " PM"
-            : (time - 12).toFixed(2) + " PM"
-          : time + " AM";
-      }
-      return (
-        formateTime(startTime).toString().replace(".", ":") +
-        " - " +
-        formateTime(endTime).toString().replace(".", ":")
-      );
-    }
   },
 
   linkGenrator(id, pass) {
     return `zoommtg://zoom.us/join?confno=${id}&pwd=${pass}`;
   },
 };
+
+function timeStringCreator(classTime) {
+  const { startTime, endTime } = classTime;
+
+  function formateTime(time) {
+    return time > 12
+      ? (time - 12).toFixed(2) < 1
+        ? time.toFixed(2) + " PM"
+        : (time - 12).toFixed(2) + " PM"
+      : time + " AM";
+  }
+  return (
+    formateTime(startTime).toString().replace(".", ":") +
+    " - " +
+    formateTime(endTime).toString().replace(".", ":")
+  );
+}
 
 const EDIT_MODAL = {
   subject_name: undefined,

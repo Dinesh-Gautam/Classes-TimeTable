@@ -38,7 +38,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   font-family: "Roboto", sans-serif;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 body main {
@@ -553,6 +553,15 @@ table .dayBox .timeTable_day_definer {
   width: 3rem;
   border-width: 0px;
   background: transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .class-container .class .class-wraper button:hover {
@@ -726,5 +735,14 @@ table .dayBox .timeTable_day_definer {
   -webkit-transform: translateX(0%);
           transform: translateX(0%);
   opacity: 1;
+}
+
+@media (max-width: 1200px) {
+  header {
+    display: none;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+  }
 }
 /*# sourceMappingURL=classes.css.map */

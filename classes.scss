@@ -30,7 +30,7 @@ body {
   justify-content: center;
   align-items: center;
   font-family: "Roboto", sans-serif;
-  height: 100vh;
+  min-height: 100vh;
   main {
     height: 50%;
     width: 100%;
@@ -429,6 +429,9 @@ table {
         width: 3rem;
         border-width: 0px;
         background: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         &:hover {
           background: var(--light-black2);
         }
@@ -552,8 +555,9 @@ table {
   }
 }
 
-// @media (max-width: 1200px) {
-//   #timeTable {
-//     display: none;
-//   }
-// }
+@media (max-width: 1200px) {
+  header {
+    display: none;
+    order: 1;
+  }
+}
