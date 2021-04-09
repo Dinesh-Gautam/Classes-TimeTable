@@ -14,6 +14,7 @@
   --border-radius2: 15px;
   --less-padding: 10px;
   --dark-black: rgb(20, 20, 20);
+  --dark-black-alpha: rgba(20, 20, 20, 0.7);
   --light-dark-black: rgb(32, 32, 32);
   --light-black2: rgb(43, 43, 43);
   --light-black: rgb(77, 77, 77);
@@ -27,22 +28,20 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   font-family: "Roboto", sans-serif;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 body main {
-  height: 50%;
+  min-height: 50%;
   width: 100%;
 }
 
@@ -575,7 +574,7 @@ table .dayBox .timeTable_day_definer {
 
 .class-container .class .join-link {
   background: var(--light-black);
-  height: 100%;
+  height: 100% !important;
   text-align: center;
   border-radius: 0 var(--border-radius2) var(--border-radius2) 0 !important;
   overflow: hidden;
@@ -735,6 +734,47 @@ table .dayBox .timeTable_day_definer {
   -webkit-transform: translateX(0%);
           transform: translateX(0%);
   opacity: 1;
+}
+
+.mobile-view-table {
+  width: 100%;
+}
+
+.mobile-view-table .day-container {
+  position: -webkit-sticky;
+  position: sticky;
+  top: -1px;
+  z-index: 9999;
+  margin: 0;
+  outline: none;
+  padding: var(--less-padding);
+  background: var(--dark-black-alpha);
+  -webkit-backdrop-filter: blur(32px);
+          backdrop-filter: blur(32px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.mobile-view-table .day-container span {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.mobile-view-table .day-container button {
+  border: none;
+  opacity: 0.7;
+  padding: var(--less-padding) calc(var(--default-padding) * 1.5);
 }
 
 @media (max-width: 1200px) {

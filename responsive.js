@@ -8,6 +8,8 @@ const dayString = ["MONDAY", "TUEDAY", "WEDNERSDAY", "THURSDAY", "FRIDAY"];
 
 let selectedClass = CURRENT_STATUS.day;
 
+setClassList(CURRENT_STATUS.day);
+
 function appendClassList(status) {
   if (status && selectedClass < 5) {
     selectedClass++;
