@@ -558,6 +558,7 @@ table {
 
 .mobile-view-table {
   width: 100%;
+  display: none;
   .day-container {
     position: sticky;
     top: -1px;
@@ -580,11 +581,102 @@ table {
       padding: var(--less-padding) calc(var(--default-padding) * 1.5);
     }
   }
+  .class-container {
+    max-width: 100%;
+
+    .class {
+      margin: var(--less-padding);
+      width: 100%;
+      .time-container {
+        font-size: calc(var(--text-size) - 4px);
+      }
+      .class-subject {
+        border-top-left-radius: 0;
+      }
+    }
+  }
+}
+
+.mv-popup-modal-container {
+  &.mv-none {
+    display: none;
+  }
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 999999;
+  background-color: var(--dark-black-alpha);
+  backdrop-filter: blur(32px) saturate(1.2);
+  padding: var(--default-padding);
+  display: flex;
+  flex-direction: column;
+  button {
+    padding: var(--less-padding);
+    border: none;
+  }
+  .popup-header {
+    display: flex;
+    align-items: center;
+    padding: var(--less-padding);
+    margin-bottom: var(--less-padding);
+    border-bottom: 2px solid var(--dark-black-alpha);
+    button {
+      font-size: var(--text-size);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+    }
+    .popup-header-title {
+      flex: 1;
+      p {
+        font-size: calc(var(--text-size) * 1.2);
+        font-weight: bold;
+      }
+    }
+  }
+  .popup-content {
+    padding: 0 var(--less-padding);
+    flex: 1;
+    overflow: scroll;
+  }
+  .popup-buttons {
+    padding: var(--less-padding) 0;
+    display: flex;
+    gap: var(--less-padding);
+
+    button {
+      flex: 1;
+      padding: var(--less-padding) var(--default-padding);
+    }
+  }
+  .edit-modal {
+    position: static;
+    width: 100%;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+  }
 }
 
 @media (max-width: 1200px) {
   header {
     display: none;
     order: 1;
+  }
+  .class-container {
+    max-width: 100%;
+    margin: 0 var(--less-padding);
+  }
+  .mobile-view-table {
+    display: block;
+  }
+  body {
+    main {
+      min-height: 18rem;
+    }
   }
 }

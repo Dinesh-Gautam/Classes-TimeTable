@@ -40,9 +40,7 @@ function setClassList(cday) {
              <div class="class-subject">
                  <span class="text-wraper ongoingClass-text">
                      ${c.subject}
-                 </span><button class="mv-edit-btn"><i class="fas fa-pen"></i></button>
-                 <button class="view-btn"><i class="fas fa-sticky-note"></i></i>
-                 </button>
+                 </span>
              </div>
      
          </div>
