@@ -8,7 +8,7 @@ const dayString = ["MONDAY", "TUEDAY", "WEDNERSDAY", "THURSDAY", "FRIDAY"];
 
 let selectedClass = CURRENT_STATUS.day;
 
-setClassList(CURRENT_STATUS.day);
+setClassList(CURRENT_STATUS?.day);
 
 function appendClassList(status) {
   if (status && selectedClass < 5) {
@@ -25,29 +25,34 @@ function setClassList(cday) {
   const classContainer = document.querySelector(
     ".mobile-view-table .class-container"
   );
+
   classContainer.innerHTML = "";
-  timeTable[cday].forEach((c) => {
-    classContainer.appendChild(
-      stringToHTML(`
-     <div class="class">
-         <div class="class-wraper">
-             <div class="time-container">
-                ${timeStringCreator({
-                  startTime: c.startTime,
-                  endTime: c.endTime,
-                })}
+  try {
+    timeTable[cday].forEach((c) => {
+      classContainer.appendChild(
+        stringToHTML(`
+         <div class="class">
+             <div class="class-wraper">
+                 <div class="time-container">
+                    ${timeStringCreator({
+                      startTime: c.startTime,
+                      endTime: c.endTime,
+                    })}
+                 </div>
+                 <div class="class-subject">
+                     <span class="text-wraper ongoingClass-text">
+                         ${c.subject}
+                     </span>
+                 </div>
+         
              </div>
-             <div class="class-subject">
-                 <span class="text-wraper ongoingClass-text">
-                     ${c.subject}
-                 </span>
+             <div class="join-link">
+                 <a id="ongoingClass-joinLink" href="">Join</a>
              </div>
-     
-         </div>
-         <div class="join-link">
-             <a id="ongoingClass-joinLink" href="">Join</a>
-         </div>
-     </div>`)
-    );
-  });
+         </div>`)
+      );
+    });
+  } catch (error) {
+    classContainer.innerText = "Today is a Holiday!";
+  }
 }
