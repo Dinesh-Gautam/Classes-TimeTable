@@ -206,8 +206,11 @@ header {
 //Table
 
 table {
+  border-spacing: 0;
   border-collapse: collapse;
+  table-layout: fixed;
   position: relative;
+
   opacity: 1;
   border-radius: 0 0 0 0%;
   pointer-events: all;
@@ -219,8 +222,8 @@ table {
     pointer-events: none;
   }
   td {
-    border: 2px solid var(--dark-black);
-    border-radius: var(--border-radius);
+    border: 2px solid transparent;
+    // border-radius: var(--border-radius);
     padding: var(--less-padding) var(--default-padding);
     margin: 0 var(--default-margin);
     background: var(--light-black2);
@@ -275,8 +278,14 @@ table {
     span {
       pointer-events: none;
     }
+    &.subjectBox {
+      overflow: hidden;
+      border: 2px solid transparent;
+      // border-bottom: 0;
+    }
     &.subjectBox:hover {
-      background: var(--light-black);
+      // background: var(--light-black);
+
       cursor: pointer;
     }
     .liveClassProgress {
@@ -292,20 +301,21 @@ table {
       }
     }
   }
-  .border-TopRight {
-    border-radius: var(--border-radius2) 0 0 0;
-  }
-  .border-TopLeft {
-    border-radius: 0 var(--border-radius2) 0 0;
-  }
-  .border-bottomLeft {
-    border-radius: 0 0 var(--border-radius2) 0;
-  }
-  .border-bottomRight {
-    border-radius: 0 0 0 var(--border-radius2);
-  }
+  // .border-TopRight {
+  //   border-radius: var(--border-radius2) 0 0 0 !important;
+  // }
+  // .border-TopLeft {
+  //   border-radius: 0 var(--border-radius2) 0 0 !important;
+  // }
+  // .border-bottomLeft {
+  //   border-radius: 0 0 var(--border-radius2) 0 !important;
+  // }
+  // .border-bottomRight {
+  //   border-radius: 0 0 0 var(--border-radius2) !important;
+  // }
   .noClassBox {
     background: var(--light-dark-black);
+    border-bottom: 0;
   }
   .timeBox,
   .dayBox {
@@ -316,11 +326,17 @@ table {
       cursor: initial;
     }
   }
+  .timeBox {
+    border-right: 0;
+  }
   #emptyTableBox {
     background: var(--dark-black);
-    border: none;
+    border: 2px solid var(--dark-black);
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
   }
   .dayBox {
+    border-bottom: 0;
     p {
       display: inline-block;
     }
