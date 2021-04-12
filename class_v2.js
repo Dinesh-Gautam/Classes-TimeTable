@@ -226,6 +226,16 @@ const PERMISSIONS = {
   },
 };
 
+const responsive = {
+  mv: checkMv(1200),
+};
+
+window.addEventListener("resize", () => (responsive.mv = checkMv(1200)));
+
+function checkMv(width) {
+  return window.innerWidth < width;
+}
+
 const ongoingClass_DOM_selector = document.querySelector(".ongoingClass");
 const upcomingClass_DOM_selector = document.querySelector(".upcomingClass");
 const ongoinhSubject = ongoingClass_DOM_selector.querySelector(
@@ -255,7 +265,7 @@ const dayBoxTimeTable = document.querySelectorAll(".dayBox");
 const meetingIdValue = document.querySelector(".meeting-id-input");
 const meetingPassValue = document.querySelector(".meeting-pass-input");
 const NoteValue = document.querySelector(".note-input");
-const editBtn = document.querySelectorAll(".edit-btn");
+
 const [ongoing_editBtn, upcoming_editBtn] = document.querySelectorAll(
   ".ongoingClass .edit-btn, .upcomingClass .edit-btn"
 );
@@ -274,6 +284,12 @@ const CURRENT_STATUS = {
     const minutes = new Date().getMinutes();
     this.time = Number(hours + "." + (minutes < 10 ? "0" + minutes : minutes));
   },
+};
+
+const mv = {
+  meetingIdValue: document.querySelector(".meeting-id-input.mv-input"),
+  meetingPassValue: document.querySelector(".meeting-pass-input.mv-input"),
+  EditModal: document.querySelector(".mv-popup-modal-container"),
 };
 
 CURRENT_STATUS.TimeUpdate();
@@ -424,12 +440,20 @@ const EDIT_MODAL = {
     this.id = event.target.id;
     this.class = this.find_class(this.id);
     this.subject_name = this.class.subject;
+    this.meetingIdValue = responsive.mv ? mv.meetingIdValue : meetingIdValue;
+    this.meetingPassValue = responsive.mv
+      ? mv.meetingPassValue
+      : meetingPassValue;
     this.set_values();
     this.visible(true);
   },
   visible(visible) {
     visible
-      ? EditModal.classList.remove("display")
+      ? responsive.mv
+        ? mv.EditModal.classList.remove("mv-none")
+        : EditModal.classList.remove("display")
+      : responsive.mv
+      ? mv.EditModal.classList.add("mv-none")
       : EditModal.classList.add("display");
   },
   cancle() {
@@ -437,14 +461,14 @@ const EDIT_MODAL = {
     this.visible(false);
   },
   save() {
-    if (!meetingIdValue.value || !meetingPassValue.value) {
+    if (!this.meetingIdValue.value || !this.meetingPassValue.value) {
       alert("value can't be empty");
     } else {
       for (key in timeTable) {
         timeTable[key].forEach((e) => {
           if (this.class.subject.toLowerCase() === e.subject.toLowerCase()) {
-            e.meetingId = meetingIdValue.value.split(" ").join("");
-            e.meetingPass = meetingPassValue.value;
+            e.meetingId = this.meetingIdValue.value.split(" ").join("");
+            e.meetingPass = this.meetingPassValue.value;
           }
         });
       }
@@ -465,8 +489,8 @@ const EDIT_MODAL = {
     return getClass;
   },
   set_values({ clear = false } = {}) {
-    meetingIdValue.value = clear ? "" : this.class.meetingId;
-    meetingPassValue.value = clear ? "" : this.class.meetingPass;
+    this.meetingIdValue.value = clear ? "" : this.class.meetingId;
+    this.meetingPassValue.value = clear ? "" : this.class.meetingPass;
   },
 };
 
@@ -717,11 +741,6 @@ TimeTableEdit.forEach((element) => {
   );
 });
 
-editBtn.forEach((element) => {
-  element.addEventListener("click", (event) => {
-    EDIT_MODAL.open(event);
-  });
-});
 TimeTableEdit.forEach((element) => {
   element.addEventListener("click", (event) => {
     EDIT_MODAL.open(event);

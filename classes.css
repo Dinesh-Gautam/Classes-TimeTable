@@ -886,7 +886,8 @@ table .dayBox .timeTable_day_definer {
 
 .mv-popup-modal-container .edit-modal {
   position: static;
-  width: 100%;
+  min-width: 100%;
+  overflow: hidden;
   background: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;

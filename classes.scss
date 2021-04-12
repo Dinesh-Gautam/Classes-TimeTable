@@ -655,7 +655,8 @@ table {
   }
   .edit-modal {
     position: static;
-    width: 100%;
+    min-width: 100%;
+    overflow: hidden;
     background: transparent;
     box-shadow: none;
     transform: none;

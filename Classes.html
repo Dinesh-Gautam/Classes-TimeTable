@@ -294,7 +294,7 @@
 
         </div>
 
-        <div class="mv-none mv-popup-modal-container">
+        <!-- <div class="mv-none mv-popup-modal-container">
             <div class="popup-header">
                 <div class="popup-header-title">
                     <p>This is title</p>
@@ -337,24 +337,24 @@
 
             </div>
 
-        </div>
+        </div> -->
         <div class="mv-none mv-popup-modal-container">
             <div class="popup-header">
                 <div class="popup-header-title">
                     <p>Edit</p>
                 </div>
                 <div class="popup-header-buttons">
-                    <button class="popup-close-btn">
+                    <button onclick="setDisplayNone(mv.EditModal)" class="popup-close-btn">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
             </div>
             <div class="popup-content edit-modal">
                 <form>
-                    <label for="meeting-field">Meeting ID :</label><input class="meeting-id-input" name="meeting-field"
-                        type="text">
-                    <label for="pass-field">Meeting Pass :</label><input class="meeting-pass-input" name="pass-field"
-                        type="text">
+                    <label for="meeting-field">Meeting ID :</label><input class="mv-input meeting-id-input"
+                        name="meeting-field" type="text">
+                    <label for="pass-field">Meeting Pass :</label><input class="mv-input meeting-pass-input"
+                        name="pass-field" type="text">
                 </form>
             </div>
             <div class="popup-buttons">
