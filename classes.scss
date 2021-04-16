@@ -361,6 +361,7 @@ table {
     top: -60px;
     right: 0;
     // width: fit-content;
+    min-width: 100%;
     max-width: 40rem;
     background: var(--light);
     color: var(--dark-black);
@@ -413,7 +414,7 @@ table {
         display: flex;
         padding: 0 var(--default-padding);
         align-items: center;
-        font-size: calc(var(--text-size) - 2px);
+        font-size: calc(var(--text-size) - 4px);
         color: var(--light2);
         border-radius: var(--border-radius2);
       }
@@ -687,6 +688,9 @@ table {
   .class-container {
     max-width: 100%;
     margin: 0 var(--less-padding);
+    .info-view-popup {
+      top: -40px;
+    }
   }
   .mobile-view-table {
     display: block;

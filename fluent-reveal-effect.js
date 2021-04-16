@@ -25,22 +25,32 @@ function applyEffect(selector, options = {}) {
 
   function enableBackgroundEffects(element, lightColor, gradientSize) {
     //element background effect --------------------
-    element.el.addEventListener("mousemove", (e) => {
-      let x = e.pageX - getOffset(element).left - window.scrollX;
-      let y = e.pageY - getOffset(element).top - window.scrollY;
+    if (element.el.classList.contains("subjectBox")) {
+      mouseMoveFun(element.el, true);
+    } else {
+      mouseMoveFun(window, false);
+    }
 
-      if (_options.clickEffect && is_pressed) {
-        let cssLightEffect = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${lightColor}, rgba(255,255,255,0), rgba(255,255,255,0))`;
+    function mouseMoveFun(onElement, isSubjectBox) {
+      onElement.addEventListener("mousemove", (e) => {
+        let x = e.pageX - getOffset(element).left - window.scrollX;
+        let y = e.pageY - getOffset(element).top - window.scrollY;
 
-        drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect);
-      } else {
-        drawEffect(element, x, y, lightColor, gradientSize);
+        if (_options.clickEffect && is_pressed) {
+          let cssLightEffect = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${lightColor}, rgba(255,255,255,0), rgba(255,255,255,0))`;
+
+          drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect);
+        } else {
+          drawEffect(element, x, y, lightColor, gradientSize);
+        }
+      });
+
+      if (isSubjectBox) {
+        element.el.addEventListener("mouseleave", (e) => {
+          clearEffect(element);
+        });
       }
-    });
-
-    element.el.addEventListener("mouseleave", (e) => {
-      clearEffect(element);
-    });
+    }
   }
 
   function enableClickEffects(element, lightColor, gradientSize) {

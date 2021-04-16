@@ -423,6 +423,7 @@ table .dayBox .timeTable_day_definer {
   position: absolute;
   top: -60px;
   right: 0;
+  min-width: 100%;
   max-width: 40rem;
   background: var(--light);
   color: var(--dark-black);
@@ -505,7 +506,7 @@ table .dayBox .timeTable_day_definer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: calc(var(--text-size) - 2px);
+  font-size: calc(var(--text-size) - 4px);
   color: var(--light2);
   border-radius: var(--border-radius2);
 }
@@ -905,6 +906,9 @@ table .dayBox .timeTable_day_definer {
   .class-container {
     max-width: 100%;
     margin: 0 var(--less-padding);
+  }
+  .class-container .info-view-popup {
+    top: -40px;
   }
   .mobile-view-table {
     display: block;
