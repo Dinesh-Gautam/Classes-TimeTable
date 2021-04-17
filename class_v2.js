@@ -522,7 +522,10 @@ const DOM_timeTable = {
         (e.innerHTML += `<span class="timeTable_day_definer">${(function () {
           const currentDate = new Date();
           currentDate.setDate(
-            currentDate.getDate() + index - (CURRENT_STATUS.day - 1)
+            currentDate.getDate() +
+              (CURRENT_STATUS.day > 5
+                ? index + 2
+                : index + 1 - CURRENT_STATUS.day)
           );
           return (
             currentDate.getDate() +
@@ -649,10 +652,10 @@ const CUSTOM_contextmenu = {
       ? "Edit Note"
       : "Add Note";
   },
-  AddNote(event) {
+  AddNote() {
     NOTE_MODAL.open(this.Clicked_Class);
   },
-  autoJoin(event) {
+  autoJoin() {
     AUTO_JOIN.execute(this.Target_UID);
   },
 };
