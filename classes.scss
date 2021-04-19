@@ -15,7 +15,7 @@
   --border-radius2: 15px;
   --less-padding: 10px;
   --dark-black: rgb(20, 20, 20);
-  --dark-black-alpha: rgba(20, 20, 20, 0.7);
+  --dark-black-alpha: rgba(20, 20, 20, 0.8);
   --light-dark-black: rgb(32, 32, 32);
   --light-black2: rgb(43, 43, 43);
   --light-black: rgb(77, 77, 77);
@@ -87,6 +87,25 @@ input[type="checkbox"] {
       left: calc(var(--width) / 2);
     }
   }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba($color: #fff, $alpha: 0.2);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 // edit Modal & note
@@ -584,7 +603,7 @@ table {
     outline: none;
     padding: var(--less-padding);
     background: var(--dark-black-alpha);
-    backdrop-filter: blur(32px);
+    backdrop-filter: blur(6px);
     display: flex;
     span {
       flex: 1;
@@ -626,7 +645,7 @@ table {
   width: 100vw;
   z-index: 999999;
   background-color: var(--dark-black-alpha);
-  backdrop-filter: blur(32px) saturate(1.2);
+  backdrop-filter: blur(42px);
   padding: var(--default-padding);
   display: flex;
   flex-direction: column;
@@ -658,7 +677,26 @@ table {
   .popup-content {
     padding: 0 var(--less-padding);
     flex: 1;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: rgba($color: #fff, $alpha: 0.2);
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
   }
   .popup-buttons {
     padding: var(--less-padding) 0;

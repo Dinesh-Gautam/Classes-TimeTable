@@ -50,6 +50,9 @@ function setClassList(cday) {
                      <button id=${
                        c.uid
                      } class="edit-btn"><i class="fas fa-pen"></i></button>
+                     <button onclick="CUSTOM_contextmenu.AddNote(this.id)" id=${
+                       c.uid
+                     } class="view-btn"><i class="fas fa-sticky-note"></i></i>
                  </div>
          
              </div>

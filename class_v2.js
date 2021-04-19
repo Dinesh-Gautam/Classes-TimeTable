@@ -287,9 +287,14 @@ const CURRENT_STATUS = {
 };
 
 const mv = {
-  meetingIdValue: document.querySelector(".meeting-id-input.mv-input"),
-  meetingPassValue: document.querySelector(".meeting-pass-input.mv-input"),
-  EditModal: document.querySelector(".mv-popup-modal-container"),
+  meetingIdValue: document.querySelector(
+    ".mv-edit-modal .meeting-id-input.mv-input"
+  ),
+  meetingPassValue: document.querySelector(
+    ".mv-edit-modal .meeting-pass-input.mv-input"
+  ),
+  EditModal: document.querySelector(".mv-popup-modal-container.mv-edit-modal"),
+  NoteModal: document.querySelector(".mv-popup-modal-container.mv-note-modal"),
 };
 
 CURRENT_STATUS.TimeUpdate();
@@ -652,8 +657,8 @@ const CUSTOM_contextmenu = {
       ? "Edit Note"
       : "Add Note";
   },
-  AddNote() {
-    NOTE_MODAL.open(this.Clicked_Class);
+  AddNote(event) {
+    NOTE_MODAL.open(this.Clicked_Class, event);
   },
   autoJoin() {
     AUTO_JOIN.execute(this.Target_UID);
@@ -664,8 +669,13 @@ const NOTE_MODAL = {
   class: null,
   notes: [],
   set_note_view_postion(event) {
-    const e = NOTE_MODAL.notes.find((element) => element.id == event.target.id);
+    const e = NOTE_MODAL.notes.find((element) =>
+      responsive.mv ? element.id == event : element.id == event.target.id
+    );
     if (e && e.note) {
+      if (responsive.mv)
+        return (mv.NoteModal.querySelector(".popup-content").innerText =
+          e.note);
       msg = e.note;
       noteViewModal.classList.add("active");
       noteViewModal.querySelector(".note-view-paragraph").innerText = e.note;
@@ -674,6 +684,7 @@ const NOTE_MODAL = {
       noteViewModal.style.left = rect.right + "px";
     } else {
       noteViewModal.classList.remove("active");
+      mv.NoteModal.querySelector(".popup-content").innerText = "Nothing";
     }
   },
   getNotes: function () {
@@ -687,13 +698,15 @@ const NOTE_MODAL = {
     }
   },
 
-  open(givenClass) {
+  open(givenClass, event) {
     this.class = givenClass;
     this.visible(true);
     this.button_modifer();
     this.set_values({ clear: false });
+    responsive.mv && this.set_note_view_postion(event);
   },
   button_modifer() {
+    if (responsive.mv) return;
     if (this.class.note) {
       document.querySelector(".note-svae-btn").innerText = "Save";
       document.querySelector(".note-delete-btn").classList.remove("display");
@@ -703,11 +716,16 @@ const NOTE_MODAL = {
     }
   },
   set_values({ clear = false } = {}) {
+    if (responsive.mv) return;
     NoteValue.value = clear || !this.class.note ? "" : this.class.note;
   },
   visible(visible) {
     visible
-      ? NoteModal.classList.remove("display")
+      ? responsive.mv
+        ? mv.NoteModal.classList.remove("mv-none")
+        : NoteModal.classList.remove("display")
+      : responsive.mv
+      ? mv.NoteModal.classList.add("mv-none")
       : NoteModal.classList.add("display");
   },
   cancle() {

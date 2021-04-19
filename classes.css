@@ -14,7 +14,7 @@
   --border-radius2: 15px;
   --less-padding: 10px;
   --dark-black: rgb(20, 20, 20);
-  --dark-black-alpha: rgba(20, 20, 20, 0.7);
+  --dark-black-alpha: rgba(20, 20, 20, 0.8);
   --light-dark-black: rgb(32, 32, 32);
   --light-black2: rgb(43, 43, 43);
   --light-black: rgb(77, 77, 77);
@@ -107,6 +107,25 @@ input[type="checkbox"]:checked {
 
 input[type="checkbox"]:checked::after {
   left: calc(var(--width) / 2);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .edit-modal {
@@ -751,8 +770,8 @@ table .dayBox .timeTable_day_definer {
   outline: none;
   padding: var(--less-padding);
   background: var(--dark-black-alpha);
-  -webkit-backdrop-filter: blur(32px);
-          backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -804,8 +823,8 @@ table .dayBox .timeTable_day_definer {
   width: 100vw;
   z-index: 999999;
   background-color: var(--dark-black-alpha);
-  -webkit-backdrop-filter: blur(32px) saturate(1.2);
-          backdrop-filter: blur(32px) saturate(1.2);
+  -webkit-backdrop-filter: blur(42px);
+          backdrop-filter: blur(42px);
   padding: var(--default-padding);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -867,7 +886,27 @@ table .dayBox .timeTable_day_definer {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+}
+
+.mv-popup-modal-container .popup-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.mv-popup-modal-container .popup-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mv-popup-modal-container .popup-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.mv-popup-modal-container .popup-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .mv-popup-modal-container .popup-buttons {
