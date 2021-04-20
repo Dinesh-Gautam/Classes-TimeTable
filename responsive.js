@@ -47,7 +47,7 @@ function setClassList(cday) {
                      <span class="text-wraper ongoingClass-text">
                          ${c.subject}
                      </span>
-                     <button id=${
+                     <button onclick="EDIT_MODAL.open(event)" id=${
                        c.uid
                      } class="edit-btn"><i class="fas fa-pen"></i></button>
                      <button onclick="CUSTOM_contextmenu.AddNote(this.id)" id=${
