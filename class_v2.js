@@ -295,6 +295,7 @@ const mv = {
   ),
   EditModal: document.querySelector(".mv-popup-modal-container.mv-edit-modal"),
   NoteModal: document.querySelector(".mv-popup-modal-container.mv-note-modal"),
+  NoteValue: document.querySelector(".popup-content .note-input"),
 };
 
 CURRENT_STATUS.TimeUpdate();
@@ -543,7 +544,7 @@ const DOM_timeTable = {
 };
 const timeTableTogglerBtn = document.querySelector(".timeTableCloser");
 
-timeTableTogglerBtn.addEventListener("click", (e) => {
+timeTableTogglerBtn.addEventListener("click", () => {
   document.getElementById("timeTable").classList.toggle("timeTableClosed");
   const BtnIcon = timeTableTogglerBtn.querySelector(".fas");
   if (BtnIcon.classList.contains("fa-table")) {
@@ -674,8 +675,9 @@ const NOTE_MODAL = {
     );
     if (e && e.note) {
       if (responsive.mv)
-        return (mv.NoteModal.querySelector(".popup-content").innerText =
-          e.note);
+        return (mv.NoteModal.querySelector(
+          ".popup-content .popup-text-content"
+        ).innerText = e.note);
       msg = e.note;
       noteViewModal.classList.add("active");
       noteViewModal.querySelector(".note-view-paragraph").innerText = e.note;
@@ -684,7 +686,12 @@ const NOTE_MODAL = {
       noteViewModal.style.left = rect.right + "px";
     } else {
       noteViewModal.classList.remove("active");
-      mv.NoteModal.querySelector(".popup-content").innerText = "Nothing";
+      mv.NoteModal.querySelector(
+        ".popup-content .popup-text-content"
+      ).innerText = "";
+      // mv.NoteModal.querySelector(
+      //   ".popup-content"
+      // ).innerHTML = "Nothing";
     }
   },
   getNotes: function () {
@@ -699,25 +706,46 @@ const NOTE_MODAL = {
   },
 
   open(givenClass, event) {
-    this.class = givenClass;
+    this.class = responsive.mv
+      ? NOTE_MODAL.notes.find((element) =>
+          responsive.mv ? element.id == event : element.id == event.target.id
+        )
+      : givenClass;
     this.visible(true);
-    this.button_modifer();
+
+    this.button_modifer(event);
     this.set_values({ clear: false });
     responsive.mv && this.set_note_view_postion(event);
   },
-  button_modifer() {
-    if (responsive.mv) return;
-    if (this.class.note) {
+  button_modifer(id) {
+    if (this.class?.note) {
+      document
+        .querySelector(".popup-content .note-modal")
+        .classList.add("display");
+      document.querySelector(".popup-buttons .note-delete-btn").id = id;
+      document.querySelector(".popup-buttons .note-delete-btn").style.display =
+        "initial";
+
       document.querySelector(".note-svae-btn").innerText = "Save";
       document.querySelector(".note-delete-btn").classList.remove("display");
     } else {
+      document
+        .querySelector(".popup-content .note-modal")
+        .classList.remove("display");
+
+      document.querySelector(".popup-content .note-svae-btn").id = id;
+      document.querySelector(".popup-buttons .note-delete-btn").id = id;
+      document.querySelector(".popup-buttons .note-delete-btn").style.display =
+        "none";
+
       document.querySelector(".note-svae-btn").innerText = "Add";
       document.querySelector(".note-delete-btn").classList.add("display");
     }
   },
   set_values({ clear = false } = {}) {
-    if (responsive.mv) return;
-    NoteValue.value = clear || !this.class.note ? "" : this.class.note;
+    let inputNoteValue = responsive.mv ? mv.NoteValue : NoteValue;
+
+    inputNoteValue.value = clear || this.class?.note || "";
   },
   visible(visible) {
     visible
@@ -733,12 +761,16 @@ const NOTE_MODAL = {
     this.visible(false);
     DOM_timeTable.note_exists_update();
   },
-  save({ deleteNote = false } = {}) {
-    if (NoteValue.value) {
+  save({ deleteNote = false } = {}, id) {
+    if (responsive.mv ? mv.NoteValue.value : NoteValue.value) {
       for (key in timeTable) {
         timeTable[key].forEach((e) => {
-          if (e.uid === this.class.uid) {
-            e.note = deleteNote ? "" : NoteValue.value;
+          if (e.uid == this.class?.uid || e.uid == id) {
+            e.note = deleteNote
+              ? ""
+              : responsive.mv
+              ? mv.NoteValue.value
+              : NoteValue.value;
           }
         });
       }

@@ -306,21 +306,29 @@
                 </div>
             </div>
             <div class="popup-content">
-                Nothing
-            </div>
-            <!-- <div class="popup-buttons">
+                <div class="popup-text-content">
 
-                <button class=" note-delete-btn popup-close-btn">
+                </div>
+                <div id="undefined" class="edit-modal note-modal">
+                    <form>
+                        <textarea placeholder="Type here" class="note-input" name="note-field" type="text"></textarea>
+                    </form>
+                    <div class="control-btns">
+                        <button onclick="NOTE_MODAL.cancle()">Cancel</button>
+                        <button class="note-svae-btn" onclick="NOTE_MODAL.save({} , this.id)">Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="popup-buttons">
+
+                <button onclick="NOTE_MODAL.save({deleteNote : true}, this.id)" class=" note-delete-btn popup-btn">
                     Delete Note
                 </button>
-                <button class="popup-close-btn">
-                    cancle
-                </button>
-                <button class="popup-close-btn">
-                    Add Note
-                </button>
+                <!-- <button class="popup-btn">
+                    Edit Note
+                </button> -->
 
-            </div> -->
+            </div>
 
         </div>
         <div class="mv-none mv-popup-modal-container mv-edit-modal">
@@ -358,8 +366,8 @@
             gradientSize: 250,
         });
         applyEffect("#timeTable", {
-            lightColor: "rgba(200,200,200,0.4)",
-            gradientSize: 90,
+            lightColor: "rgba(100,100,100,0.9)",
+            gradientSize: 100,
         });
     </script>
     <!-- <script src="./classes .js"></script> -->
