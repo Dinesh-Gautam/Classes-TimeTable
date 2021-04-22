@@ -712,18 +712,28 @@ const NOTE_MODAL = {
         )
       : givenClass;
     this.visible(true);
-
-    this.button_modifer(event);
     this.set_values({ clear: false });
     responsive.mv && this.set_note_view_postion(event);
+    this.button_modifer(givenClass, event);
   },
-  button_modifer(id) {
-    if (this.class?.note) {
+  button_modifer(event, id) {
+    if (this.class?.note && event != "note-edit-btn") {
       document
         .querySelector(".popup-content .note-modal")
         .classList.add("display");
+
+      document.querySelector(".popup-buttons .note-svae-btn").style.display =
+        "none";
+      document.querySelector(".popup-buttons .note-cancle-btn").style.display =
+        "none";
+
       document.querySelector(".popup-buttons .note-delete-btn").id = id;
+      document.querySelector(".popup-buttons .note-edit-btn").id = id;
+
       document.querySelector(".popup-buttons .note-delete-btn").style.display =
+        "initial";
+
+      document.querySelector(".popup-buttons .note-edit-btn").style.display =
         "initial";
 
       document.querySelector(".note-svae-btn").innerText = "Save";
@@ -733,18 +743,32 @@ const NOTE_MODAL = {
         .querySelector(".popup-content .note-modal")
         .classList.remove("display");
 
-      document.querySelector(".popup-content .note-svae-btn").id = id;
+      document.querySelector(".popup-buttons .note-svae-btn").style.display =
+        "initial";
+      document.querySelector(".popup-buttons .note-cancle-btn").style.display =
+        "initial";
+
+      mv.NoteModal.querySelector(
+        ".popup-content .popup-text-content"
+      ).innerText = "";
+
+      document.querySelector(".popup-buttons .note-svae-btn").id = id;
+      document.querySelector(".popup-buttons .note-edit-btn").id = id;
       document.querySelector(".popup-buttons .note-delete-btn").id = id;
       document.querySelector(".popup-buttons .note-delete-btn").style.display =
         "none";
-
+      document.querySelector(".popup-buttons .note-edit-btn").style.display =
+        "none";
       document.querySelector(".note-svae-btn").innerText = "Add";
+
+      document.querySelector(".popup-buttons .note-svae-btn").innerText =
+        event == "note-edit-btn" ? "save" : "Add Note";
       document.querySelector(".note-delete-btn").classList.add("display");
     }
   },
+
   set_values({ clear = false } = {}) {
     let inputNoteValue = responsive.mv ? mv.NoteValue : NoteValue;
-
     inputNoteValue.value = clear || this.class?.note || "";
   },
   visible(visible) {

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thapar Classes</title>
     <script src="https://kit.fontawesome.com/47416bf3fd.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./classes.css">
+    <link rel="stylesheet" href="./styles/classes.css">
 </head>
 
 <body>
@@ -306,17 +306,11 @@
                 </div>
             </div>
             <div class="popup-content">
-                <div class="popup-text-content">
-
-                </div>
+                <div class="popup-text-content"></div>
                 <div id="undefined" class="edit-modal note-modal">
                     <form>
                         <textarea placeholder="Type here" class="note-input" name="note-field" type="text"></textarea>
                     </form>
-                    <div class="control-btns">
-                        <button onclick="NOTE_MODAL.cancle()">Cancel</button>
-                        <button class="note-svae-btn" onclick="NOTE_MODAL.save({} , this.id)">Add</button>
-                    </div>
                 </div>
             </div>
             <div class="popup-buttons">
@@ -324,6 +318,10 @@
                 <button onclick="NOTE_MODAL.save({deleteNote : true}, this.id)" class=" note-delete-btn popup-btn">
                     Delete Note
                 </button>
+                <button class="note-edit-btn" onclick="NOTE_MODAL.open(this.className,this.id)">Edit Note</button>
+                <button class="note-cancle-btn" onclick="NOTE_MODAL.cancle()">Cancel</button>
+
+                <button class="note-svae-btn" onclick="NOTE_MODAL.save({} , this.id)">Add</button>
                 <!-- <button class="popup-btn">
                     Edit Note
                 </button> -->
@@ -357,9 +355,9 @@
         </div>
     </section>
     <!-- <script src="./table.js"></script> -->
-    <script src="./fluent-reveal-effect.js"></script>
-    <script src="./class_v2.js"></script>
-    <script src="./responsive.js"></script>
+    <script src="./additional scripts/fluent-reveal-effect.js"></script>
+    <script src="./scripts v2//class_v2.js"></script>
+    <script src="./scripts v2//responsive.js"></script>
     <script>
         applyEffect(".subjectBox", {
             lightColor: "rgba(255,255,255,0.17)",
