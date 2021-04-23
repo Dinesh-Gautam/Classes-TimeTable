@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: get-color("dark");
+}
+
+input,
+button,
+a {
+  outline: none;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+// toggle switch
+
+input[type="checkbox"] {
+  --width: 32px;
+  position: relative;
+  height: calc(var(--width) / 2);
+  width: var(--width);
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: get-color("dark-3");
+  box-shadow: inset 0 0 1px 1px rgba($color: #000000, $alpha: 0.2);
+  appearance: none;
+
+  &::after {
+    content: "";
+    left: 0;
+    height: calc(var(--width) / 2);
+    width: calc(var(--width) / 2);
+    transform: scale(0.9);
+    border-radius: 50%;
+    position: absolute;
+    background-color: get-color("dark-2");
+  }
+
+  &:checked {
+    background: get-color("light-1");
+    &::after {
+      left: calc(var(--width) / 2);
+    }
+  }
+}
