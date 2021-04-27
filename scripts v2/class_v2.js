@@ -3,286 +3,165 @@ let timeTable = {
     {
       startTime: 9,
       endTime: 9.48,
-      subject: "chemistry",
-      meetingId: "4427721704",
-      meetingPass: "321321",
-      Id: 0,
-      uid: 0,
+      subject: "Physics",
     },
     {
       startTime: 9.48,
       endTime: 10.38,
-      subject: "ECS",
-      meetingId: "5044549661",
-      meetingPass: "722363",
-      Id: 1,
-      uid: 1,
-      note: "",
+      subject: "SCA",
     },
     {
       startTime: 10.38,
       endTime: 11.28,
-      subject: "Math",
-      meetingId: 3099473001,
-      meetingPass: 12345,
-      Id: 2,
-      uid: 2,
+      subject: "ECS",
     },
     {
       startTime: 11.28,
       endTime: 12.18,
-      subject: "SCA",
-      meetingId: 3099473001,
-      meetingPass: 12345,
-      Id: 3,
-      uid: 3,
+      subject: "BE",
     },
     {
       startTime: 12.18,
       endTime: 14.18,
-      subject: "ECS",
-      meetingId: "5044549661",
-      meetingPass: "722363",
-      Id: 4,
-      uid: 4,
-      note:
-        "Add a general note (global note) and moveon event listener on each subjectbox and whenever user leaves the box the note view should be display none and a copy a note feature, add automatic link opener in contexte menu to enable it, Replace class ",
+      subject: "Math",
     },
     {
       startTime: 14.18,
-      endTime: 15.08,
-      subject: "physics",
-      meetingId: 8271406865,
-      meetingPass: 123456,
-      Id: 5,
-      uid: 5,
-      note: "",
-    },
-    {
-      startTime: 15.08,
       endTime: 17,
-      subject: "CFIT LAB",
-      meetingId: "77371587217",
-      meetingPass: "thapar",
-      Id: 6,
-      uid: 6,
-      note: "",
+      subject: "Computer ws",
     },
   ],
   2: [
     {
       startTime: 9,
       endTime: 9.48,
-      subject: "Math",
-      meetingId: 3099473001,
-      meetingPass: 12345,
-      Id: 0,
-      uid: 7,
-      note: "",
+      subject: "Physics",
     },
     {
       startTime: 9.48,
       endTime: 10.38,
-      subject: "chemistry",
-      meetingId: "4427721704",
-      meetingPass: "321321",
-      Id: 1,
-      uid: 8,
-      note: "",
+      subject: "SCA",
     },
     {
       startTime: 10.38,
+      endTime: 11.28,
+      subject: "Math",
+    },
+    {
+      startTime: 11.28,
       endTime: 12.18,
-      subject: "physics lab",
-      meetingId: "4639101625",
-      meetingPass: "90121",
-      Id: 2,
-      uid: 9,
+      subject: "ECS",
     },
     {
       startTime: 12.18,
       endTime: 14.18,
-      subject: "physics",
-      meetingId: 8271406865,
-      meetingPass: 123456,
-      Id: 3,
-      uid: 10,
+      subject: "EVS",
     },
     {
       startTime: 14.18,
       endTime: 15.08,
-      subject: "CFIT",
-      meetingId: "8072876058",
-      meetingPass: "amansclass",
-      Id: 4,
-      uid: 11,
-      note: "",
+      subject: "BE",
     },
     {
       startTime: 15.08,
-      endTime: 15.58,
-      subject: "Math",
-      meetingId: 3099473001,
-      meetingPass: 12345,
-      Id: 5,
-      uid: 12,
-    },
-    {
-      startTime: 15.58,
       endTime: 17,
-      subject: "SCA",
-      meetingId: 3099473001,
-      meetingPass: 12345,
-      Id: 6,
-      uid: 13,
-      autoJoin: false,
+      subject: "BE",
     },
   ],
   3: [
     {
       startTime: 9,
-      endTime: 9.48,
-      subject: "ECS",
-      meetingId: "5044549661",
-      meetingPass: "722363",
-      Id: 0,
-      uid: 14,
-      note: "This is chemistry class",
-      autoJoin: false,
+      endTime: 11.28,
+      subject: "Computer ws",
     },
     {
-      startTime: 9.48,
-      endTime: 10.38,
-      subject: "physics",
-      meetingId: 8271406865,
-      meetingPass: 123456,
-      Id: 1,
-      uid: 15,
-      autoJoin: true,
-    },
-    {
-      startTime: 10.38,
+      startTime: 11.28,
       endTime: 14.18,
-      subject: "GWP",
-      meetingId: "76756518856",
-      meetingPass: "f4BgpQ",
-      Id: 2,
-      uid: 16,
+      subject: "DTP",
     },
     {
       startTime: 14.18,
+      endTime: 15.08,
+      subject: "Math",
+    },
+    {
+      startTime: 15.08,
+      endTime: 15.58,
+      subject: "Physics",
+    },
+    {
+      startTime: 15.58,
       endTime: 17,
-      subject: "ED",
-      meetingId: "2611381495",
-      meetingPass: "047993",
-      Id: 3,
-      uid: 17,
-      note: "",
+      subject: "SCA",
     },
   ],
   4: [
     {
       startTime: 9,
       endTime: 9.48,
-      subject: "CFIT",
-      meetingId: "8072876058",
-      meetingPass: "amansclass",
-      Id: 0,
-      uid: 18,
-      autoJoin: true,
+      subject: "Math",
     },
     {
       startTime: 9.48,
       endTime: 10.38,
-      subject: "Math",
-      meetingId: 3099473001,
-      meetingPass: 12345,
-      Id: 1,
-      uid: 19,
-      autoJoin: true,
+      subject: "EVS",
     },
     {
       startTime: 10.38,
-      endTime: 14.18,
-      subject: "GWP",
-      meetingId: "76756518856",
-      meetingPass: "f4BgpQ",
-      Id: 2,
-      uid: 20,
+      endTime: 11.28,
+      subject: "SCA",
     },
     {
-      startTime: 14.18,
+      startTime: 11.28,
+      endTime: 13.18,
+      subject: "BE",
+    },
+    {
+      startTime: 13.18,
       endTime: 15.08,
-      subject: "chemistry",
-      meetingId: "4427721704",
-      meetingPass: "321321",
-      Id: 3,
-      uid: 21,
-      autoJoin: true,
+      subject: "DTP",
     },
     {
       startTime: 15.08,
       endTime: 17,
-      subject: "ECS LAB",
-      meetingId: "5044549661",
-      meetingPass: "722363",
-      Id: 4,
-      uid: 22,
-      note: "viva",
-      autoJoin: true,
+      subject: "physics",
     },
   ],
   5: [
     {
       startTime: 9,
       endTime: 9.48,
-      subject: "physics",
-      meetingId: 8271406865,
-      meetingPass: 123456,
-      Id: 0,
-      uid: 23,
-      autoJoin: true,
+      subject: "Math",
     },
     {
       startTime: 9.48,
       endTime: 10.38,
-      subject: "Math",
-      meetingId: 3099473001,
-      meetingPass: 12345,
-      Id: 1,
-      uid: 24,
-      autoJoin: true,
+      subject: "Physics",
     },
     {
       startTime: 10.38,
       endTime: 12.18,
-      subject: "Chemistry Lab",
-      meetingId: 4427721704,
-      meetingPass: 321321,
-      Id: 2,
-      uid: 25,
-      note:
-        "video ON\nall 3 assignment and seminar show on video\nand seminar viva.",
-      autoJoin: true,
+      subject: "ECS",
     },
     {
       startTime: 12.18,
       endTime: 14.18,
-      subject: "chemistry",
-      meetingId: "4427721704",
-      meetingPass: "321321",
-      Id: 3,
-      uid: 26,
-      autoJoin: true,
+      subject: "SCA",
     },
     {
       startTime: 14.18,
+      endTime: 15.08,
+      subject: "ECS",
+    },
+    {
+      startTime: 15.08,
+      endTime: 15.58,
+      subject: "BE",
+    },
+    {
+      startTime: 15.58,
       endTime: 17,
-      subject: "ED",
-      meetingId: "2611381495",
-      meetingPass: "047993",
-      Id: 4,
-      uid: 27,
+      subject: "EVS",
     },
   ],
 };
@@ -325,17 +204,20 @@ let timeTable = {
 // }
 
 let i = 0;
-// localStorage.setItem("timeTable", JSON.stringify(timeTable));
+
+// localStorage.clear(timeTable);
+// for (key in timeTable) {
+//   timeTable[key].forEach((e, index) => {
+//     e.Id = index;
+//     e.uid = i;
+//     i++;
+//   });
+// }
+
 if (localStorage.getItem("timeTable") === null) {
   localStorage.setItem("timeTable", JSON.stringify(timeTable));
 } else {
   timeTable = JSON.parse(localStorage.getItem("timeTable"));
-  // for (key in timeTable) {
-  //   timeTable[key].forEach((e) => {
-  //     e.uid = i;
-  //     i++;
-  //   });
-  // }
 }
 
 const PERMISSIONS = {
@@ -343,6 +225,16 @@ const PERMISSIONS = {
     autoJoin_permission: false,
   },
 };
+
+const responsive = {
+  mv: checkMv(1200),
+};
+
+window.addEventListener("resize", () => (responsive.mv = checkMv(1200)));
+
+function checkMv(width) {
+  return window.innerWidth < width;
+}
 
 const ongoingClass_DOM_selector = document.querySelector(".ongoingClass");
 const upcomingClass_DOM_selector = document.querySelector(".upcomingClass");
@@ -373,7 +265,7 @@ const dayBoxTimeTable = document.querySelectorAll(".dayBox");
 const meetingIdValue = document.querySelector(".meeting-id-input");
 const meetingPassValue = document.querySelector(".meeting-pass-input");
 const NoteValue = document.querySelector(".note-input");
-const editBtn = document.querySelectorAll(".edit-btn");
+
 const [ongoing_editBtn, upcoming_editBtn] = document.querySelectorAll(
   ".ongoingClass .edit-btn, .upcomingClass .edit-btn"
 );
@@ -392,6 +284,18 @@ const CURRENT_STATUS = {
     const minutes = new Date().getMinutes();
     this.time = Number(hours + "." + (minutes < 10 ? "0" + minutes : minutes));
   },
+};
+
+const mv = {
+  meetingIdValue: document.querySelector(
+    ".mv-edit-modal .meeting-id-input.mv-input"
+  ),
+  meetingPassValue: document.querySelector(
+    ".mv-edit-modal .meeting-pass-input.mv-input"
+  ),
+  EditModal: document.querySelector(".mv-popup-modal-container.mv-edit-modal"),
+  NoteModal: document.querySelector(".mv-popup-modal-container.mv-note-modal"),
+  NoteValue: document.querySelector(".popup-content .note-input"),
 };
 
 CURRENT_STATUS.TimeUpdate();
@@ -510,24 +414,29 @@ const CLASS = {
         editBtn_id.id = classObj.uid;
       }
     }
-    function timeStringCreator(classTime) {
-      const { startTime, endTime } = classTime;
-
-      function formateTime(time) {
-        return time > 12 ? (time -= 12).toFixed(2) + " PM" : time + " AM";
-      }
-      return (
-        formateTime(startTime).toString().replace(".", ":") +
-        " - " +
-        formateTime(endTime).toString().replace(".", ":")
-      );
-    }
   },
 
   linkGenrator(id, pass) {
     return `zoommtg://zoom.us/join?confno=${id}&pwd=${pass}`;
   },
 };
+
+function timeStringCreator(classTime) {
+  const { startTime, endTime } = classTime;
+
+  function formateTime(time) {
+    return time > 12
+      ? (time - 12).toFixed(2) < 1
+        ? time.toFixed(2) + " PM"
+        : (time - 12).toFixed(2) + " PM"
+      : time + " AM";
+  }
+  return (
+    formateTime(startTime).toString().replace(".", ":") +
+    " - " +
+    formateTime(endTime).toString().replace(".", ":")
+  );
+}
 
 const EDIT_MODAL = {
   subject_name: undefined,
@@ -537,12 +446,20 @@ const EDIT_MODAL = {
     this.id = event.target.id;
     this.class = this.find_class(this.id);
     this.subject_name = this.class.subject;
+    this.meetingIdValue = responsive.mv ? mv.meetingIdValue : meetingIdValue;
+    this.meetingPassValue = responsive.mv
+      ? mv.meetingPassValue
+      : meetingPassValue;
     this.set_values();
     this.visible(true);
   },
   visible(visible) {
     visible
-      ? EditModal.classList.remove("display")
+      ? responsive.mv
+        ? mv.EditModal.classList.remove("mv-none")
+        : EditModal.classList.remove("display")
+      : responsive.mv
+      ? mv.EditModal.classList.add("mv-none")
       : EditModal.classList.add("display");
   },
   cancle() {
@@ -550,14 +467,14 @@ const EDIT_MODAL = {
     this.visible(false);
   },
   save() {
-    if (!meetingIdValue.value || !meetingPassValue.value) {
+    if (!this.meetingIdValue.value || !this.meetingPassValue.value) {
       alert("value can't be empty");
     } else {
       for (key in timeTable) {
         timeTable[key].forEach((e) => {
           if (this.class.subject.toLowerCase() === e.subject.toLowerCase()) {
-            e.meetingId = meetingIdValue.value.split(" ").join("");
-            e.meetingPass = meetingPassValue.value;
+            e.meetingId = this.meetingIdValue.value.split(" ").join("");
+            e.meetingPass = this.meetingPassValue.value;
           }
         });
       }
@@ -578,8 +495,8 @@ const EDIT_MODAL = {
     return getClass;
   },
   set_values({ clear = false } = {}) {
-    meetingIdValue.value = clear ? "" : this.class.meetingId;
-    meetingPassValue.value = clear ? "" : this.class.meetingPass;
+    this.meetingIdValue.value = clear ? "" : this.class.meetingId;
+    this.meetingPassValue.value = clear ? "" : this.class.meetingPass;
   },
 };
 
@@ -610,7 +527,12 @@ const DOM_timeTable = {
       (e, index) =>
         (e.innerHTML += `<span class="timeTable_day_definer">${(function () {
           const currentDate = new Date();
-          currentDate.setDate(currentDate.getDate() + index);
+          currentDate.setDate(
+            currentDate.getDate() +
+              (CURRENT_STATUS.day > 5
+                ? index + 2
+                : index + 1 - CURRENT_STATUS.day)
+          );
           return (
             currentDate.getDate() +
             " " +
@@ -622,7 +544,7 @@ const DOM_timeTable = {
 };
 const timeTableTogglerBtn = document.querySelector(".timeTableCloser");
 
-timeTableTogglerBtn.addEventListener("click", (e) => {
+timeTableTogglerBtn.addEventListener("click", () => {
   document.getElementById("timeTable").classList.toggle("timeTableClosed");
   const BtnIcon = timeTableTogglerBtn.querySelector(".fas");
   if (BtnIcon.classList.contains("fa-table")) {
@@ -737,9 +659,9 @@ const CUSTOM_contextmenu = {
       : "Add Note";
   },
   AddNote(event) {
-    NOTE_MODAL.open(this.Clicked_Class);
+    NOTE_MODAL.open(this.Clicked_Class, event);
   },
-  autoJoin(event) {
+  autoJoin() {
     AUTO_JOIN.execute(this.Target_UID);
   },
 };
@@ -748,8 +670,14 @@ const NOTE_MODAL = {
   class: null,
   notes: [],
   set_note_view_postion(event) {
-    const e = NOTE_MODAL.notes.find((element) => element.id == event.target.id);
+    const e = NOTE_MODAL.notes.find((element) =>
+      responsive.mv ? element.id == event : element.id == event.target.id
+    );
     if (e && e.note) {
+      if (responsive.mv)
+        return (mv.NoteModal.querySelector(
+          ".popup-content .popup-text-content"
+        ).innerText = e.note);
       msg = e.note;
       noteViewModal.classList.add("active");
       noteViewModal.querySelector(".note-view-paragraph").innerText = e.note;
@@ -758,6 +686,12 @@ const NOTE_MODAL = {
       noteViewModal.style.left = rect.right + "px";
     } else {
       noteViewModal.classList.remove("active");
+      mv.NoteModal.querySelector(
+        ".popup-content .popup-text-content"
+      ).innerText = "";
+      // mv.NoteModal.querySelector(
+      //   ".popup-content"
+      // ).innerHTML = "Nothing";
     }
   },
   getNotes: function () {
@@ -771,27 +705,79 @@ const NOTE_MODAL = {
     }
   },
 
-  open(givenClass) {
-    this.class = givenClass;
+  open(givenClass, event) {
+    this.class = responsive.mv
+      ? NOTE_MODAL.notes.find((element) =>
+          responsive.mv ? element.id == event : element.id == event.target.id
+        )
+      : givenClass;
     this.visible(true);
-    this.button_modifer();
     this.set_values({ clear: false });
+    responsive.mv && this.set_note_view_postion(event);
+    this.button_modifer(givenClass, event);
   },
-  button_modifer() {
-    if (this.class.note) {
+  button_modifer(event, id) {
+    if (this.class?.note && event != "note-edit-btn") {
+      document
+        .querySelector(".popup-content .note-modal")
+        .classList.add("display");
+
+      document.querySelector(".popup-buttons .note-svae-btn").style.display =
+        "none";
+      document.querySelector(".popup-buttons .note-cancle-btn").style.display =
+        "none";
+
+      document.querySelector(".popup-buttons .note-delete-btn").id = id;
+      document.querySelector(".popup-buttons .note-edit-btn").id = id;
+
+      document.querySelector(".popup-buttons .note-delete-btn").style.display =
+        "initial";
+
+      document.querySelector(".popup-buttons .note-edit-btn").style.display =
+        "initial";
+
       document.querySelector(".note-svae-btn").innerText = "Save";
       document.querySelector(".note-delete-btn").classList.remove("display");
     } else {
+      document
+        .querySelector(".popup-content .note-modal")
+        .classList.remove("display");
+
+      document.querySelector(".popup-buttons .note-svae-btn").style.display =
+        "initial";
+      document.querySelector(".popup-buttons .note-cancle-btn").style.display =
+        "initial";
+
+      mv.NoteModal.querySelector(
+        ".popup-content .popup-text-content"
+      ).innerText = "";
+
+      document.querySelector(".popup-buttons .note-svae-btn").id = id;
+      document.querySelector(".popup-buttons .note-edit-btn").id = id;
+      document.querySelector(".popup-buttons .note-delete-btn").id = id;
+      document.querySelector(".popup-buttons .note-delete-btn").style.display =
+        "none";
+      document.querySelector(".popup-buttons .note-edit-btn").style.display =
+        "none";
       document.querySelector(".note-svae-btn").innerText = "Add";
+
+      document.querySelector(".popup-buttons .note-svae-btn").innerText =
+        event == "note-edit-btn" ? "save" : "Add Note";
       document.querySelector(".note-delete-btn").classList.add("display");
     }
   },
+
   set_values({ clear = false } = {}) {
-    NoteValue.value = clear || !this.class.note ? "" : this.class.note;
+    let inputNoteValue = responsive.mv ? mv.NoteValue : NoteValue;
+    inputNoteValue.value = clear || this.class?.note || "";
   },
   visible(visible) {
     visible
-      ? NoteModal.classList.remove("display")
+      ? responsive.mv
+        ? mv.NoteModal.classList.remove("mv-none")
+        : NoteModal.classList.remove("display")
+      : responsive.mv
+      ? mv.NoteModal.classList.add("mv-none")
       : NoteModal.classList.add("display");
   },
   cancle() {
@@ -799,12 +785,16 @@ const NOTE_MODAL = {
     this.visible(false);
     DOM_timeTable.note_exists_update();
   },
-  save({ deleteNote = false } = {}) {
-    if (NoteValue.value) {
+  save({ deleteNote = false } = {}, id) {
+    if (responsive.mv ? mv.NoteValue.value : NoteValue.value) {
       for (key in timeTable) {
         timeTable[key].forEach((e) => {
-          if (e.uid === this.class.uid) {
-            e.note = deleteNote ? "" : NoteValue.value;
+          if (e.uid == this.class?.uid || e.uid == id) {
+            e.note = deleteNote
+              ? ""
+              : responsive.mv
+              ? mv.NoteValue.value
+              : NoteValue.value;
           }
         });
       }
@@ -828,11 +818,6 @@ TimeTableEdit.forEach((element) => {
   );
 });
 
-editBtn.forEach((element) => {
-  element.addEventListener("click", (event) => {
-    EDIT_MODAL.open(event);
-  });
-});
 TimeTableEdit.forEach((element) => {
   element.addEventListener("click", (event) => {
     EDIT_MODAL.open(event);

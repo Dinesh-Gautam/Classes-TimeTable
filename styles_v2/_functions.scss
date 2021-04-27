@@ -1,0 +1,9 @@
+@function get-color($colorName) {
+  @return map-get($colors, $colorName);
+}
+@function get-padding($colorName) {
+  @return map-get($paddings, $colorName);
+}
+@function get-margin($colorName) {
+  @return map-get($margins, $colorName);
+}

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thapar Classes</title>
     <script src="https://kit.fontawesome.com/47416bf3fd.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./classes.css">
+    <!-- <link rel="stylesheet" href="./styles/classes.css"> -->
+    <link rel="stylesheet" href="./styles_v2/main.css">
 </head>
 
 <body>
@@ -14,23 +15,23 @@
         <button class="timeTableCloser"><i class="fas fa-times"></i>
             <!-- <i class="fas fa-table"></i> -->
         </button>
-        <table id="" align=left>
+        <table id="timeTable" align=left>
             <tr>
-                <td id="emptyTableBox" valign=bottom>
+                <td id="emptyTableBox" class="col0" valign=bottom>
                 </td>
-                <td class="dayBox border-TopRight " valign=bottom>
+                <td class="dayBox border-TopRight col1 " valign=bottom>
                     <p><b>MON</b></p>
                 </td>
-                <td class="dayBox" valign=bottom>
+                <td class="dayBox col2" valign=bottom>
                     <p><b>TUE</b></p>
                 </td>
-                <td class="dayBox" valign=bottom>
+                <td class="dayBox col3" valign=bottom>
                     <p><b>WED</b></p>
                 </td>
-                <td class="dayBox" valign=bottom>
+                <td class="dayBox col4" valign=bottom>
                     <p><b>THU</b></p>
                 </td>
-                <td class="dayBox border-TopLeft" valign=bottom>
+                <td class="dayBox border-TopLeft col5 col" valign=bottom>
                     <p><b>FRI</b></p>
                 </td>
             </tr>
@@ -38,89 +39,106 @@
                 <td class="timeBox border-TopRight" valign=bottom>
                     <p><b>9-9:50</b></p>
                 </td>
-                <td class="subjectBox" id="0" valign=bottom>
-                    <p><span>Chemistry</span></p>
+                <td class="subjectBox col1" id="0" valign=bottom>
+                    <p><span>Physics</span></p>
                 </td>
-                <td class="subjectBox" id="7" valign=bottom>
+                <td class="subjectBox col2" id="6" valign=bottom>
+                    <p>Physics</p>
+                </td>
+                <td class="subjectBox col3" id="13" rowspan="3" valign=bottom>
+                    <p><span>Conputer WS.</span></p>
+                </td>
+                <td class="subjectBox col4" id="18" valign=bottom>
                     <p>Math</span></p>
                 </td>
-                <td class="subjectBox" id="14" valign=bottom>
-                    <p><span>ECS</span></p>
-                </td>
-                <td class="subjectBox" id="18" valign=bottom>
-                    <p>CFIT</span></p>
-                </td>
-                <td class="subjectBox" id="23" valign=bottom>
-                    <p>Physics</span></p>
+                <td class="subjectBox col5" id="24" valign=bottom>
+                    <p>Math</span></p>
                 </td>
             </tr>
             <tr class="timeRanking">
                 <td class="timeBox" valign=bottom>
                     <p><b>9:50-10:40</b></p>
                 </td>
-                <td class="subjectBox" id="1" valign=bottom>
-                    <p><span>ECS</span></p>
+                <td class="subjectBox col1" id="1" valign=bottom>
+                    <p><span>SCA</span></p>
                 </td>
-                <td class="subjectBox" id="8" valign=bottom>
-                    <p><span>Chemistry</span></p>
+                <td class="subjectBox col2" id="7" valign=bottom>
+                    <p><span>SCA</span></p>
                 </td>
-                <td class="subjectBox" id="15" valign=bottom>
-                    <p><span s>Physics</span></p>
+
+                <td class="subjectBox col4" id="19" valign=bottom>
+                    <p><span>EVS</span></p>
                 </td>
-                <td class="subjectBox" id="19" valign=bottom>
-                    <p><span>Math</span></p>
-                </td>
-                <td class="subjectBox" id="24" valign=bottom>
-                    <p><span>Math</span></p>
+                <td class="subjectBox col5" id="25" valign=bottom>
+                    <p><span>Physics</span></p>
                 </td>
             </tr>
             <tr class="timeRanking">
                 <td class="timeBox" valign=bottom>
                     <p><b>10:40-11:30</b></p>
                 </td>
-                <td class="subjectBox" id="2" valign=bottom>
+                <td class="subjectBox col1" id="2" valign=bottom>
+                    <p><span>ECS</span></p>
+                </td>
+                <td class="subjectBox col2" id="8" valign=bottom>
                     <p><span>Math</span></p>
                 </td>
-                <td class="subjectBox" id="9" rowspan=2 valign=bottom>
-                    <p><span>Physics LAB</span></p>
+
+                <td class="subjectBox col4" id="20" valign=bottom>
+                    <p><span>SCA</span></p>
                 </td>
-                <td class="subjectBox" id="16" rowspan=3 valign=bottom>
-                    <p><span>GWP</span></p>
-                </td>
-                <td class="subjectBox" id="20" rowspan=3 valign=bottom>
-                    <p><span>GWP</span></p>
-                </td>
-                <td class="subjectBox" id="25" rowspan=2 valign=bottom>
-                    <p><span>Chemistry LAB</span></p>
+                <td class="subjectBox col5" id="26" rowspan="2" valign=bottom>
+                    <p><span>ECS</span></p>
                 </td>
             </tr>
             <tr class="timeRanking">
                 <td class="timeBox" valign=bottom>
                     <p><b>11:30-12:20</b></p>
                 </td>
-                <td class="subjectBox" id="3" valign=bottom>
-                    <p>SCA</p>
+
+                <td class="subjectBox col1" id="3" valign=bottom>
+                    <p>BE</p>
+                </td>
+                <td class="subjectBox col2" id="9" valign=bottom>
+                    <p>ECS</p>
+                </td>
+                <td class="subjectBox col3" id="14" rowspan="2" valign=bottom>
+                    <p><span>DTP</span></p>
+                </td>
+                <td class="subjectBox col4" id="21" valign=bottom>
+                    <p>BE</p>
                 </td>
             </tr>
             <tr class="timeRanking">
                 <td class="timeBox" valign=bottom>
                     <p><b>12:20-1:20</b></p>
                 </td>
-                <td class="subjectBox" id="4" valign=bottom>
-                    <p><span>ECS</span></p>
+                <td class="subjectBox col1" id="4" valign=bottom>
+                    <p><span>Math</span></p>
                 </td>
-                <td class="subjectBox" id="10" valign=bottom>
-                    <p><span>Physics</span></p>
+                <td class="subjectBox col2" id="10" valign=bottom>
+                    <p><span>EVS</span></p>
                 </td>
-                <td class="subjectBox" id="26" valign=bottom>
-                    <p><span>Chemistry</span></p>
+                <td class="noClassBox col4" colspan=1 valign=bottom>
+                    <p align=center>RECESS</span>
+                    </p>
+                </td>
+                <td class="subjectBox col5" id="27" valign=bottom>
+                    <p><span>SCA</span></p>
                 </td>
             </tr>
             <tr>
                 <td class="timeBox" valign=bottom>
                     <p><b>1:20-2:20</b></p>
                 </td>
-                <td class="noClassBox" colspan=5 valign=bottom>
+                <td class="noClassBox col1" colspan=3 valign=bottom>
+                    <p align=center>RECESS</span>
+                    </p>
+                </td>
+                <td class="subjectBox col4" id="22" rowspan="2" valign=bottom>
+                    <p><span>DTP</span></p>
+                </td>
+                <td class="noClassBox col5" colspan=3 valign=bottom>
                     <p align=center>RECESS</span>
                     </p>
                 </td>
@@ -129,42 +147,46 @@
                 <td class="timeBox" valign=bottom>
                     <p><b>2:20-3:10</b></p>
                 </td>
-                <td class="subjectBox" id="5" valign=bottom>
-                    <p><span>Physics</span></p>
+                <td class="subjectBox col1" id="5" rowspan="3" valign=bottom>
+                    <p><span>Computer WS.</span></p>
                 </td>
-                <td class="subjectBox" id="11" valign=bottom>
-                    <p><span>CFIT</span></p>
+                <td class="subjectBox col2" id="11" valign=bottom>
+                    <p><span>BE</span></p>
                 </td>
-                <td class="subjectBox" id="17" rowspan=3 valign=bottom>
-                    <p>ED</span></p>
+                <td class="subjectBox col3" id="15" valign=bottom>
+                    <p>Math</span></p>
                 </td>
-                <td class="subjectBox" id="21" valign=bottom>
-                    <p>Chemistry</span></p>
-                </td>
-                <td class="border-bottomLeft subjectBox" id="27" rowspan=3 valign=bottom>
-                    <p><span>ED</span></p>
+                <td class="subjectBox col5" id="28" valign=bottom>
+                    <p><span>ECS</span></p>
                 </td>
             </tr>
             <tr class="timeRanking">
                 <td class="timeBox" valign=bottom>
                     <p><b>3:10-4:00</b></p>
                 </td>
-                <td class="subjectBox" id="6" rowspan=2 valign=bottom>
-                    <p>CFIT LAB</p>
+                <td class="subjectBox col2" id="12" rowspan="2" valign=bottom>
+                    <p><span>DTP</span></p>
                 </td>
-                <td class="subjectBox" id="12" valign=bottom>
-                    <p><span>Math</span></p>
+                <td class="subjectBox col3" id="16" valign=bottom>
+                    <p><span>Physics</span></p>
                 </td>
-                <td class="subjectBox" id="22" rowspan=2 valign=bottom>
-                    <p><span>ECS LAB</span></p>
+                <td class="subjectBox col4" id="23" rowspan="2" valign=bottom>
+                    <p><span>Physics</span></p>
                 </td>
+                <td class="subjectBox col5" id="29" valign=bottom>
+                    <p><span>BE</span></p>
+                </td>
+
             </tr>
             <tr class="timeRanking">
-                <td class="timeBox border-bottomRight" valign=bottom>
+                <td class="timeBox border-bottomRight col0" valign=bottom>
                     <p><b>4:00-5:00</b></p>
                 </td>
-                <td class="subjectBox" id="13" valign=bottom>
+                <td class="subjectBox col3" id="17" valign=bottom>
                     <p>SCA</p>
+                </td>
+                <td class=" border-bottomLeft subjectBox col5" id="30" valign=bottom>
+                    <p>EVS</p>
                 </td>
             </tr>
         </table>
@@ -263,10 +285,111 @@
             <p class="note-view-paragraph">-</p>
         </div>
     </main>
-    <script src="./table.js"></script>
-    <script src="./class_v2.js"></script>
+    <section class="mobile-view-table">
+        <div class="day-container">
+            <button onclick="appendClassList(false)"><i class="fas fa-chevron-left"></i></button>
+            <span id="classListDay">MON</span>
+            <button onclick="appendClassList(true)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="class-container">
+
+        </div>
+
+        <div class="mv-none mv-popup-modal-container mv-note-modal">
+            <div class="popup-header">
+                <div class="popup-header-title">
+                    <p>Note</p>
+                </div>
+                <div class="popup-header-buttons">
+                    <button onclick="setDisplayNone(mv.NoteModal)" class="popup-close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="popup-content">
+                <div class="popup-text-content"></div>
+                <div id="undefined" class="edit-modal note-modal">
+                    <form>
+                        <textarea placeholder="Type here" class="note-input" name="note-field" type="text"></textarea>
+                    </form>
+                </div>
+            </div>
+            <div class="popup-buttons">
+
+                <button onclick="NOTE_MODAL.save({deleteNote : true}, this.id)" class=" note-delete-btn popup-btn">
+                    Delete Note
+                </button>
+                <button class="note-edit-btn" onclick="NOTE_MODAL.open(this.className,this.id)">Edit Note</button>
+                <button class="note-cancle-btn" onclick="NOTE_MODAL.cancle()">Cancel</button>
+
+                <button class="note-svae-btn" onclick="NOTE_MODAL.save({} , this.id)">Add</button>
+                <!-- <button class="popup-btn">
+                    Edit Note
+                </button> -->
+
+            </div>
+
+        </div>
+        <div class="mv-none mv-popup-modal-container mv-edit-modal">
+            <div class="popup-header">
+                <div class="popup-header-title">
+                    <p>Edit</p>
+                </div>
+                <div class="popup-header-buttons">
+                    <button onclick="setDisplayNone(mv.EditModal)" class="popup-close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="popup-content edit-modal">
+                <form>
+                    <label for="meeting-field">Meeting ID :</label><input class="mv-input meeting-id-input"
+                        name="meeting-field" type="text">
+                    <label for="pass-field">Meeting Pass :</label><input class="mv-input meeting-pass-input"
+                        name="pass-field" type="text">
+                </form>
+            </div>
+            <div class="popup-buttons">
+                <button onclick="EDIT_MODAL.cancle()">Cancel</button>
+                <button onclick="EDIT_MODAL.save()">Save</button>
+            </div>
+        </div>
+    </section>
+    <!-- <script src="./table.js"></script> -->
+    <script src="./additional scripts/fluent-reveal-effect.js"></script>
+    <script src="./scripts v2//class_v2.js"></script>
+    <script src="./scripts v2//responsive.js"></script>
+    <script>
+        applyEffect(".subjectBox", {
+            lightColor: "rgba(255,255,255,0.17)",
+            gradientSize: 250,
+        });
+        applyEffect("#timeTable", {
+            lightColor: "rgba(100,100,100,0.9)",
+            gradientSize: 100,
+        });
+    </script>
     <!-- <script src="./classes .js"></script> -->
 
 </body>
 
 </html>
+<!-- <div class="class">
+                <div class="class-wraper">
+                    <div class="time-container">
+                        -
+                    </div>
+                    <div class="class-subject">
+                        <span class="text-wraper ongoingClass-text">
+                            -
+                        </span>
+                    <button class="mv-edit-btn"><i class="fas fa-pen"></i></button>
+                 <button class="view-btn"><i class="fas fa-sticky-note"></i></i>
+                 </button>
+                    </div>
+
+                </div>
+                <div class="join-link">
+                    <a id="ongoingClass-joinLink" href="">Join</a>
+                </div> -->
+<!-- </div> -->
