@@ -11,8 +11,8 @@
   --default-padding: 18px;
   // --text-color: #fff;
   --text-size: 18px;
-  --border-radius: 3px;
-  --border-radius2: 15px;
+  --border-radius: 0px;
+  --border-radius2: 0px;
   --less-padding: 10px;
   --dark-black: rgb(20, 20, 20);
   --dark-black-alpha: rgba(20, 20, 20, 0.8);
@@ -25,6 +25,8 @@
 
 body {
   background-color: var(--dark-black);
+  background-repeat: no-repeat;
+  background-size: cover;
   color: var(--light);
   display: flex;
   position: relative;
@@ -241,7 +243,7 @@ table {
     pointer-events: none;
   }
   td {
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     // border-radius: var(--border-radius);
     padding: var(--less-padding) var(--default-padding);
     margin: 0 var(--default-margin);
@@ -299,7 +301,7 @@ table {
     }
     &.subjectBox {
       overflow: hidden;
-      border: 2px solid transparent;
+      border: 1px solid transparent;
       // border-bottom: 0;
     }
     &.subjectBox:hover {
@@ -350,9 +352,9 @@ table {
   }
   #emptyTableBox {
     background: var(--dark-black);
-    border: 2px solid var(--dark-black);
-    border-right: 2px solid transparent;
-    border-bottom: 2px solid transparent;
+    border: 1px solid var(--dark-black);
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid transparent;
   }
   .dayBox {
     border-bottom: 0;
@@ -444,7 +446,7 @@ table {
         align-items: center;
         font-weight: bold;
         text-transform: capitalize;
-        box-shadow: -2px 0 3px 2px rgba($color: #000000, $alpha: 0.3);
+        // box-shadow: -2px 0 3px 2px rgba($color: #000000, $alpha: 0.3);
         border-radius: var(--border-radius2) 0 0 var(--border-radius2);
         .view-btn:hover .info-view-popup {
           opacity: 1;
@@ -536,7 +538,7 @@ table {
   .middleContexMenu_container {
     width: 100%;
     padding: var(--less-padding);
-    border-top: 2px solid var(--dark-black);
+    border-top: 1px solid var(--dark-black);
     .TimeTable_autoJoinCheckBox {
       display: flex;
       align-items: center;
