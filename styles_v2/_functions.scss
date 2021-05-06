@@ -7,3 +7,9 @@
 @function get-margin($colorName) {
   @return map-get($margins, $colorName);
 }
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

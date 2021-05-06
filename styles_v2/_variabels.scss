@@ -4,7 +4,7 @@ $colors: (
   "dark-1": rgb(32, 32, 32),
   "dark-2": rgb(43, 43, 43),
   "dark-3": rgb(77, 77, 77),
-  "ligt": rgb(184, 184, 184),
+  "light": rgb(184, 184, 184),
   "light-1": rgb(249, 249, 249),
 );
 $paddings: (
@@ -15,3 +15,15 @@ $margins: (
   "less": 12px,
   "default": 18px,
 );
+
+$mingHeight: 3rem;
+$transitionDuration: 200ms;
+$roundedButton: 36px;
+
+$font-size: 16px;
+
+$box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+$box-shadow-light: 0 0 6px rgba(0, 0, 0, 0.4);
+
+// fonts
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
