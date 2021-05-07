@@ -1,0 +1,56 @@
+$borderWidth: 2px;
+
+#timeTable {
+  border-spacing: 1px;
+  border-collapse: separate;
+  table-layout: fixed;
+  margin: 2rem;
+  position: relative;
+  opacity: 1;
+  border-radius: 0 0 0 0%;
+  outline: $borderWidth solid get-color("dark");
+  outline-offset: -1px;
+  pointer-events: all;
+  transition: all $transitionDuration ease-in-out;
+  &.timeTableClosed {
+    opacity: 0;
+    border-radius: 0 0 0 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  td {
+    padding: get-padding("less") get-padding("default");
+    background: get-color("dark-2");
+    position: relative;
+    *,
+    p,
+    span {
+      pointer-events: none;
+    }
+    p {
+      padding: 0 get-padding("less");
+      font-size: $font-size;
+    }
+    &.subjectBox:hover {
+      cursor: pointer;
+    }
+  }
+  .noClassBox,
+  .timeBox,
+  .dayBox {
+    background: rgba(get-color("dark-1"), $alpha: 0.9);
+  }
+  #emptyTableBox {
+    background: get-color("dark");
+  }
+  .dayBox {
+    p {
+      display: inline-block;
+    }
+    .timeTable_day_definer {
+      color: get-color("light");
+      font-weight: bold;
+    }
+  }
+}

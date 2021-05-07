@@ -1,0 +1,21 @@
+// nav
+
+nav {
+    @include flex-center;
+    justify-content: flex-end;
+    gap: get-margin("less");
+    height: 6vh;
+    min-height: $mingHeight;
+    width: 100%;
+    padding: get-padding("less") get-padding("default") * 2;
+    background-color: get-color("dark-1");
+    box-shadow: $box-shadow;
+    button {
+      padding: 0;
+      height: $roundedButton;
+      width: $roundedButton;
+      border-radius: 50%;
+      font-size: $font-size - 2px;
+      box-shadow: $box-shadow-light;
+    }
+  }

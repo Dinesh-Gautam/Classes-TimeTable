@@ -25,7 +25,10 @@ function applyEffect(selector, options = {}) {
 
   function enableBackgroundEffects(element, lightColor, gradientSize) {
     //element background effect --------------------
-    if (element.el.classList.contains("subjectBox")) {
+    if (
+      element.el.classList.contains("subjectBox") ||
+      element.el.tagName === "BUTTON"
+    ) {
       mouseMoveFun(element.el, true);
     } else {
       mouseMoveFun(window, false);

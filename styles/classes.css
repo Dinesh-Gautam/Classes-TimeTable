@@ -416,9 +416,7 @@ table .dayBox p {
 }
 
 table .dayBox .timeTable_day_definer {
-  color: rgba(255, 255, 255, 0.5);
   font-size: var(--text-size);
-  font-weight: bold;
 }
 
 .class-container {

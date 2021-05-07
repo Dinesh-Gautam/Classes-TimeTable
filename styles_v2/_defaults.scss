@@ -8,6 +8,7 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: get-color("dark");
   min-height: 100vh;
+  color: get-color("light-1");
 }
 
 input,
@@ -32,9 +33,7 @@ button {
   background-color: get-color("dark-2");
   color: get-color("light");
   padding: get-padding("less") get-padding("default");
-  transition: all $transitionDuration ease-in-out;
   &:hover {
-    background-color: get-color("dark-3");
     color: get-color("light-1");
   }
 }

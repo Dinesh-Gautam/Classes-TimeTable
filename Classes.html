@@ -8,16 +8,13 @@
     <script src="https://kit.fontawesome.com/47416bf3fd.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="./styles/classes.css"> -->
-    <link rel="stylesheet" href="./styles_v2/main.css">
+    <link rel="stylesheet" href="./styles/classes.css">
+    <!-- <link rel="stylesheet" href="./styles_v2/main.css"> -->
 </head>
 
 <body>
     <header>
         <nav>
-            <button class="timeTableCloser"><i class="fas fa-times"></i>
-                <!-- <i class="fas fa-table"></i> -->
-            </button>
             <button class="timeTableCloser"><i class="fas fa-times"></i>
                 <!-- <i class="fas fa-table"></i> -->
             </button>
@@ -145,7 +142,7 @@
                 <td class="subjectBox col4" id="22" rowspan="2" valign=bottom>
                     <p><span>DTP</span></p>
                 </td>
-                <td class="noClassBox col5" colspan=3 valign=bottom>
+                <td class="noClassBox col5" colspan=1 valign=bottom>
                     <p align=center>RECESS</span>
                     </p>
                 </td>
@@ -374,6 +371,10 @@
         applyEffect("#timeTable", {
             lightColor: "rgba(150,150,150,0.7)",
             gradientSize: 100,
+        });
+        applyEffect("button", {
+            lightColor: "rgba(255,255,255,0.17)",
+            gradientSize: 150,
         });
     </script>
     <!-- <script src="./classes .js"></script> -->
