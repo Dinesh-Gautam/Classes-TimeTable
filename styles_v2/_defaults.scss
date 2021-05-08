@@ -28,9 +28,11 @@ a {
   font-size: $font-size;
 }
 
-button {
+button,
+a,
+.TimeTable_autoJoinCheckBox {
   @include flex-center;
-  background-color: get-color("dark-2");
+  background-color: get-color("dark-2-alpha");
   color: get-color("light");
   padding: get-padding("less") get-padding("default");
   &:hover {
@@ -43,11 +45,13 @@ button {
 input[type="checkbox"] {
   --width: 32px;
   position: relative;
+  margin-left: get-margin(less);
   height: calc(var(--width) / 2);
   width: var(--width);
+  min-width: var(--width);
   cursor: pointer;
   border-radius: 20px;
-  background-color: get-color("dark-3");
+  background-color: get-color("dark-3-alpha");
   box-shadow: inset 0 0 1px 1px rgba($color: #000000, $alpha: 0.2);
   appearance: none;
 
@@ -59,7 +63,7 @@ input[type="checkbox"] {
     transform: scale(0.9);
     border-radius: 50%;
     position: absolute;
-    background-color: get-color("dark-2");
+    background-color: get-color("dark-2-alpha");
   }
 
   &:checked {

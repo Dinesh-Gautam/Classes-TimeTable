@@ -27,7 +27,9 @@ function applyEffect(selector, options = {}) {
     //element background effect --------------------
     if (
       element.el.classList.contains("subjectBox") ||
-      element.el.tagName === "BUTTON"
+      element.el.tagName === "BUTTON" ||
+      element.el.tagName === "A" ||
+      element.el.classList.contains("TimeTable_autoJoinCheckBox")
     ) {
       mouseMoveFun(element.el, true);
     } else {
