@@ -12,7 +12,7 @@
   transition: transform $transitionDuration ease-in-out,
     opacity $transitionDuration ease-in-out;
   background-color: transparent;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur($blur-default);
   box-shadow: $box-shadow-1;
   &.active {
     opacity: 1;

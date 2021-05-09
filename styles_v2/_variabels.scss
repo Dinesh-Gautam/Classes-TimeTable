@@ -2,6 +2,7 @@ $colors: (
   "dark": rgb(20, 20, 20),
   "dark-black-alpha": rgba(20, 20, 20, 0.8),
   "dark-1": rgb(24, 24, 24),
+  "dark-1-alpha": rgba(24, 24, 24, 0.8),
   "dark-2": rgb(32, 32, 32),
   "dark-2-alpha": rgba(32, 32, 32, 0.8),
   "dark-3": rgb(77, 77, 77),
@@ -19,10 +20,16 @@ $margins: (
 );
 
 $mingHeight: 3rem;
+
+$transitionDuration-less: 100ms;
 $transitionDuration: 200ms;
+$transitionDuration-slow: 400ms;
+
 $roundedButton: 36px;
 
 $font-size: 16px;
+
+$blur-default: 12px;
 
 $box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
 $box-shadow-1: 0 0 32px rgba(0, 0, 0, 0.8);

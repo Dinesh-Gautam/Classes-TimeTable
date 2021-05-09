@@ -8,6 +8,41 @@
 .mobile-view-table {
   display: none;
 }
+
 .note-view {
-  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: fit-content;
+  max-width: 20vw;
+  box-shadow: $box-shadow-light;
+  background: get-color(dark-1-alpha);
+  backdrop-filter: blur($blur-default);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform $transitionDuration-less ease-out,
+    opacity $transitionDuration ease-in-out;
+
+  p {
+    opacity: 0;
+    width: 100%;
+    transform: translateX(30%);
+    font-size: $font-size - 2px;
+    padding: get-padding(default);
+    transition: all $transitionDuration-slow;
+    transition-delay: $transitionDuration-less;
+  }
+
+  &.active {
+    transform: scaleX(1);
+    opacity: 1;
+    pointer-events: all;
+    p {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+  }
 }
