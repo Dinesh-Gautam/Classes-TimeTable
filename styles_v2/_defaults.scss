@@ -34,10 +34,25 @@ a,
   @include flex-center;
   background-color: get-color("dark-2-alpha");
   color: get-color("light");
-  padding: get-padding("less") get-padding("default");
+  padding: get-padding("less") get-padding("default") * 2;
   &:hover {
     color: get-color("light-1");
   }
+}
+
+input:not(input[type="checkbox"]),
+textarea {
+  background: get-color(dark-3-alpha);
+  border: none;
+  padding: get-padding(less) - 4px get-padding(less) - 4px;
+  color: var(--light);
+  font-size: var(--text-size);
+  outline: none;
+  margin: get-margin(v-less);
+}
+
+textarea {
+  min-height: $minHeight-textarea;
 }
 
 // toggle switch

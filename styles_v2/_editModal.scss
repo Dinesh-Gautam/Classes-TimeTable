@@ -1,0 +1,65 @@
+main {
+  position: relative;
+}
+
+.edit-modal {
+  position: absolute;
+  overflow: hidden;
+  left: 50%;
+  top: 0%;
+  transform: translateX(-50%);
+  transition: all $transitionDuration-slow ease-out;
+  opacity: 1;
+  background: get-color(dark-2-alpha);
+  z-index: 20;
+  width: 100%;
+  max-width: $maxWidth-modal;
+  margin-top: $minHeight-nav - 2rem;
+  box-shadow: $box-shadow-1;
+  backdrop-filter: blur($blur-default);
+
+  form {
+    padding: get-padding(default);
+    label {
+      font-size: $font-size - 4px;
+      color: get-color(light);
+    }
+  }
+
+  // animation
+  input,
+  label {
+    display: block;
+    width: 100%;
+  }
+
+  input,
+  label,
+  button {
+    transform: translateY(0%);
+    opacity: 1;
+    transition: transform $transitionDuration-slow ease-in-out,
+      opacity $transitionDuration-slow ease-in-out;
+  }
+  .control-btns {
+    @include flex-center;
+    justify-content: flex-end;
+  }
+
+  &.display {
+    opacity: 0;
+    pointer-events: none;
+    top: -$minHeight-nav * 2;
+    label,
+    input,
+    button,
+    textarea {
+      opacity: 0;
+      transform: translateY(200%);
+    }
+  }
+}
+
+.note-modal {
+  display: none;
+}

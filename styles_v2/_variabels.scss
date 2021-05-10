@@ -15,11 +15,14 @@ $paddings: (
   "default": 18px,
 );
 $margins: (
+  "v-less": 6px,
   "less": 12px,
   "default": 18px,
 );
 
-$mingHeight: 3rem;
+$minHeight-nav: 3rem;
+$minHeight-textarea: 8rem;
+$maxWidth-modal: 24rem;
 
 $transitionDuration-less: 100ms;
 $transitionDuration: 200ms;
