@@ -10,7 +10,7 @@ main {
   transform: translateX(-50%);
   transition: all $transitionDuration-slow ease-out;
   opacity: 1;
-  background: get-color(dark-2-alpha);
+  background: get-color(dark-1-alpha);
   z-index: 20;
   width: 100%;
   max-width: $maxWidth-modal;
@@ -60,6 +60,20 @@ main {
   }
 }
 
-.note-modal {
+.note-delete-btn.display {
   display: none;
+}
+.note-input {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 5rem;
+  max-height: 80vh;
+  font-size: $font-size - 1px;
+}
+
+.note-delete-btn {
+  flex: 1;
+  white-space: nowrap;
+  background-color: rgba($color: rgb(255, 96, 96), $alpha: 0.2);
 }
