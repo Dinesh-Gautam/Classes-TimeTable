@@ -38,6 +38,9 @@ a,
   &:hover {
     color: get-color("light-1");
   }
+  i {
+    pointer-events: none;
+  }
 }
 
 input:not(input[type="checkbox"]),

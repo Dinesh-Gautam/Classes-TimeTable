@@ -13,11 +13,6 @@ nav {
   box-shadow: $box-shadow;
   z-index: 100;
   button {
-    padding: 0;
-    height: $roundedButton;
-    width: $roundedButton;
-    border-radius: 50%;
-    font-size: $font-size - 2px;
-    box-shadow: $box-shadow-light;
+    @include round-button;
   }
 }

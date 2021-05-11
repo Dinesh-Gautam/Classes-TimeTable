@@ -1,0 +1,58 @@
+.class-container {
+  @include flex-center;
+  flex-direction: column;
+  max-width: $maxWidth-classContainer;
+
+  .info-view-popup {
+    display: none;
+  }
+
+  .class {
+    @include flex-center;
+    background: get-color(dark-1-alpha);
+    justify-content: flex-start;
+    min-width: 100%;
+    flex-wrap: nowrap;
+    box-shadow: $box-shadow;
+
+    .class-wraper {
+      flex: 1;
+
+      .time-container {
+        @include flex-center;
+        justify-content: flex-start;
+        background: get-color(dark-2-alpha);
+        height: $font-size * 1.2;
+        padding: 0 get-padding(default);
+        font-size: $font-size - 4px;
+        color: get-color(light);
+      }
+
+      .class-subject {
+        @include flex-center;
+        justify-content: flex-start;
+        background: get-color(dark-1-alpha);
+        padding: get-padding(less) get-padding(default);
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+
+      .text-wraper {
+        flex: 1;
+        font-size: $font-size * 1.3;
+      }
+      button {
+        @include round-button;
+        margin-left: get-margin(less);
+      }
+    }
+
+    .join-link {
+      align-self: stretch;
+      a {
+        padding: 0 get-padding(default);
+        height: 100%;
+      }
+    }
+  }
+}

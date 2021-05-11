@@ -13,3 +13,12 @@
   justify-content: center;
   align-items: center;
 }
+
+@mixin round-button {
+  padding: 0;
+  height: $roundedButton;
+  width: $roundedButton;
+  border-radius: 50%;
+  font-size: $font-size - 2px;
+  box-shadow: $box-shadow-light;
+}
