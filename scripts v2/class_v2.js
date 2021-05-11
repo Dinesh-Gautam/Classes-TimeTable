@@ -232,24 +232,28 @@ const responsive = {
 
 window.addEventListener("resize", () => (responsive.mv = checkMv(1200)));
 
+// function getOffset(element) {
+//   return {
+//     top: element.el.getBoundingClientRect().top,
+//     left: element.el.getBoundingClientRect().left,
+//   };
+// }
+
 function checkMv(width) {
   return window.innerWidth < width;
 }
 
 const ongoingClass_DOM_selector = document.querySelector(".ongoingClass");
 const upcomingClass_DOM_selector = document.querySelector(".upcomingClass");
-const ongoinhSubject = ongoingClass_DOM_selector.querySelector(
-  ".ongoingClass-text"
-);
-const ongoingClassTime = ongoingClass_DOM_selector.querySelector(
-  ".time-container"
-);
+const ongoinhSubject =
+  ongoingClass_DOM_selector.querySelector(".ongoingClass-text");
+const ongoingClassTime =
+  ongoingClass_DOM_selector.querySelector(".time-container");
 const upcomingClassSubject = upcomingClass_DOM_selector.querySelector(
   ".upcomingClass-text"
 );
-const upcomingClassTime = upcomingClass_DOM_selector.querySelector(
-  ".time-container"
-);
+const upcomingClassTime =
+  upcomingClass_DOM_selector.querySelector(".time-container");
 const ongoingClassJoinLink = document.getElementById("ongoingClass-joinLink");
 const upcomingClassJoinLink = document.getElementById("upcomingClass-joinLink");
 const [ongoingClassIdView, ongoingClassPassView] = document.querySelectorAll(
@@ -636,7 +640,7 @@ const CUSTOM_contextmenu = {
   setPosition(event) {
     const { X_possition, Y_possition } = {
       X_possition: event.clientX,
-      Y_possition: event.clientY,
+      Y_possition: event.clientY - 50,
     };
 
     const contextMenu_position = contextMenu.style;
@@ -682,7 +686,7 @@ const NOTE_MODAL = {
       noteViewModal.classList.add("active");
       noteViewModal.querySelector(".note-view-paragraph").innerText = e.note;
       let rect = event.target.getBoundingClientRect();
-      noteViewModal.style.top = rect.top + "px";
+      noteViewModal.style.top = rect.top - 60 + "px";
       noteViewModal.style.left = rect.right + "px";
     } else {
       noteViewModal.classList.remove("active");
