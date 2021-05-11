@@ -149,7 +149,6 @@ nav button {
   border-spacing: 1px;
   border-collapse: separate;
   table-layout: fixed;
-  margin: 2rem;
   position: relative;
   opacity: 1;
   border-radius: 0 0 0 0%;
@@ -227,8 +226,8 @@ main {
   max-width: 28rem;
   -webkit-box-shadow: 0 0 32px rgba(0, 0, 0, 0.8);
           box-shadow: 0 0 32px rgba(0, 0, 0, 0.8);
-  -webkit-backdrop-filter: blur(12px);
-          backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(24px);
+          backdrop-filter: blur(24px);
 }
 
 .edit-modal form {
@@ -329,8 +328,8 @@ main {
   -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
           box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
   background: rgba(24, 24, 24, 0.8);
-  -webkit-backdrop-filter: blur(12px);
-          backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(24px);
+          backdrop-filter: blur(24px);
   opacity: 0;
   pointer-events: none;
   z-index: 10;
@@ -399,8 +398,8 @@ main {
   transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
   transition: transform 200ms ease-in-out, opacity 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
   background-color: transparent;
-  -webkit-backdrop-filter: blur(12px);
-          backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(24px);
+          backdrop-filter: blur(24px);
   -webkit-box-shadow: 0 0 32px rgba(0, 0, 0, 0.8);
           box-shadow: 0 0 32px rgba(0, 0, 0, 0.8);
 }
@@ -449,6 +448,7 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: 100%;
   max-width: 30rem;
 }
 
@@ -549,5 +549,14 @@ main {
 .class-container .class .join-link a {
   padding: 0 18px;
   height: 100%;
+}
+
+main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  padding: 2rem;
 }
 /*# sourceMappingURL=main.css.map */

@@ -1,6 +1,7 @@
 .class-container {
   @include flex-center;
   flex-direction: column;
+  width: 100%;
   max-width: $maxWidth-classContainer;
 
   .info-view-popup {
