@@ -19,10 +19,13 @@ main {
   backdrop-filter: blur($blur-default);
 
   form {
-    padding: get-padding(default);
+    // padding: get-padding(less) 0;
     label {
       font-size: $font-size - 4px;
       color: get-color(light);
+      display: inline-block;
+      width: fit-content;
+      margin: get-margin(less) - 6px get-margin(default);
     }
   }
 
@@ -44,6 +47,7 @@ main {
   .control-btns {
     @include flex-center;
     justify-content: flex-end;
+    margin-top: get-margin(less);
   }
 
   &.display {

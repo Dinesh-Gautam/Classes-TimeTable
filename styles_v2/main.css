@@ -61,7 +61,6 @@ textarea {
   color: var(--light);
   font-size: var(--text-size);
   outline: none;
-  margin: 6px;
 }
 
 textarea {
@@ -225,13 +224,14 @@ main {
           backdrop-filter: blur(12px);
 }
 
-.edit-modal form {
-  padding: 18px;
-}
-
 .edit-modal form label {
   font-size: 12px;
   color: #b8b8b8;
+  display: inline-block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 6px 18px;
 }
 
 .edit-modal input,
@@ -265,6 +265,7 @@ main {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  margin-top: 12px;
 }
 
 .edit-modal.display {
