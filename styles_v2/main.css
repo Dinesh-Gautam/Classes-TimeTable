@@ -117,6 +117,7 @@ nav {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  position: relative;
   gap: 12px;
   height: 6vh;
   min-height: 3rem;
@@ -125,6 +126,7 @@ nav {
   background-color: #181818;
   -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
           box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+  z-index: 100;
 }
 
 nav button {
@@ -217,11 +219,14 @@ main {
   z-index: 20;
   width: 100%;
   max-width: 24rem;
-  margin-top: 1rem;
   -webkit-box-shadow: 0 0 32px rgba(0, 0, 0, 0.8);
           box-shadow: 0 0 32px rgba(0, 0, 0, 0.8);
   -webkit-backdrop-filter: blur(12px);
           backdrop-filter: blur(12px);
+}
+
+.edit-modal form {
+  padding: 10px 0;
 }
 
 .edit-modal form label {
@@ -265,7 +270,6 @@ main {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  margin-top: 12px;
 }
 
 .edit-modal.display {
