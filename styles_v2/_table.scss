@@ -44,7 +44,7 @@ $indicator-opacity: 0.5;
       @include indicator {
         background-image: radial-gradient(
           circle at 50% 0%,
-          rgb(0, 255, 100) 0%,
+          get-color(indicator-1) 0%,
           rgba(0, 0, 0, 0) 100%
         );
       }
@@ -54,7 +54,7 @@ $indicator-opacity: 0.5;
       @include indicator {
         background-image: radial-gradient(
           circle at 50% 0%,
-          rgba(255, 0, 0, 1) 0%,
+          get-color(indicator-2) 0%,
           rgba(0, 0, 0, 0) 100%
         );
       }
@@ -63,7 +63,7 @@ $indicator-opacity: 0.5;
       @include indicator {
         background-image: radial-gradient(
           circle at 100% 0%,
-          rgb(0, 255, 255) 0%,
+          get-color(indicator-3) 0%,
           rgba(0, 0, 0, 0) 10%
         );
         top: initial;
