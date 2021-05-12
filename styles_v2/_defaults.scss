@@ -49,8 +49,8 @@ textarea {
   background: get-color(dark-3-alpha);
   border: none;
   padding: get-padding(less) - 4px get-padding(less) - 4px;
-  color: var(--light);
-  font-size: var(--text-size);
+  color: get-color(light-1);
+  font-size: $font-size;
   outline: none;
 }
 
@@ -69,7 +69,7 @@ input[type="checkbox"] {
   min-width: var(--width);
   cursor: pointer;
   border-radius: 20px;
-  background-color: get-color("dark-3-alpha");
+  background-color: get-color("dark-3");
   box-shadow: inset 0 0 1px 1px rgba($color: #000000, $alpha: 0.2);
   appearance: none;
 
@@ -81,11 +81,11 @@ input[type="checkbox"] {
     transform: scale(0.9);
     border-radius: 50%;
     position: absolute;
-    background-color: get-color("dark-2-alpha");
+    background-color: get-color("dark-1-alpha");
   }
 
   &:checked {
-    background: get-color("light-1");
+    background: get-color("light");
     &::after {
       left: calc(var(--width) / 2);
     }
