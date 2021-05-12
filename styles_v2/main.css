@@ -172,6 +172,51 @@ nav button {
   position: relative;
 }
 
+#timeTable td.upcoming-active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 2px;
+  width: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  opacity: 0.5;
+  background-image: radial-gradient(circle at 50% 0%, #00ff64 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+#timeTable td.ongoing-active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 2px;
+  width: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  opacity: 0.5;
+  background-image: radial-gradient(circle at 50% 0%, red 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+#timeTable td.note-added::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 2px;
+  width: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  opacity: 0.5;
+  background-image: radial-gradient(circle at 100% 0%, cyan 0%, rgba(0, 0, 0, 0) 10%);
+  top: initial;
+  left: initial;
+  right: 0;
+  bottom: 0;
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
 #timeTable td *,
 #timeTable td p,
 #timeTable td span {

@@ -1,4 +1,19 @@
 $borderWidth: 2px;
+$indicator-height: 2px;
+$indicator-opacity: 0.5;
+
+@mixin indicator {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: $indicator-height;
+  width: 50%;
+  transform: translateX(-50%);
+  opacity: $indicator-opacity;
+
+  @content;
+}
 
 #timeTable {
   border-spacing: 1px;
@@ -23,6 +38,42 @@ $borderWidth: 2px;
     padding: get-padding("less") get-padding("default");
     background: get-color("dark-2");
     position: relative;
+
+    // indicators
+    &.upcoming-active::after {
+      @include indicator {
+        background-image: radial-gradient(
+          circle at 50% 0%,
+          rgb(0, 255, 100) 0%,
+          rgba(0, 0, 0, 0) 100%
+        );
+      }
+    }
+
+    &.ongoing-active::after {
+      @include indicator {
+        background-image: radial-gradient(
+          circle at 50% 0%,
+          rgba(255, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 0) 100%
+        );
+      }
+    }
+    &.note-added::before {
+      @include indicator {
+        background-image: radial-gradient(
+          circle at 100% 0%,
+          rgb(0, 255, 255) 0%,
+          rgba(0, 0, 0, 0) 10%
+        );
+        top: initial;
+        left: initial;
+        right: 0;
+        bottom: 0;
+        transform: translateX(0%);
+      }
+    }
+
     *,
     p,
     span {
