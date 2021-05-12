@@ -12,6 +12,7 @@ nav {
   background-color: get-color("dark-1");
   box-shadow: $box-shadow;
   z-index: 100;
+
   button {
     @include round-button;
   }

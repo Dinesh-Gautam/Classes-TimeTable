@@ -22,3 +22,9 @@
   font-size: $font-size - 2px;
   box-shadow: $box-shadow-light;
 }
+
+@mixin mobile {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}

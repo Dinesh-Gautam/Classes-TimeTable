@@ -3,6 +3,7 @@
   flex-direction: column;
   width: 100%;
   max-width: $maxWidth-classContainer;
+  gap: $gap-dafault;
 
   .info-view-popup {
     display: none;

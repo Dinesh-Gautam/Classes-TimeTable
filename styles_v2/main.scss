@@ -7,6 +7,7 @@
 @import "./note";
 @import "./contextMenu";
 @import "./classInfo";
+@import "./responsive";
 
 main {
   display: grid;
@@ -14,4 +15,21 @@ main {
   justify-items: center;
 
   padding: $minHeight-nav - 1rem;
+}
+
+@media (max-width: 1200px) {
+  header {
+    display: none;
+  }
+  .mobile-view-table {
+    display: block;
+  }
+  body {
+    main {
+      min-height: 18rem;
+    }
+    table {
+      display: none;
+    }
+  }
 }

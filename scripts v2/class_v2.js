@@ -232,13 +232,6 @@ const responsive = {
 
 window.addEventListener("resize", () => (responsive.mv = checkMv(1200)));
 
-// function getOffset(element) {
-//   return {
-//     top: element.el.getBoundingClientRect().top,
-//     left: element.el.getBoundingClientRect().left,
-//   };
-// }
-
 function checkMv(width) {
   return window.innerWidth < width;
 }

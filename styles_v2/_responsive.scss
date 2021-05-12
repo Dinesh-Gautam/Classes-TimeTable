@@ -1,0 +1,30 @@
+.mobile-view-table {
+  display: none;
+
+  .day-container {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    outline: none;
+    padding: get-padding(less);
+    background: get-color(dark-1-alpha);
+    backdrop-filter: blur($blur-default);
+    display: flex;
+
+    span {
+      @include flex-center;
+      flex: 1;
+    }
+    button {
+      opacity: 0.7;
+    }
+  }
+
+  .class-container {
+    max-width: 100%;
+    padding: $gap-dafault;
+    .class {
+      box-shadow: $box-shadow-light;
+    }
+  }
+}
