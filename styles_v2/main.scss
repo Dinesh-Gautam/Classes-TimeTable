@@ -27,6 +27,9 @@ main {
   body {
     main {
       min-height: 18rem;
+      .class-container {
+        grid-row: 1/-1;
+      }
     }
     table {
       display: none;

@@ -28,3 +28,62 @@
     }
   }
 }
+
+.mv-popup-modal-container {
+  &.mv-none {
+    display: none;
+  }
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 9999;
+  background: get-color(dark-1-alpha);
+  backdrop-filter: blur($blur-default);
+  display: flex;
+  flex-direction: column;
+
+  .popup-header {
+    @include flex-center;
+    padding: get-padding(less) get-padding(default);
+    margin-bottom: get-padding(less);
+    border-bottom: 2px solid get-color(dark-3-alpha);
+
+    .popup-header-title {
+      flex: 1;
+      p {
+        font-size: $font-size * 1.2;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .popup-content {
+    padding: 0 get-padding(less);
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+  .popup-buttons {
+    display: flex;
+    gap: $gap-dafault;
+    padding: get-padding(default);
+    button {
+      flex: 1;
+      @include large-button;
+    }
+  }
+
+  .edit-modal {
+    position: static;
+    min-width: 100%;
+    overflow: hidden;
+    background: none;
+    box-shadow: none;
+    transform: none;
+    backdrop-filter: none;
+  }
+}

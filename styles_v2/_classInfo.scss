@@ -16,9 +16,10 @@
     min-width: 100%;
     flex-wrap: nowrap;
     box-shadow: $box-shadow;
-
+    gap: 1px;
     .class-wraper {
       flex: 1;
+      backdrop-filter: blur($blur-default);
 
       .time-container {
         @include flex-center;

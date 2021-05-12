@@ -476,12 +476,15 @@ main {
       flex-wrap: nowrap;
   -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
           box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+  gap: 1px;
 }
 
 .class-container .class .class-wraper {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  -webkit-backdrop-filter: blur(24px);
+          backdrop-filter: blur(24px);
 }
 
 .class-container .class .class-wraper .time-container {
@@ -600,6 +603,95 @@ main {
           box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
 }
 
+.mv-popup-modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 9999;
+  background: rgba(24, 24, 24, 0.8);
+  -webkit-backdrop-filter: blur(24px);
+          backdrop-filter: blur(24px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.mv-popup-modal-container.mv-none {
+  display: none;
+}
+
+.mv-popup-modal-container .popup-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 18px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid rgba(52, 52, 52, 0.4);
+}
+
+.mv-popup-modal-container .popup-header .popup-header-title {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.mv-popup-modal-container .popup-header .popup-header-title p {
+  font-size: 19.2px;
+  font-weight: bold;
+}
+
+.mv-popup-modal-container .popup-content {
+  padding: 0 10px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.mv-popup-modal-container .popup-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+  padding: 18px;
+}
+
+.mv-popup-modal-container .popup-buttons button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.mv-popup-modal-container .popup-buttons button:hover {
+  background: #343434;
+}
+
+.mv-popup-modal-container .edit-modal {
+  position: static;
+  min-width: 100%;
+  overflow: hidden;
+  background: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transform: none;
+          transform: none;
+  -webkit-backdrop-filter: none;
+          backdrop-filter: none;
+}
+
 main {
   display: -ms-grid;
   display: grid;
@@ -618,6 +710,9 @@ main {
   }
   body main {
     min-height: 18rem;
+  }
+  body main .class-container {
+    grid-row: 1/-1;
   }
   body table {
     display: none;
