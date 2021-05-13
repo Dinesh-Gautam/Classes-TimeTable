@@ -13,8 +13,11 @@ main {
   display: grid;
   grid-template-rows: 1fr 1fr;
   justify-items: center;
-
   padding: $minHeight-nav - 1rem;
+}
+
+.mobile-view-table {
+  display: none;
 }
 
 @media (max-width: 1200px) {

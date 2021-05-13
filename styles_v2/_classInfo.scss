@@ -59,3 +59,50 @@
     }
   }
 }
+
+.info-view-popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: $maxWidth-classContainer;
+  background: get-color(light-1);
+  color: get-color(dark);
+  padding: get-padding(less) get-padding(default);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(50%);
+  transition: all $transitionDuration ease-in-out;
+  box-shadow: $box-shadow-1;
+
+  .info-container {
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+    overflow: hidden;
+
+    P {
+      opacity: 0;
+      overflow: hidden;
+      font-size: $font-size - 4px;
+      transform: translateY(100%);
+      transition: opacity $transitionDuration-slow + 100 ease-in-out,
+        transform $transitionDuration-slow ease-in-out;
+    }
+
+    span {
+      display: block;
+      font-size: $font-size;
+      margin-right: get-margin(default);
+    }
+  }
+
+  &.active {
+    opacity: 1;
+    transform: translateY(0%);
+    pointer-events: all;
+    p {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+}
