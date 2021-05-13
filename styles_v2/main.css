@@ -607,8 +607,6 @@ main {
 
 .info-view-popup {
   position: absolute;
-  top: 0;
-  left: 0;
   max-width: 30rem;
   background: #f9f9f9;
   color: #141414;
@@ -621,6 +619,7 @@ main {
   transition: all 200ms ease-in-out;
   -webkit-box-shadow: 0 0 32px rgba(0, 0, 0, 0.8);
           box-shadow: 0 0 32px rgba(0, 0, 0, 0.8);
+  z-index: 999;
 }
 
 .info-view-popup .info-container {
@@ -656,7 +655,6 @@ main {
   opacity: 1;
   -webkit-transform: translateY(0%);
           transform: translateY(0%);
-  pointer-events: all;
 }
 
 .info-view-popup.active p {

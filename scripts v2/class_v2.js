@@ -295,6 +295,55 @@ const mv = {
   NoteValue: document.querySelector(".popup-content .note-input"),
 };
 
+const navHeight = document.querySelector("header").clientHeight;
+console.log(navHeight);
+
+const infoViewBtn = document.querySelectorAll(".view-btn"),
+  [ongoingInfoPopup, upcomingInfoPopup] = document.querySelectorAll(
+    ".ongoingClass-info , .upcomingClass-info"
+  );
+
+// class info poup;
+
+infoViewBtn.forEach((btn) => {
+  let rect = btn.getBoundingClientRect(),
+    y = rect.top - navHeight - 110 + "px";
+  x = rect.right - 300 + "px";
+
+  const className = btn.classList;
+
+  if (x !== null) {
+    if (className.contains("ongoing")) {
+      ongoingInfoPopup.style.top = y;
+      ongoingInfoPopup.style.right = x;
+    } else {
+      upcomingInfoPopup.style.top = y;
+      upcomingInfoPopup.style.right = x;
+    }
+  }
+
+  btn.addEventListener("mouseenter", (event) => {
+    infoPopupDisplay(true, event.target);
+  });
+  btn.addEventListener("mouseleave", (event) => {
+    infoPopupDisplay(false, event.target);
+  });
+});
+
+function infoPopupDisplay(view, target) {
+  const className = target.classList;
+
+  if (view) {
+    className.contains("ongoing")
+      ? ongoingInfoPopup.classList.add("active")
+      : upcomingInfoPopup.classList.add("active");
+  } else {
+    className.contains("ongoing")
+      ? ongoingInfoPopup.classList.remove("active")
+      : upcomingInfoPopup.classList.remove("active");
+  }
+}
+
 CURRENT_STATUS.TimeUpdate();
 setInterval(() => {
   compelete_update();
