@@ -28,7 +28,8 @@ $minHeight-textarea: 12rem;
 $maxWidth-modal: 28rem;
 $maxWidth-classContainer: 30rem;
 
-$gap-dafault: $minHeight-nav - 2rem;
+$gap-less: 1px;
+$gap-default: $minHeight-nav - 2rem;
 
 $transitionDuration-less: 100ms;
 $transitionDuration: 200ms;

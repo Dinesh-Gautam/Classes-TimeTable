@@ -10,14 +10,10 @@
 @import "./responsive";
 
 main {
+  flex: 1;
   display: grid;
-  grid-template-rows: 1fr 1fr;
-  justify-items: center;
-  padding: $minHeight-nav - 1rem;
-}
-
-.mobile-view-table {
-  display: none;
+  grid-template-rows: 2fr 1fr;
+  place-items: center;
 }
 
 @media (max-width: 1200px) {

@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 100%;
   max-width: $maxWidth-classContainer;
-  gap: $gap-dafault;
+  gap: $gap-default;
 
   .info-view-popup {
     display: none;
@@ -16,11 +16,10 @@
     min-width: 100%;
     flex-wrap: nowrap;
     box-shadow: $box-shadow;
-    gap: 1px;
+    gap: $gap-less;
     .class-wraper {
       flex: 1;
       backdrop-filter: blur($blur-default);
-
       .time-container {
         @include flex-center;
         justify-content: flex-start;
@@ -38,6 +37,8 @@
         padding: get-padding(less) get-padding(default);
         font-weight: bold;
         text-transform: capitalize;
+        margin-top: $gap-less;
+        margin-bottom: $gap-less;
       }
 
       .text-wraper {
