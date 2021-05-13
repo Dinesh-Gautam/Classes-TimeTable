@@ -19,7 +19,6 @@ $indicator-opacity: 0.5;
   border-spacing: 1px;
   border-collapse: separate;
   table-layout: fixed;
-  // margin: 2rem;
   position: relative;
   opacity: 1;
   border-radius: 0 0 0 0%;
@@ -90,7 +89,8 @@ $indicator-opacity: 0.5;
   .noClassBox,
   .timeBox,
   .dayBox {
-    background: rgba(get-color("dark-1"), $alpha: 0.9);
+    background: rgba($color: get-color(dark-1), $alpha: 0.95);
+    backdrop-filter: blur($blur-default);
   }
   #emptyTableBox {
     background: get-color("dark");

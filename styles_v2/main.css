@@ -247,7 +247,9 @@ nav button {
 #timeTable .noClassBox,
 #timeTable .timeBox,
 #timeTable .dayBox {
-  background: rgba(24, 24, 24, 0.9);
+  background: rgba(24, 24, 24, 0.95);
+  -webkit-backdrop-filter: blur(24px);
+          backdrop-filter: blur(24px);
 }
 
 #timeTable #emptyTableBox {
@@ -587,7 +589,6 @@ main {
   font-weight: bold;
   text-transform: capitalize;
   margin-top: 1px;
-  margin-bottom: 1px;
 }
 
 .class-container .class .class-wraper .text-wraper {

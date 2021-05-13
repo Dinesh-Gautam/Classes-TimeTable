@@ -238,15 +238,18 @@ function checkMv(width) {
 
 const ongoingClass_DOM_selector = document.querySelector(".ongoingClass");
 const upcomingClass_DOM_selector = document.querySelector(".upcomingClass");
-const ongoinhSubject =
-  ongoingClass_DOM_selector.querySelector(".ongoingClass-text");
-const ongoingClassTime =
-  ongoingClass_DOM_selector.querySelector(".time-container");
+const ongoinhSubject = ongoingClass_DOM_selector.querySelector(
+  ".ongoingClass-text"
+);
+const ongoingClassTime = ongoingClass_DOM_selector.querySelector(
+  ".time-container"
+);
 const upcomingClassSubject = upcomingClass_DOM_selector.querySelector(
   ".upcomingClass-text"
 );
-const upcomingClassTime =
-  upcomingClass_DOM_selector.querySelector(".time-container");
+const upcomingClassTime = upcomingClass_DOM_selector.querySelector(
+  ".time-container"
+);
 const ongoingClassJoinLink = document.getElementById("ongoingClass-joinLink");
 const upcomingClassJoinLink = document.getElementById("upcomingClass-joinLink");
 const [ongoingClassIdView, ongoingClassPassView] = document.querySelectorAll(
@@ -296,7 +299,6 @@ const mv = {
 };
 
 const navHeight = document.querySelector("header").clientHeight;
-console.log(navHeight);
 
 const infoViewBtn = document.querySelectorAll(".view-btn"),
   [ongoingInfoPopup, upcomingInfoPopup] = document.querySelectorAll(
