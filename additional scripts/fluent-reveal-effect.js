@@ -187,13 +187,16 @@ function drawEffect(
   if (cssLightEffect === null) {
     lightBg = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0))`;
 
-    if (false && element.el.id === "timeTable") {
-      lightBg = `radial-gradient(circle  ${gradientSize}px at ${x}px ${y}px, #69FF97 20% , rgba(0, 228, 255, 0.5) 50% , rgba(0,0,0,0)`;
-    }
+    // if (true && element.el.id === "timeTable") {
+    //   // lightBg = `radial-gradient(circle  ${gradientSize}px at ${x}px ${y}px, #69FF97 20% , rgba(0, 228, 255, 0.5) 50% , rgba(0,0,0,0)`;
+    //   // lightBg = `url(./assets/gradient-2.png)`;
+
+    //   // element.el.style.backgroundPosition = x + "px" + " " + y + "px";
+    //   // element.el.style.backgroundSize = gradientSize + 50 + "px";
+    // }
   } else {
     lightBg = cssLightEffect;
   }
-
   element.el.style.backgroundImage = lightBg;
 }
 
