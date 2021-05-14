@@ -238,18 +238,15 @@ function checkMv(width) {
 
 const ongoingClass_DOM_selector = document.querySelector(".ongoingClass");
 const upcomingClass_DOM_selector = document.querySelector(".upcomingClass");
-const ongoinhSubject = ongoingClass_DOM_selector.querySelector(
-  ".ongoingClass-text"
-);
-const ongoingClassTime = ongoingClass_DOM_selector.querySelector(
-  ".time-container"
-);
+const ongoinhSubject =
+  ongoingClass_DOM_selector.querySelector(".ongoingClass-text");
+const ongoingClassTime =
+  ongoingClass_DOM_selector.querySelector(".time-container");
 const upcomingClassSubject = upcomingClass_DOM_selector.querySelector(
   ".upcomingClass-text"
 );
-const upcomingClassTime = upcomingClass_DOM_selector.querySelector(
-  ".time-container"
-);
+const upcomingClassTime =
+  upcomingClass_DOM_selector.querySelector(".time-container");
 const ongoingClassJoinLink = document.getElementById("ongoingClass-joinLink");
 const upcomingClassJoinLink = document.getElementById("upcomingClass-joinLink");
 const [ongoingClassIdView, ongoingClassPassView] = document.querySelectorAll(
@@ -309,7 +306,7 @@ const infoViewBtn = document.querySelectorAll(".view-btn"),
 
 infoViewBtn.forEach((btn) => {
   let rect = btn.getBoundingClientRect(),
-    y = rect.top - navHeight - 110 + "px";
+    y = rect.top - navHeight - 60 + "px";
   x = rect.right - 300 + "px";
 
   const className = btn.classList;

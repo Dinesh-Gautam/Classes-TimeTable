@@ -646,6 +646,7 @@ main {
           justify-content: flex-start;
   text-align: left;
   overflow: hidden;
+  gap: 36px;
 }
 
 .info-view-popup .info-container P {
@@ -663,7 +664,6 @@ main {
 .info-view-popup .info-container span {
   display: block;
   font-size: 16px;
-  margin-right: 18px;
 }
 
 .info-view-popup.active {
@@ -821,8 +821,9 @@ main {
           flex: 1;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 2fr 1fr;
-      grid-template-rows: 2fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  padding: 2rem;
   place-items: center;
 }
 

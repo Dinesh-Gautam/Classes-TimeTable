@@ -78,6 +78,7 @@
     justify-content: flex-start;
     text-align: left;
     overflow: hidden;
+    gap: get-margin(default) * 2;
 
     P {
       opacity: 0;
@@ -91,7 +92,6 @@
     span {
       display: block;
       font-size: $font-size;
-      margin-right: get-margin(default);
     }
   }
 
