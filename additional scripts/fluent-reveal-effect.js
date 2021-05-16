@@ -197,6 +197,7 @@ function drawEffect(
   } else {
     lightBg = cssLightEffect;
   }
+
   element.el.style.backgroundImage = lightBg;
 }
 

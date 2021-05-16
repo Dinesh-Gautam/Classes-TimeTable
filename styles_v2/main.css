@@ -22,6 +22,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   min-height: 100vh;
+  overflow: hidden;
   color: #f9f9f9;
 }
 
@@ -825,6 +826,7 @@ main {
       grid-template-rows: 1fr 1fr;
   padding: 2rem;
   place-items: center;
+  max-height: 60rem;
 }
 
 @media (max-width: 1200px) {
@@ -834,8 +836,14 @@ main {
   .mobile-view-table {
     display: block;
   }
+  body {
+    overflow: auto;
+  }
   body main {
     min-height: 18rem;
+    -webkit-box-flex: 0;
+        -ms-flex: 0;
+            flex: 0;
   }
   body main .class-container {
     grid-row: 1/-1;

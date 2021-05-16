@@ -15,6 +15,7 @@ main {
   grid-template-rows: 1fr 1fr;
   padding: 2rem;
   place-items: center;
+  max-height: $maxWidth-classContainer * 2;
 }
 
 @media (max-width: 1200px) {
@@ -25,8 +26,10 @@ main {
     display: block;
   }
   body {
+    overflow: auto;
     main {
       min-height: 18rem;
+      flex: 0;
       .class-container {
         grid-row: 1/-1;
       }
