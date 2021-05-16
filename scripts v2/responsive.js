@@ -57,7 +57,10 @@ function setClassList(cday) {
          
              </div>
              <div class="join-link">
-                 <a id="ongoingClass-joinLink" href="">Join</a>
+                 <a id="ongoingClass-joinLink" href=${CLASS.linkGenrator(
+                   c.meetingId,
+                   c.meetingPass
+                 )}>Join</a>
              </div>
          </div>`)
       );
@@ -74,59 +77,59 @@ function setClassList(cday) {
   });
 }
 
-const MOBILE_EDIT_MODAL = {
-  subject_name: undefined,
-  id: 0,
-  class: null,
-  open(event) {
-    this.id = event.id;
-    this.class = this.find_class(this.id);
-    this.subject_name = this.class.subject;
-    this.set_values();
-    this.visible(true);
-  },
-  visible(visible) {
-    visible
-      ? mv.EditModal.classList.remove("mv-none")
-      : mv.EditModal.classList.add("mv-none");
-  },
-  cancle() {
-    this.set_values({ clear: true });
-    this.visible(false);
-  },
-  save() {
-    if (!mv.meetingIdValue.value || !mv.meetingPassValue.value) {
-      alert("value can't be empty");
-    } else {
-      for (key in timeTable) {
-        timeTable[key].forEach((e) => {
-          if (this.class.subject.toLowerCase() === e.subject.toLowerCase()) {
-            e.meetingId = mv.meetingIdValue.value.split(" ").join("");
-            e.meetingPass = mv.meetingPassValue.value;
-          }
-        });
-      }
-      localStorage.setItem("timeTable", JSON.stringify(timeTable));
-      compelete_update();
-      this.cancle();
-    }
-  },
-  find_class(get_id) {
-    let getClass;
-    for (key in timeTable) {
-      timeTable[key].forEach((e) => {
-        if (e.uid == get_id) {
-          getClass = e;
-        }
-      });
-    }
-    return getClass;
-  },
-  set_values({ clear = false } = {}) {
-    mv.meetingIdValue.value = clear ? "" : this.class.meetingId;
-    mv.meetingPassValue.value = clear ? "" : this.class.meetingPass;
-  },
-};
+// const MOBILE_EDIT_MODAL = {
+//   subject_name: undefined,
+//   id: 0,
+//   class: null,
+//   open(event) {
+//     this.id = event.id;
+//     this.class = this.find_class(this.id);
+//     this.subject_name = this.class.subject;
+//     this.set_values();
+//     this.visible(true);
+//   },
+//   visible(visible) {
+//     visible
+//       ? mv.EditModal.classList.remove("mv-none")
+//       : mv.EditModal.classList.add("mv-none");
+//   },
+//   cancle() {
+//     this.set_values({ clear: true });
+//     this.visible(false);
+//   },
+//   save() {
+//     if (!mv.meetingIdValue.value || !mv.meetingPassValue.value) {
+//       alert("value can't be empty");
+//     } else {
+//       for (key in timeTable) {
+//         timeTable[key].forEach((e) => {
+//           if (this.class.subject.toLowerCase() === e.subject.toLowerCase()) {
+//             e.meetingId = mv.meetingIdValue.value.split(" ").join("");
+//             e.meetingPass = mv.meetingPassValue.value;
+//           }
+//         });
+//       }
+//       localStorage.setItem("timeTable", JSON.stringify(timeTable));
+//       compelete_update();
+//       this.cancle();
+//     }
+//   },
+//   find_class(get_id) {
+//     let getClass;
+//     for (key in timeTable) {
+//       timeTable[key].forEach((e) => {
+//         if (e.uid == get_id) {
+//           getClass = e;
+//         }
+//       });
+//     }
+//     return getClass;
+//   },
+//   set_values({ clear = false } = {}) {
+//     mv.meetingIdValue.value = clear ? "" : this.class.meetingId;
+//     mv.meetingPassValue.value = clear ? "" : this.class.meetingPass;
+//   },
+// };
 
 function setDisplayNone(element) {
   element.classList.add("mv-none");
