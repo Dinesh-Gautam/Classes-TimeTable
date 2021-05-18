@@ -199,9 +199,15 @@
         <div id="undefined" class="edit-modal display">
             <form>
                 <label for="meeting-field">Meeting ID :</label><input class="meeting-id-input" name="meeting-field"
-                    type="text">
+                    type="text" placeholder="ID">
                 <label for="pass-field">Meeting Pass :</label><input class="meeting-pass-input" name="pass-field"
-                    type="text">
+                    type="text" placeholder="Passwrod">
+                <span>
+                    or
+                </span>
+
+                <label for="link-field">Meeting link :</label><input class="meeting-link-input" name="link-field"
+                    type="text" placeholder="https://www.example.com">
             </form>
             <div class="control-btns">
                 <button onclick="EDIT_MODAL.cancle()">Cancel</button>

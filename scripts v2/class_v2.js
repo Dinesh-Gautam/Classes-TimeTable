@@ -261,6 +261,7 @@ const dayBoxTimeTable = document.querySelectorAll(".dayBox");
 
 const meetingIdValue = document.querySelector(".meeting-id-input");
 const meetingPassValue = document.querySelector(".meeting-pass-input");
+const meetingLinkValue = document.querySelector(".meeting-link-input");
 const NoteValue = document.querySelector(".note-input");
 
 const [ongoing_editBtn, upcoming_editBtn] = document.querySelectorAll(
@@ -455,13 +456,21 @@ const CLASS = {
         time.innerText = timeStringCreator(classObj);
         idView.innerText = classObj.meetingId;
         passView.innerText = classObj.meetingPass;
-        link.href = linkGenrator(classObj.meetingId, classObj.meetingPass);
+        link.href = linkGenrator(
+          classObj.meetingId,
+          classObj.meetingPass,
+          classObj
+        );
         editBtn_id.id = classObj.uid;
       }
     }
   },
 
-  linkGenrator(id, pass) {
+  linkGenrator(id, pass, classObj = false) {
+    if (classObj.meetingLink && classObj) {
+      return classObj.meetingLink;
+    }
+
     return `zoommtg://zoom.us/join?confno=${id}&pwd=${pass}`;
   },
 };
@@ -495,6 +504,7 @@ const EDIT_MODAL = {
     this.meetingPassValue = responsive.mv
       ? mv.meetingPassValue
       : meetingPassValue;
+    this.meetingLinkValue = meetingLinkValue;
     this.set_values();
     this.visible(true);
   },
@@ -512,20 +522,28 @@ const EDIT_MODAL = {
     this.visible(false);
   },
   save() {
-    if (!this.meetingIdValue.value || !this.meetingPassValue.value) {
-      alert("value can't be empty");
+    if (this.meetingLinkValue.value) {
+      saveMeetingIdAndPass(this);
+      return;
+    } else if (!this.meetingIdValue.value || !this.meetingPassValue.value) {
+      alert("Enter meeting ID and Password or Link");
+      return;
     } else {
+      saveMeetingIdAndPass(this);
+    }
+    function saveMeetingIdAndPass(scope) {
       for (key in timeTable) {
         timeTable[key].forEach((e) => {
-          if (this.class.subject.toLowerCase() === e.subject.toLowerCase()) {
-            e.meetingId = this.meetingIdValue.value.split(" ").join("");
-            e.meetingPass = this.meetingPassValue.value;
+          if (scope.class.subject.toLowerCase() === e.subject.toLowerCase()) {
+            e.meetingLink = scope.meetingLinkValue.value;
+            e.meetingId = scope.meetingIdValue.value.split(" ").join("");
+            e.meetingPass = scope.meetingPassValue.value;
           }
         });
       }
       localStorage.setItem("timeTable", JSON.stringify(timeTable));
       compelete_update();
-      this.cancle();
+      scope.cancle();
     }
   },
   find_class(get_id) {
@@ -540,8 +558,9 @@ const EDIT_MODAL = {
     return getClass;
   },
   set_values({ clear = false } = {}) {
-    this.meetingIdValue.value = clear ? "" : this.class.meetingId;
-    this.meetingPassValue.value = clear ? "" : this.class.meetingPass;
+    this.meetingIdValue.value = clear ? "" : this.class.meetingId || "";
+    this.meetingPassValue.value = clear ? "" : this.class.meetingPass || "";
+    this.meetingLinkValue.value = clear ? "" : this.class.meetingLink || "";
   },
 };
 
@@ -695,7 +714,11 @@ const CUSTOM_contextmenu = {
       this.Clicked_Class.meetingPass,
     ];
 
-    ContextMenu_JoinLink.href = CLASS.linkGenrator(meeting_id, meeting_pass);
+    ContextMenu_JoinLink.href = CLASS.linkGenrator(
+      meeting_id,
+      meeting_pass,
+      this.Clicked_Class
+    );
   },
   modifier() {
     document.querySelector(".TimeTable_addNoteBtn").innerText = this
