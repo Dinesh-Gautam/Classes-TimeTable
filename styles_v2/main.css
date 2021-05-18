@@ -304,6 +304,15 @@ main {
   margin: 6px 18px;
 }
 
+.edit-modal form span {
+  display: block;
+  font-size: 12px;
+  color: #b8b8b8;
+  width: 100%;
+  margin-top: 6px;
+  text-align: center;
+}
+
 .edit-modal input,
 .edit-modal label {
   display: block;
