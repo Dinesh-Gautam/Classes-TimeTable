@@ -54,7 +54,7 @@ input:not(input[type="checkbox"]),
 textarea {
   background: get-color(dark-3-alpha);
   border: none;
-  padding: get-padding(less) - 4px get-padding(less) - 4px;
+  padding: get-padding(less) - 4px get-padding(less);
   color: get-color(light-1);
   font-size: $font-size;
   outline: none;
