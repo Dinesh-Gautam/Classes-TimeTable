@@ -1,0 +1,30 @@
+.general-note {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: $maxWidth-modal - 4rem;
+  box-shadow: $box-shadow;
+  backdrop-filter: blur($blur-default);
+  &-header {
+    background: get-color(dark-2-alpha);
+    @include flex-center;
+    .header-title {
+      flex: 1;
+    }
+    button {
+      background: none;
+      backdrop-filter: none;
+      padding: get-padding(less) - 2px get-padding(default);
+      font-size: $font-size - 2px;
+    }
+  }
+
+  &-body {
+    background: get-color(dark-1-alpha);
+    padding: get-padding(less);
+    .body-content {
+      font-size: $font-size - 2px;
+    }
+  }
+}
