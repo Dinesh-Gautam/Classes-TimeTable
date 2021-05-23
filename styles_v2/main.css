@@ -827,8 +827,8 @@ main {
 
 .general-note {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 1em;
+  left: 1em;
   z-index: 9999;
   width: 24rem;
   -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
@@ -866,11 +866,19 @@ main {
 
 .general-note-body {
   background: rgba(24, 24, 24, 0.8);
-  padding: 10px;
 }
 
 .general-note-body .body-content {
   font-size: 14px;
+  padding: 10px;
+  background: none;
+  -webkit-backdrop-filter: none;
+          backdrop-filter: none;
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  resize: none;
 }
 
 main {

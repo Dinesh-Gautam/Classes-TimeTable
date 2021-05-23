@@ -1,7 +1,7 @@
 .general-note {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 1em;
+  left: 1em;
   z-index: 9999;
   width: $maxWidth-modal - 4rem;
   box-shadow: $box-shadow;
@@ -22,9 +22,14 @@
 
   &-body {
     background: get-color(dark-1-alpha);
-    padding: get-padding(less);
     .body-content {
       font-size: $font-size - 2px;
+      padding: get-padding(less);
+      background: none;
+      backdrop-filter: none;
+      width: 100%;
+      height: fit-content;
+      resize: none;
     }
   }
 }

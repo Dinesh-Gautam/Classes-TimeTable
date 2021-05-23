@@ -759,14 +759,12 @@ const GENERAL_NOTE = {
   },
   //use type in the arrugement to determine to add a new note or updated an exinsting note
   addNote() {
-    console.log(this.notes);
     this.notes.push(new GeneralNote());
     GeneralNote.setGeneralNotesInLocalStorage("new", this.notes);
     this.updateNotes();
   },
 
   updateNotes() {
-    console.log(this.notes);
   },
 };
 
