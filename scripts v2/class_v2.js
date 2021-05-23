@@ -303,7 +303,7 @@ const infoViewBtn = document.querySelectorAll(".view-btn"),
     ".ongoingClass-info , .upcomingClass-info"
   );
 
-// class info poup;
+// class info popup;
 
 infoViewBtn.forEach((btn) => {
   let rect = btn.getBoundingClientRect(),
@@ -740,32 +740,37 @@ class GeneralNote {
     this.noteValue = noteValue;
   }
   createGeneralNoteDom() {}
-  static getGeneralNotesFromLocalStorage() {}
-  static setGeneralNotesInLocalStorage() {}
 }
 
 const GENERAL_NOTE = {
   notes: [],
 
-  noteUpdated() {
-    this.notes = this.mapNotes();
-  },
+  noteUpdated(once = false) {
+    if (once) {
+      this.getGeneralNotesFromLocalStorage();
+      this.updateNotesDOM(true);
+      return;
+    }
 
-  mapNotes() {
-    return GeneralNote.getGeneralNotesFromLocalStorage()?.map(
-      (note) =>
-        new GeneralNote(note.id, note.position.x, note.position.y, note.value)
-    );
+    this.updateNotesDOM();
   },
-  //use type in the arrugement to determine to add a new note or updated an exinsting note
+  //use type in the argument to determine to add a new note or updated an existing note
   addNote() {
     this.notes.push(new GeneralNote());
-    GeneralNote.setGeneralNotesInLocalStorage("new", this.notes);
-    this.updateNotes();
+    this.noteUpdated();
   },
 
-  updateNotes() {
+  updateNotesDOM(once = false) {
+    if (once) {
+      this.notes.forEach((note) => console.log(note));
+      return;
+    }
+    console.log(this.notes[this.notes.length - 1]);
   },
+
+  getGeneralNotesFromLocalStorage() {},
+
+  setGeneralNotesInLocalStorage() {},
 };
 
 const NOTE_MODAL = {
@@ -931,6 +936,7 @@ function compelete_update() {
   CLASS.ongoingClassUpdate();
   CLASS.upcomingClassUpdate();
   CLASS.DOM_update();
+  GENERAL_NOTE.noteUpdated(true);
   DOM_timeTable.update();
 }
 compelete_update();
