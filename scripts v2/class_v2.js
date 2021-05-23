@@ -734,7 +734,7 @@ const CUSTOM_contextmenu = {
   },
 };
 
-class GeneralNotes {
+class GeneralNote {
   constructor(id, x, y, noteValue) {
     (this.noteId = id), (this.position = { x: x, y: y });
     this.noteValue = noteValue;
@@ -744,27 +744,31 @@ class GeneralNotes {
   static setGeneralNotesInLocalStorage() {}
 }
 
-// const GENERAL_NOTE = {
-//   notes : this.mapNotes(),
+const GENERAL_NOTE = {
+  notes: [],
 
-//   noteUpdated() {
-//     this.notes = this.mapNotes()
-//   },
+  noteUpdated() {
+    this.notes = this.mapNotes();
+  },
 
-//   mapNotes() {
-//   return GeneralNotes.getGeneralNotesFromLocalStorage().map(note => new GeneralNotes(note.id, note.position.x , note.position.y , note.value))
-//   },
-//   //use type in the arrugement to determine to add a new note or updated an exinsting note
-//   addNote() {
-//     GeneralNotes.setGeneralNotesInLocalStorage()
-//     this.noteUpdated()
-//   },
+  mapNotes() {
+    return GeneralNote.getGeneralNotesFromLocalStorage()?.map(
+      (note) =>
+        new GeneralNote(note.id, note.position.x, note.position.y, note.value)
+    );
+  },
+  //use type in the arrugement to determine to add a new note or updated an exinsting note
+  addNote() {
+    console.log(this.notes);
+    this.notes.push(new GeneralNote());
+    GeneralNote.setGeneralNotesInLocalStorage("new", this.notes);
+    this.updateNotes();
+  },
 
-//   updateNotes() {
-
-//   }
-
-// }
+  updateNotes() {
+    console.log(this.notes);
+  },
+};
 
 const NOTE_MODAL = {
   class: null,
