@@ -739,7 +739,26 @@ class GeneralNote {
     (this.noteId = id), (this.position = { x: x, y: y });
     this.noteValue = noteValue;
   }
-  createGeneralNoteDom() {}
+  createGeneralNoteDOM() {
+    const DOMTemplet = ` 
+    <div class="general-note-header">
+        <div class="header-title"></div>
+        <div class="header-btns">
+            <button id=${this.noteId}>
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <div class="general-note-body">
+        <textarea class="body-content">${this.noteValue}</textarea>
+    </div>
+`;
+    const div = document.createElement("div");
+    div.className = "general-note";
+    div.innerHTML = DOMTemplet;
+
+    document.body.appendChild(div);
+  }
 }
 
 const GENERAL_NOTE = {
@@ -762,10 +781,10 @@ const GENERAL_NOTE = {
 
   updateNotesDOM(once = false) {
     if (once) {
-      this.notes.forEach((note) => console.log(note));
+      this.notes.forEach((note) => note.createGeneralNoteDOM());
       return;
     }
-    console.log(this.notes[this.notes.length - 1]);
+    this.notes[this.notes.length - 1].createGeneralNoteDOM();
   },
 
   getGeneralNotesFromLocalStorage() {},
