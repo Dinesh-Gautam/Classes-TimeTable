@@ -738,6 +738,7 @@ class GeneralNote {
   constructor(id, x, y, noteValue) {
     (this.noteId = id), (this.position = { x: x, y: y });
     this.noteValue = noteValue;
+    this.draggableEnabled = false;
   }
   createGeneralNoteDOM() {
     const DOMTemplet = ` 
@@ -750,14 +751,54 @@ class GeneralNote {
         </div>
     </div>
     <div class="general-note-body">
-        <textarea class="body-content">${this.noteValue}</textarea>
+        <textarea class="body-content">${this.noteValue || ""}</textarea>
     </div>
-`;
+  `;
     const div = document.createElement("div");
     div.className = "general-note";
     div.innerHTML = DOMTemplet;
-
+    this.enableDraggable(div);
     document.body.appendChild(div);
+  }
+  enableDraggable(elmnt) {
+    this.draggableEnabled = true;
+    let pos1 = 0,
+      pos2 = 0,
+      pos3 = 0,
+      pos4 = 0;
+    elmnt.querySelector(".general-note-header").onmousedown = dragMouseDown;
+
+    function dragMouseDown(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // get the mouse cursor position at startup:
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
+      // call a function whenever the cursor moves:
+      document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // calculate the new cursor position:
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      // set the element's new position:
+      elmnt.style.top = elmnt.offsetTop - pos2 + "px";
+      elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
+      this.x = elmnt.style.top;
+      this.y = elmnt.style.left;
+    }
+
+    function closeDragElement() {
+      // stop moving when mouse button is released:
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
   }
 }
 
@@ -785,6 +826,14 @@ const GENERAL_NOTE = {
       return;
     }
     this.notes[this.notes.length - 1].createGeneralNoteDOM();
+
+    // document
+    //   .querySelectorAll(".general-note")
+    //   .forEach((element) => enableDraggable(element));
+  },
+
+  createID() {
+    this.notes.forEach((note, index) => (note.id = index));
   },
 
   getGeneralNotesFromLocalStorage() {},
@@ -955,7 +1004,6 @@ function compelete_update() {
   CLASS.ongoingClassUpdate();
   CLASS.upcomingClassUpdate();
   CLASS.DOM_update();
-  GENERAL_NOTE.noteUpdated(true);
   DOM_timeTable.update();
 }
 compelete_update();
@@ -963,5 +1011,6 @@ compelete_update();
 function initial() {
   DOM_timeTable.note_exists_update();
   DOM_timeTable.day_date_update();
+  GENERAL_NOTE.noteUpdated(true);
 }
 initial();
