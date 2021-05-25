@@ -881,7 +881,6 @@ main {
   height: -moz-fit-content;
   height: fit-content;
   min-height: 6rem;
-  max-height: calc(100vh - $minHeight-nav * 2);
   resize: none;
 }
 
