@@ -736,7 +736,7 @@ const CUSTOM_contextmenu = {
 
 class GeneralNote {
   constructor(id, x, y, noteValue) {
-    (this.noteId = id), (this.position = { x: x, y: y });
+    (this.id = id), (this.position = { x: x, y: y });
     this.noteValue = noteValue;
     this.draggableEnabled = false;
   }
@@ -745,7 +745,7 @@ class GeneralNote {
     <div class="general-note-header">
         <div class="header-title"></div>
         <div class="header-btns">
-            <button id=${this.noteId}>
+            <button id=${this.id}>
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -807,10 +807,12 @@ const GENERAL_NOTE = {
 
   noteUpdated(once = false) {
     if (once) {
+      this.createID(true);
       this.getGeneralNotesFromLocalStorage();
       this.updateNotesDOM(true);
       return;
     }
+    this.createID();
 
     this.updateNotesDOM();
   },
@@ -826,14 +828,20 @@ const GENERAL_NOTE = {
       return;
     }
     this.notes[this.notes.length - 1].createGeneralNoteDOM();
-
-    // document
-    //   .querySelectorAll(".general-note")
-    //   .forEach((element) => enableDraggable(element));
   },
 
-  createID() {
-    this.notes.forEach((note, index) => (note.id = index));
+  createID(once = false) {
+    if (once) {
+      this.notes.forEach((note, index) => (note.id = index));
+      return;
+    }
+
+    if (this.notes.length < 2) {
+      this.notes[this.notes.length - 1].id = 0;
+    } else {
+      this.notes[this.notes.length - 1].id =
+        this.notes[this.notes.length - 2].id + 1;
+    }
   },
 
   getGeneralNotesFromLocalStorage() {},
