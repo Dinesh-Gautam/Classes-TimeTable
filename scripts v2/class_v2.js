@@ -745,7 +745,7 @@ class GeneralNote {
     <div class="general-note-header">
         <div class="header-title"></div>
         <div class="header-btns">
-            <button id=${this.id}>
+            <button onclick="GENERAL_NOTE.deleteNote(this)" id=${this.id}>
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -820,6 +820,15 @@ const GENERAL_NOTE = {
   addNote() {
     this.notes.push(new GeneralNote());
     this.noteUpdated();
+  },
+
+  deleteNote(event) {
+    const target = event;
+    const id = target.id;
+    const parentElement = target.closest(".general-note");
+
+    this.notes.filter((note) => note.id != id);
+    parentElement.remove();
   },
 
   updateNotesDOM(once = false) {
