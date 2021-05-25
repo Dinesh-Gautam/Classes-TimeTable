@@ -869,6 +869,8 @@ main {
 }
 
 .general-note-body .body-content {
+  display: block;
+  outline: none;
   font-size: 14px;
   padding: 10px;
   background: none;
@@ -878,6 +880,8 @@ main {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  min-height: 6rem;
+  max-height: calc(100vh - $minHeight-nav * 2);
   resize: none;
 }
 

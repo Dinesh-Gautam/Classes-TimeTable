@@ -751,7 +751,9 @@ class GeneralNote {
         </div>
     </div>
     <div class="general-note-body">
-        <textarea class="body-content">${this.noteValue || ""}</textarea>
+        <span contenteditable  class="body-content">${
+          this.noteValue || ""
+        }</span>
     </div>
   `;
     const div = document.createElement("div");

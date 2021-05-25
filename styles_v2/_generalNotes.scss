@@ -23,12 +23,16 @@
   &-body {
     background: get-color(dark-1-alpha);
     .body-content {
+      display: block;
+      outline: none;
       font-size: $font-size - 2px;
       padding: get-padding(less);
       background: none;
       backdrop-filter: none;
       width: 100%;
       height: fit-content;
+      min-height: $minHeight-nav * 2;
+      max-height: calc(100vh - $minHeight-nav * 2);
       resize: none;
     }
   }
