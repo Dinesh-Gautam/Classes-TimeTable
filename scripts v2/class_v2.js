@@ -805,7 +805,7 @@ class GeneralNote {
 }
 
 const GENERAL_NOTE = {
-  notes: [],
+  notes: null,
 
   noteUpdated(once = false) {
     if (once) {
@@ -828,17 +828,15 @@ const GENERAL_NOTE = {
       return;
     }
     this.notes[this.notes.length - 1].createGeneralNoteDOM();
-
-    // document
-    //   .querySelectorAll(".general-note")
-    //   .forEach((element) => enableDraggable(element));
   },
 
   createID() {
     this.notes.forEach((note, index) => (note.id = index));
   },
 
-  getGeneralNotesFromLocalStorage() {},
+  getGeneralNotesFromLocalStorage() {
+    this.notes = JSON.parse(localStorage.getItem("generalNotes")) || [];
+  },
 
   setGeneralNotesInLocalStorage() {},
 };
