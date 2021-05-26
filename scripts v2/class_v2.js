@@ -751,7 +751,9 @@ class GeneralNote {
         </div>
     </div>
     <div class="general-note-body">
-        <textarea class="body-content">${this.noteValue || ""}</textarea>
+        <span role="textbox" contenteditable class="body-content">${
+          this.noteValue || ""
+        }</span>
     </div>
   `;
     const div = document.createElement("div");
@@ -788,10 +790,10 @@ class GeneralNote {
       pos3 = e.clientX;
       pos4 = e.clientY;
       // set the element's new position:
-      elmnt.style.top = elmnt.offsetTop - pos2 + "px";
-      elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
-      this.x = elmnt.style.top;
-      this.y = elmnt.style.left;
+      this.y = elmnt.offsetTop - pos2 + "px";
+      this.x = elmnt.offsetLeft - pos1 + "px";
+      elmnt.style.top = this.y;
+      elmnt.style.left = this.x;
     }
 
     function closeDragElement() {
@@ -803,7 +805,7 @@ class GeneralNote {
 }
 
 const GENERAL_NOTE = {
-  notes: [],
+  notes: null,
 
   noteUpdated(once = false) {
     if (once) {
@@ -853,7 +855,9 @@ const GENERAL_NOTE = {
     }
   },
 
-  getGeneralNotesFromLocalStorage() {},
+  getGeneralNotesFromLocalStorage() {
+    this.notes = JSON.parse(localStorage.getItem("generalNotes")) || [];
+  },
 
   setGeneralNotesInLocalStorage() {},
 };
