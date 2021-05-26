@@ -841,7 +841,8 @@ const GENERAL_NOTE = {
     const id = target.id;
     const parentElement = target.closest(".general-note");
 
-    this.notes.filter((note) => note.id != id);
+    this.notes = this.notes.filter((note) => note.id != id);
+
     parentElement.remove();
   },
 
