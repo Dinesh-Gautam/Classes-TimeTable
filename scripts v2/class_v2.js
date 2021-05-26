@@ -768,10 +768,16 @@ class GeneralNote {
     const valueField = element.querySelector(
       ".general-note-body .body-content"
     );
-    element.addEventListener(
-      "keydown",
-      () => (this.noteValue = valueField.textContent)
-    );
+    let keydownInterval;
+    let intervalDuration = 1000;
+
+    element.addEventListener("keyup", () => {
+      clearInterval(keydownInterval);
+      keydownInterval = setTimeout(() => {
+        this.noteValue = valueField.textContent;
+        console.log(this.noteValue);
+      }, intervalDuration);
+    });
   }
   enableDraggable(elmnt) {
     this.draggableEnabled = true;
