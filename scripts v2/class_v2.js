@@ -761,7 +761,17 @@ class GeneralNote {
     div.className = "general-note";
     div.innerHTML = DOMTemplet;
     this.enableDraggable(div);
+    this.syncValues(div);
     document.body.appendChild(div);
+  }
+  syncValues(element) {
+    const valueField = element.querySelector(
+      ".general-note-body .body-content"
+    );
+    element.addEventListener(
+      "keydown",
+      () => (this.noteValue = valueField.textContent)
+    );
   }
   enableDraggable(elmnt) {
     this.draggableEnabled = true;
