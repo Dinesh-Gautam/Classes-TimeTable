@@ -736,7 +736,8 @@ const CUSTOM_contextmenu = {
 
 class GeneralNote {
   constructor(id, x, y, noteValue) {
-    (this.id = id), (this.position = { x: x, y: y });
+    this.id = id;
+    this.position = { x: x, y: y };
     this.noteValue = noteValue;
     this.draggableEnabled = false;
   }
@@ -764,6 +765,7 @@ class GeneralNote {
   }
   enableDraggable(elmnt) {
     this.draggableEnabled = true;
+    const scope = this;
     let pos1 = 0,
       pos2 = 0,
       pos3 = 0,
@@ -790,10 +792,10 @@ class GeneralNote {
       pos3 = e.clientX;
       pos4 = e.clientY;
       // set the element's new position:
-      this.y = elmnt.offsetTop - pos2 + "px";
-      this.x = elmnt.offsetLeft - pos1 + "px";
-      elmnt.style.top = this.y;
-      elmnt.style.left = this.x;
+      scope.position.y = elmnt.offsetTop - pos2 + "px";
+      scope.position.x = elmnt.offsetLeft - pos1 + "px";
+      elmnt.style.top = scope.position.y;
+      elmnt.style.left = scope.position.x;
     }
 
     function closeDragElement() {
@@ -809,8 +811,8 @@ const GENERAL_NOTE = {
 
   noteUpdated(once = false) {
     if (once) {
-      this.createID(true);
       this.getGeneralNotesFromLocalStorage();
+      this.createID(true);
       this.updateNotesDOM(true);
       return;
     }
