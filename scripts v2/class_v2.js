@@ -761,6 +761,8 @@ class GeneralNote {
     const div = document.createElement("div");
     div.className = "general-note";
     div.innerHTML = DOMTemplet;
+    div.style.top = this.position.y;
+    div.style.left = this.position.x;
     this.enableDraggable(div);
     this.syncValues(div);
     document.body.appendChild(div);
@@ -776,10 +778,7 @@ class GeneralNote {
       this.noteValue = valueField.textContent;
       clearInterval(keydownInterval);
       keydownInterval = setTimeout(() => {
-        GENERAL_NOTE.setGeneralNotesInLocalStorage(
-          this.noteName,
-          this.noteValue
-        );
+        GENERAL_NOTE.setGeneralNotesInLocalStorage(this.noteName, this);
       }, intervalDuration);
     });
   }
@@ -820,6 +819,7 @@ class GeneralNote {
 
     function closeDragElement() {
       // stop moving when mouse button is released:
+      GENERAL_NOTE.setGeneralNotesInLocalStorage(scope.noteName, scope);
       document.onmouseup = null;
       document.onmousemove = null;
     }
@@ -885,18 +885,30 @@ const GENERAL_NOTE = {
       this.notes = notes;
     } else {
       noteNames.forEach((name) => {
-        const note = JSON.parse(localStorage.getItem(name));
-        notes.push(new GeneralNote(0, 0, note, "note" + notes.length));
+        const { noteValue, position, noteName } = JSON.parse(
+          localStorage.getItem(name)
+        );
+        notes.push(
+          new GeneralNote(position.x, position.y, noteValue, noteName)
+        );
       });
     }
     this.notes = notes;
   },
 
   setGeneralNotesInLocalStorage(key = false, data) {
+    if (data.noteValue === "") {
+      return;
+    }
     if (key) {
       const noteNames = this.notes.map((note) => note.noteName);
       localStorage.setItem("generalNotesName", JSON.stringify(noteNames));
-      localStorage.setItem(key, JSON.stringify(data));
+      const oldValue = JSON.parse(localStorage.getItem(key));
+      if (oldValue) {
+        localStorage.setItem(key, JSON.stringify({ ...oldValue, ...data }));
+      } else {
+        localStorage.setItem(key, JSON.stringify(data));
+      }
     }
   },
 };
