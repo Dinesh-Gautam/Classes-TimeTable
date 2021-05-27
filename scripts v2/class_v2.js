@@ -881,10 +881,14 @@ const GENERAL_NOTE = {
   getGeneralNotesFromLocalStorage() {
     const notes = [];
     const noteNames = JSON.parse(localStorage.getItem("generalNotesName"));
-    noteNames.forEach((name) => {
-      const note = JSON.parse(localStorage.getItem(name));
-      notes.push(new GeneralNote(0, 0, note, "note" + notes.length));
-    });
+    if (noteNames === null) {
+      this.notes = notes;
+    } else {
+      noteNames.forEach((name) => {
+        const note = JSON.parse(localStorage.getItem(name));
+        notes.push(new GeneralNote(0, 0, note, "note" + notes.length));
+      });
+    }
     this.notes = notes;
   },
 
