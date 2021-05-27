@@ -735,11 +735,12 @@ const CUSTOM_contextmenu = {
 };
 
 class GeneralNote {
-  constructor(id, x, y, noteValue) {
-    this.id = id;
+  constructor(x, y, noteValue, noteName) {
+    this.id = null;
     this.position = { x: x, y: y };
     this.noteValue = noteValue;
     this.draggableEnabled = false;
+    this.noteName = noteName;
   }
   createGeneralNoteDOM() {
     const DOMTemplet = ` 
@@ -772,10 +773,13 @@ class GeneralNote {
     let intervalDuration = 1000;
 
     element.addEventListener("keyup", () => {
+      this.noteValue = valueField.textContent;
       clearInterval(keydownInterval);
       keydownInterval = setTimeout(() => {
-        this.noteValue = valueField.textContent;
-        console.log(this.noteValue);
+        GENERAL_NOTE.setGeneralNotesInLocalStorage(
+          this.noteName,
+          this.noteValue
+        );
       }, intervalDuration);
     });
   }
@@ -838,7 +842,7 @@ const GENERAL_NOTE = {
   },
   //use type in the argument to determine to add a new note or updated an existing note
   addNote() {
-    this.notes.push(new GeneralNote());
+    this.notes.push(new GeneralNote(0, 0, "", "note" + this.notes.length));
     this.noteUpdated();
   },
 
@@ -875,10 +879,17 @@ const GENERAL_NOTE = {
   },
 
   getGeneralNotesFromLocalStorage() {
-    this.notes = JSON.parse(localStorage.getItem("generalNotes")) || [];
+    // this.notes = JSON.parse(localStorage.getItem("generalNotes")) || [];
+    this.notes = [];
   },
 
-  setGeneralNotesInLocalStorage() {},
+  setGeneralNotesInLocalStorage(key = false, data) {
+    if (key) {
+      const noteNames = this.notes.map((note) => note.noteName);
+      localStorage.setItem("generalNotesName", JSON.stringify(noteNames));
+      localStorage.setItem(key, JSON.stringify(data));
+    }
+  },
 };
 
 const NOTE_MODAL = {
