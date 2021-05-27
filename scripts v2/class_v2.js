@@ -850,8 +850,12 @@ const GENERAL_NOTE = {
     const target = event;
     const id = target.id;
     const parentElement = target.closest(".general-note");
-
+    const noteToBeRemoved = this.notes.find((note) => note.id == id);
     this.notes = this.notes.filter((note) => note.id != id);
+
+    this.setGeneralNotesInLocalStorage(noteToBeRemoved.noteName, {
+      delete: true,
+    });
 
     parentElement.remove();
   },
@@ -904,8 +908,10 @@ const GENERAL_NOTE = {
       const noteNames = this.notes.map((note) => note.noteName);
       localStorage.setItem("generalNotesName", JSON.stringify(noteNames));
       const oldValue = JSON.parse(localStorage.getItem(key));
-      if (oldValue) {
+      if (oldValue && !data.delete) {
         localStorage.setItem(key, JSON.stringify({ ...oldValue, ...data }));
+      } else if (data.delete === true) {
+        localStorage.removeItem(key);
       } else {
         localStorage.setItem(key, JSON.stringify(data));
       }
