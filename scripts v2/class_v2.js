@@ -775,7 +775,7 @@ class GeneralNote {
     let intervalDuration = 1000;
 
     element.addEventListener("keyup", () => {
-      this.noteValue = valueField.textContent;
+      this.noteValue = valueField.innerHTML;
       clearInterval(keydownInterval);
       keydownInterval = setTimeout(() => {
         GENERAL_NOTE.setGeneralNotesInLocalStorage(this.noteName, this);
