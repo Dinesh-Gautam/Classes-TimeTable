@@ -889,9 +889,9 @@ const GENERAL_NOTE = {
       this.notes = notes;
     } else {
       noteNames.forEach((name) => {
-        const { noteValue, position, noteName } = JSON.parse(
-          localStorage.getItem(name)
-        );
+        const data = JSON.parse(localStorage.getItem(name));
+        if (data === null) return;
+        const { noteValue, position, noteName } = data;
         notes.push(
           new GeneralNote(position.x, position.y, noteValue, noteName)
         );
@@ -901,13 +901,16 @@ const GENERAL_NOTE = {
   },
 
   setGeneralNotesInLocalStorage(key = false, data) {
+    const noteNames = this.notes.map((note) => note.noteName);
+    localStorage.setItem("generalNotesName", JSON.stringify(noteNames));
+    const oldValue = JSON.parse(localStorage.getItem(key));
     if (data.noteValue === "") {
+      if (oldValue) {
+        localStorage.removeItem(key);
+      }
       return;
     }
     if (key) {
-      const noteNames = this.notes.map((note) => note.noteName);
-      localStorage.setItem("generalNotesName", JSON.stringify(noteNames));
-      const oldValue = JSON.parse(localStorage.getItem(key));
       if (oldValue && !data.delete) {
         localStorage.setItem(key, JSON.stringify({ ...oldValue, ...data }));
       } else if (data.delete === true) {
