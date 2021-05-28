@@ -746,6 +746,7 @@ class GeneralNote {
     const DOMTemplet = ` 
     <div class="general-note-header">
         <div class="header-title"></div>
+        <div class="general-note-extras" style="display:none;">Saved</div>
         <div class="header-btns">
             <button onclick="GENERAL_NOTE.deleteNote(this)" id=${this.id}>
                 <i class="fas fa-times"></i>
@@ -778,9 +779,17 @@ class GeneralNote {
       this.noteValue = valueField.innerHTML;
       clearInterval(keydownInterval);
       keydownInterval = setTimeout(() => {
+        this.noteSaved(element);
         GENERAL_NOTE.setGeneralNotesInLocalStorage(this.noteName, this);
       }, intervalDuration);
     });
+  }
+  noteSaved(element) {
+    const extras = element.querySelector(".general-note-extras");
+    extras.style.display = "block";
+    setTimeout(() => {
+      extras.style.display = "none";
+    }, 500);
   }
   enableDraggable(elmnt) {
     this.draggableEnabled = true;

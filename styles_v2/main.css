@@ -864,6 +864,12 @@ main {
   font-size: 14px;
 }
 
+.general-note-extras {
+  font-size: 12px;
+  color: #00ff64;
+  opacity: 0.8;
+}
+
 .general-note-body {
   background: rgba(24, 24, 24, 0.8);
 }
