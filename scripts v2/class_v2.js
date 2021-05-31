@@ -367,22 +367,36 @@ const CLASS = {
           ) {
             console.log("udated when calss actually changes");
             this.ongoingClass = toBe;
-            toBe.autoJoin &&
-              window.open(
-                CLASS.linkGenrator(toBe.meetingId, toBe.meetingPass),
-                "_self"
-              );
+            if (toBe.autoJoin) {
+              if (toBe.meetingLink) {
+                window.open(toBe.meetingLink, "_self");
+              } else {
+                window.open(
+                  CLASS.linkGenrator(toBe.meetingId, toBe.meetingPass),
+                  "_self"
+                );
+              }
+            }
             toBe.autoJoin && console.log("joining");
           }
         } else {
           console.log("updated when ongoing class is null");
           this.ongoingClass = toBe;
-          toBe.autoJoin &&
-            confirm(`would you like to join your ${toBe.subject} class`) &&
-            window.open(
-              CLASS.linkGenrator(toBe.meetingId, toBe.meetingPass),
-              "_self"
-            );
+
+          if (
+            toBe.autoJoin &&
+            confirm(`would you like to join your ${toBe.subject} class`)
+          ) {
+            if (toBe.meetingLink) {
+              window.open(toBe.meetingLink, "_self");
+            } else {
+              window.open(
+                CLASS.linkGenrator(toBe.meetingId, toBe.meetingPass),
+                "_self"
+              );
+            }
+          }
+
           toBe.autoJoin && console.log("joining");
         }
       } else {
