@@ -365,7 +365,7 @@ const CLASS = {
             this.ongoingClass.meetingId !== toBe.meetingId &&
             this.ongoingClass.meetingPass !== toBe.meetingPass
           ) {
-            console.log("udated when calss actually changes");
+            console.log("updated when class actually changes");
             this.ongoingClass = toBe;
             if (toBe.autoJoin) {
               if (toBe.meetingLink) {
@@ -817,23 +817,23 @@ class GeneralNote {
     function dragMouseDown(e) {
       e = e || window.event;
       e.preventDefault();
-      // get the mouse cursor position at startup:
+
       pos3 = e.clientX;
       pos4 = e.clientY;
       document.onmouseup = closeDragElement;
-      // call a function whenever the cursor moves:
+
       document.onmousemove = elementDrag;
     }
 
     function elementDrag(e) {
       e = e || window.event;
       e.preventDefault();
-      // calculate the new cursor position:
+
       pos1 = pos3 - e.clientX;
       pos2 = pos4 - e.clientY;
       pos3 = e.clientX;
       pos4 = e.clientY;
-      // set the element's new position:
+
       scope.position.y = elmnt.offsetTop - pos2 + "px";
       scope.position.x = elmnt.offsetLeft - pos1 + "px";
       elmnt.style.top = scope.position.y;
@@ -841,7 +841,6 @@ class GeneralNote {
     }
 
     function closeDragElement() {
-      // stop moving when mouse button is released:
       GENERAL_NOTE.setGeneralNotesInLocalStorage(scope.noteName, scope);
       document.onmouseup = null;
       document.onmousemove = null;
@@ -863,7 +862,6 @@ const GENERAL_NOTE = {
 
     this.updateNotesDOM();
   },
-  //use type in the argument to determine to add a new note or updated an existing note
   addNote() {
     this.notes.push(new GeneralNote(0, 0, "", "note" + this.notes.length));
     this.noteUpdated();
@@ -968,9 +966,6 @@ const NOTE_MODAL = {
       mv.NoteModal.querySelector(
         ".popup-content .popup-text-content"
       ).innerText = "";
-      // mv.NoteModal.querySelector(
-      //   ".popup-content"
-      // ).innerHTML = "Nothing";
     }
   },
   getNotes: function () {
