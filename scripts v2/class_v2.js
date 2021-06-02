@@ -238,7 +238,7 @@ function checkMv(width) {
 
 const ongoingClass_DOM_selector = document.querySelector(".ongoingClass");
 const upcomingClass_DOM_selector = document.querySelector(".upcomingClass");
-const ongoinhSubject =
+const ongoingSubject =
   ongoingClass_DOM_selector.querySelector(".ongoingClass-text");
 const ongoingClassTime =
   ongoingClass_DOM_selector.querySelector(".time-container");
@@ -441,7 +441,7 @@ const CLASS = {
     const linkGenrator = this.linkGenrator;
     common_updates(this.ongoingClass, {
       DOM_selector: ongoingClass_DOM_selector,
-      subject: ongoinhSubject,
+      subject: ongoingSubject,
       time: ongoingClassTime,
       idView: ongoingClassIdView,
       passView: ongoingClassPassView,
