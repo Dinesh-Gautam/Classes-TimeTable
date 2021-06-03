@@ -218,7 +218,7 @@
                 <label for="meeting-field">Meeting ID :</label><input class="meeting-id-input" name="meeting-field"
                     type="text" placeholder="ID">
                 <label for="pass-field">Meeting Pass :</label><input class="meeting-pass-input" name="pass-field"
-                    type="text" placeholder="Passwrod">
+                    type="text" placeholder="Password">
                 <span>
                     or
                 </span>
@@ -227,7 +227,7 @@
                     type="text" placeholder="https://www.example.com">
             </form>
             <div class="control-btns">
-                <button onclick="EDIT_MODAL.cancle()">Cancel</button>
+                <button onclick="EDIT_MODAL.cancel()">Cancel</button>
                 <button onclick="EDIT_MODAL.save()">Save</button>
             </div>
         </div>
@@ -239,7 +239,7 @@
             <div class="control-btns">
                 <button class="note-delete-btn display" onclick="NOTE_MODAL.save({deleteNote : true})">Delete
                     Note</button>
-                <button onclick="NOTE_MODAL.cancle()">Cancel</button>
+                <button onclick="NOTE_MODAL.cancel()">Cancel</button>
                 <button class="note-svae-btn" onclick="NOTE_MODAL.save()">Add</button>
             </div>
         </div>
@@ -347,7 +347,7 @@
                     Delete Note
                 </button>
                 <button class="note-edit-btn" onclick="NOTE_MODAL.open(this.className,this.id)">Edit Note</button>
-                <button class="note-cancle-btn" onclick="NOTE_MODAL.cancle()">Cancel</button>
+                <button class="note-cancel-btn" onclick="NOTE_MODAL.cancel()">Cancel</button>
 
                 <button class="note-svae-btn" onclick="NOTE_MODAL.save({} , this.id)">Add</button>
                 <!-- <button class="popup-btn">
@@ -377,7 +377,7 @@
                 </form>
             </div>
             <div class="popup-buttons">
-                <button onclick="EDIT_MODAL.cancle()">Cancel</button>
+                <button onclick="EDIT_MODAL.cancel()">Cancel</button>
                 <button onclick="EDIT_MODAL.save()">Save</button>
             </div>
         </div>

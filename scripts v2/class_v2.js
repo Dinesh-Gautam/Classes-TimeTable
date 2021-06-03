@@ -346,7 +346,7 @@ function infoPopupDisplay(view, target) {
 
 CURRENT_STATUS.TimeUpdate();
 setInterval(() => {
-  compelete_update();
+  complete_update();
 }, 60000);
 
 const CLASS = {
@@ -372,7 +372,7 @@ const CLASS = {
                 window.open(toBe.meetingLink, "_self");
               } else {
                 window.open(
-                  CLASS.linkGenrator(toBe.meetingId, toBe.meetingPass),
+                  CLASS.linkGenerator(toBe.meetingId, toBe.meetingPass),
                   "_self"
                 );
               }
@@ -391,7 +391,7 @@ const CLASS = {
               window.open(toBe.meetingLink, "_self");
             } else {
               window.open(
-                CLASS.linkGenrator(toBe.meetingId, toBe.meetingPass),
+                CLASS.linkGenerator(toBe.meetingId, toBe.meetingPass),
                 "_self"
               );
             }
@@ -438,7 +438,7 @@ const CLASS = {
   },
 
   DOM_update() {
-    const linkGenrator = this.linkGenrator;
+    const linkGenerator = this.linkGenerator;
     common_updates(this.ongoingClass, {
       DOM_selector: ongoingClass_DOM_selector,
       subject: ongoingSubject,
@@ -470,7 +470,7 @@ const CLASS = {
         time.innerText = timeStringCreator(classObj);
         idView.innerText = classObj.meetingId;
         passView.innerText = classObj.meetingPass;
-        link.href = linkGenrator(
+        link.href = linkGenerator(
           classObj.meetingId,
           classObj.meetingPass,
           classObj
@@ -480,7 +480,7 @@ const CLASS = {
     }
   },
 
-  linkGenrator(id, pass, classObj = false) {
+  linkGenerator(id, pass, classObj = false) {
     if (classObj.meetingLink && classObj) {
       return classObj.meetingLink;
     }
@@ -531,7 +531,7 @@ const EDIT_MODAL = {
       ? mv.EditModal.classList.add("mv-none")
       : EditModal.classList.add("display");
   },
-  cancle() {
+  cancel() {
     this.set_values({ clear: true });
     this.visible(false);
   },
@@ -556,8 +556,8 @@ const EDIT_MODAL = {
         });
       }
       localStorage.setItem("timeTable", JSON.stringify(timeTable));
-      compelete_update();
-      scope.cancle();
+      complete_update();
+      scope.cancel();
     }
   },
   find_class(get_id) {
@@ -650,7 +650,7 @@ const AUTO_JOIN = {
   },
   save() {
     localStorage.setItem("timeTable", JSON.stringify(timeTable));
-    compelete_update();
+    complete_update();
   },
   DOM_autoJoin() {
     // for (key in timeTable) {
@@ -712,14 +712,14 @@ const CUSTOM_contextmenu = {
   },
 
   setPosition(event) {
-    const { X_possition, Y_possition } = {
-      X_possition: event.clientX,
-      Y_possition: event.clientY - 50,
+    const { X_position, Y_position } = {
+      X_position: event.clientX,
+      Y_position: event.clientY - 50,
     };
 
     const contextMenu_position = contextMenu.style;
-    contextMenu_position.top = Y_possition + "px";
-    contextMenu_position.left = X_possition + "px";
+    contextMenu_position.top = Y_position + "px";
+    contextMenu_position.left = X_position + "px";
   },
 
   joinBtn() {
@@ -728,7 +728,7 @@ const CUSTOM_contextmenu = {
       this.Clicked_Class.meetingPass,
     ];
 
-    ContextMenu_JoinLink.href = CLASS.linkGenrator(
+    ContextMenu_JoinLink.href = CLASS.linkGenerator(
       meeting_id,
       meeting_pass,
       this.Clicked_Class
@@ -757,7 +757,7 @@ class GeneralNote {
     this.noteName = noteName;
   }
   createGeneralNoteDOM() {
-    const DOMTemplet = ` 
+    const DOMTemplate = ` 
     <div class="general-note-header">
         <div class="header-title"></div>
         <div class="general-note-extras" style="display:none;">Saved</div>
@@ -775,7 +775,7 @@ class GeneralNote {
   `;
     const div = document.createElement("div");
     div.className = "general-note";
-    div.innerHTML = DOMTemplet;
+    div.innerHTML = DOMTemplate;
     div.style.top = this.position.y;
     div.style.left = this.position.x;
     this.enableDraggable(div);
@@ -946,7 +946,7 @@ const GENERAL_NOTE = {
 const NOTE_MODAL = {
   class: null,
   notes: [],
-  set_note_view_postion(event) {
+  set_note_view_position(event) {
     const e = NOTE_MODAL.notes.find((element) =>
       responsive.mv ? element.id == event : element.id == event.target.id
     );
@@ -987,10 +987,10 @@ const NOTE_MODAL = {
       : givenClass;
     this.visible(true);
     this.set_values({ clear: false });
-    responsive.mv && this.set_note_view_postion(event);
-    this.button_modifer(givenClass, event);
+    responsive.mv && this.set_note_view_position(event);
+    this.button_modifier(givenClass, event);
   },
-  button_modifer(event, id) {
+  button_modifier(event, id) {
     if (this.class?.note && event != "note-edit-btn") {
       document
         .querySelector(".popup-content .note-modal")
@@ -998,7 +998,7 @@ const NOTE_MODAL = {
 
       document.querySelector(".popup-buttons .note-svae-btn").style.display =
         "none";
-      document.querySelector(".popup-buttons .note-cancle-btn").style.display =
+      document.querySelector(".popup-buttons .note-cancel-btn").style.display =
         "none";
 
       document.querySelector(".popup-buttons .note-delete-btn").id = id;
@@ -1054,7 +1054,7 @@ const NOTE_MODAL = {
       ? mv.NoteModal.classList.add("mv-none")
       : NoteModal.classList.add("display");
   },
-  cancle() {
+  cancel() {
     this.set_values({ clear: true });
     this.visible(false);
     DOM_timeTable.note_exists_update();
@@ -1073,8 +1073,8 @@ const NOTE_MODAL = {
         });
       }
       localStorage.setItem("timeTable", JSON.stringify(timeTable));
-      compelete_update();
-      this.cancle();
+      complete_update();
+      this.cancel();
     } else {
       alert("value can't be empty");
     }
@@ -1083,10 +1083,10 @@ const NOTE_MODAL = {
 
 // document
 //   .getElementById("timeTable")
-//   .addEventListener("mouseover", NOTE_MODAL.set_note_view_postion);
+//   .addEventListener("mouseover", NOTE_MODAL.set_note_view_position);
 
 TimeTableEdit.forEach((element) => {
-  element.addEventListener("mouseenter", NOTE_MODAL.set_note_view_postion);
+  element.addEventListener("mouseenter", NOTE_MODAL.set_note_view_position);
   element.addEventListener("mouseleave", () =>
     noteViewModal.classList.remove("active")
   );
@@ -1098,14 +1098,14 @@ TimeTableEdit.forEach((element) => {
   });
 });
 
-function compelete_update() {
+function complete_update() {
   CURRENT_STATUS.TimeUpdate();
   CLASS.ongoingClassUpdate();
   CLASS.upcomingClassUpdate();
   CLASS.DOM_update();
   DOM_timeTable.update();
 }
-compelete_update();
+complete_update();
 
 function initial() {
   DOM_timeTable.note_exists_update();
