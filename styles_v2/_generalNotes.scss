@@ -3,7 +3,7 @@
   top: 1em;
   left: 1em;
   z-index: 9999;
-  width: $maxWidth-modal - 4rem;
+  width: $maxWidth-modal - 10rem;
   box-shadow: $box-shadow;
   backdrop-filter: blur($blur-default);
   &-header {

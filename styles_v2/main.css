@@ -830,7 +830,7 @@ main {
   top: 1em;
   left: 1em;
   z-index: 9999;
-  width: 24rem;
+  width: 18rem;
   -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
           box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
   -webkit-backdrop-filter: blur(24px);
