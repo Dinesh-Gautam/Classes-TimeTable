@@ -805,61 +805,157 @@ class GeneralNote {
       extras.style.display = "none";
     }, 500);
   }
+  // enableDraggable(elmnt) {
+  //   this.draggableEnabled = true;
+  //   const scope = this;
+  //   let pos1 = 0,
+  //     pos2 = 0,
+  //     pos3 = 0,
+  //     pos4 = 0;
+  //   elmnt.querySelector(".general-note-header").onmousedown = dragMouseDown;
+
+  //   function dragMouseDown(e) {
+  //     e = e || window.event;
+  //     e.preventDefault();
+
+  //     pos3 = e.clientX;
+  //     pos4 = e.clientY;
+  //     document.onmouseup = closeDragElement;
+
+  //     document.onmousemove = elementDrag;
+  //   }
+  //   let y = 1,
+  //     x = 1;
+  //   function elementDrag(e) {
+  //     e = e || window.event;
+  //     e.preventDefault();
+
+  //     pos1 = pos3 - e.clientX;
+  //     pos2 = pos4 - e.clientY;
+  //     pos3 = e.clientX;
+  //     pos4 = e.clientY;
+
+  //     if (y > 0) {
+  //       y = elmnt.offsetTop - pos2;
+  //       scope.position.y = elmnt.offsetTop - pos2 + "px";
+  //       elmnt.style.top = scope.position.y;
+  //     } else {
+  //       if (e.clientY - screenY > 0) {
+  //         y -= pos2;
+  //       }
+  //     }
+
+  //     if (x > 0) {
+  //       x = elmnt.offsetLeft - pos1;
+  //       scope.position.x = elmnt.offsetLeft - pos1 + "px";
+  //       elmnt.style.left = scope.position.x;
+  //     } else {
+  //       if (e.clientX - screenX > 0) {
+  //         x -= pos1;
+  //       }
+  //     }
+  //   }
+
+  //   function closeDragElement() {
+  //     GENERAL_NOTE.setGeneralNotesInLocalStorage(scope.noteName, scope);
+  //     document.onmouseup = null;
+  //     document.onmousemove = null;
+  //   }
+  // }
   enableDraggable(elmnt) {
-    this.draggableEnabled = true;
-    const scope = this;
-    let pos1 = 0,
-      pos2 = 0,
-      pos3 = 0,
-      pos4 = 0;
-    elmnt.querySelector(".general-note-header").onmousedown = dragMouseDown;
+    var startX = 0; //-> Mouse position.
+    var startY = 0;
 
-    function dragMouseDown(e) {
-      e = e || window.event;
-      e.preventDefault();
+    var offsetX = 0; // -> Element position
+    var offsetY = 0;
 
-      pos3 = e.clientX;
-      pos4 = e.clientY;
-      document.onmouseup = closeDragElement;
+    var minBoundX = 0; // -> Top Drag Position ( Minimum )
+    var minBoundY = 0;
 
-      document.onmousemove = elementDrag;
-    }
-    let y = 1,
-      x = 1;
-    function elementDrag(e) {
-      e = e || window.event;
-      e.preventDefault();
+    var maxBoundX = 0; // -> Bottom Drag Position ( Maximum )
+    var maxBoundY = 0;
 
-      pos1 = pos3 - e.clientX;
-      pos2 = pos4 - e.clientY;
-      pos3 = e.clientX;
-      pos4 = e.clientY;
+    var dragElement; // -> Pass the target to OnMouseMove Event
 
-      if (y > 0) {
-        y = elmnt.offsetTop - pos2;
-        scope.position.y = elmnt.offsetTop - pos2 + "px";
-        elmnt.style.top = scope.position.y;
-      } else {
-        if (e.clientY - screenY > 0) {
-          y -= pos2;
-        }
-      }
+    var oldZIndex = 0; // -> Increase Z-Index while drag
 
-      if (x > 0) {
-        x = elmnt.offsetLeft - pos1;
-        scope.position.x = elmnt.offsetLeft - pos1 + "px";
-        elmnt.style.left = scope.position.x;
-      } else {
-        if (e.clientX - screenX > 0) {
-          x -= pos1;
-        }
-      }
+    // 1)
+    initDragDrop(); // -> initialize 2 Events.
+
+    function initDragDrop() {
+      elmnt.querySelector(".general-note-header").onmousedown =
+        OnMouseClickDown;
+      document.onmouseup = OnMouseClickUp;
     }
 
-    function closeDragElement() {
-      GENERAL_NOTE.setGeneralNotesInLocalStorage(scope.noteName, scope);
-      document.onmouseup = null;
+    // 2) Click on Element
+    function OnMouseClickDown(event) {
+      let target; // -> Element that triggered the event
+
+      target = event.target;
+
+      //  Check which button was clicked and if element has class 'draggable'
+      if (target === elmnt.querySelector(".general-note-header")) {
+        // Current Mouse position
+        startX = event.clientX;
+        startY = event.clientY;
+
+        // Border ( Div Container )
+        const closest = target.closest(".general-note-head-container");
+        offsetX = ExtractNumber(elmnt.style.left); // -> Convert to INT
+        offsetY = ExtractNumber(elmnt.style.top);
+
+        minBoundX = closest.offsetLeft; // Minimal -> Top Position.
+        minBoundY = closest.offsetTop;
+
+        maxBoundX = minBoundX + closest.offsetWidth - target.offsetWidth; // Maximal.
+        maxBoundY = minBoundY + closest.offsetHeight - target.offsetHeight;
+
+        // oldZIndex = target.style.zIndex;
+        // target.style.zIndex = 10; // -> Move element infront of others
+
+        dragElement = elmnt; // -> Pass to onMouseMove
+
+        document.onmousemove = OnMouseMove; // -> Begin drag.
+
+        document.body.focus(); // -> Cancel selections
+      }
+    }
+
+    // 3) Convert current Element position in INT
+    function ExtractNumber(value) {
+      var number = parseInt(value);
+
+      if (number == null || isNaN(number)) {
+        return 0;
+      } else {
+        return number;
+      }
+    }
+
+    // 4) Drag
+    function OnMouseMove(event) {
+      dragElement.style.left =
+        Math.max(
+          minBoundX,
+          Math.min(offsetX + event.clientX - startX, maxBoundX)
+        ) + "px";
+      dragElement.style.top =
+        Math.max(
+          minBoundY,
+          Math.min(offsetY + event.clientY - startY, maxBoundY)
+        ) + "px";
+    }
+
+    // 5) Drop
+    function OnMouseClickUp(event) {
+      // if (dragElement != null) {
+      //   dragElement.style.zIndex = oldZIndex; // -> set Z-index 0.
+
       document.onmousemove = null;
+      // document.onselectstart = null;
+
+      dragElement = null; // -> No more element to drag.
     }
   }
 }
