@@ -780,7 +780,7 @@ class GeneralNote {
     div.style.left = this.position.x;
     this.enableDraggable(div);
     this.syncValues(div);
-    document.body.appendChild(div);
+    document.querySelector(".general-note-head-container").appendChild(div);
   }
   syncValues(element) {
     const valueField = element.querySelector(
@@ -824,7 +824,8 @@ class GeneralNote {
 
       document.onmousemove = elementDrag;
     }
-
+    let y = 1,
+      x = 1;
     function elementDrag(e) {
       e = e || window.event;
       e.preventDefault();
@@ -834,10 +835,25 @@ class GeneralNote {
       pos3 = e.clientX;
       pos4 = e.clientY;
 
-      scope.position.y = elmnt.offsetTop - pos2 + "px";
-      scope.position.x = elmnt.offsetLeft - pos1 + "px";
-      elmnt.style.top = scope.position.y;
-      elmnt.style.left = scope.position.x;
+      if (y > 0) {
+        y = elmnt.offsetTop - pos2;
+        scope.position.y = elmnt.offsetTop - pos2 + "px";
+        elmnt.style.top = scope.position.y;
+      } else {
+        if (e.clientY - screenY > 0) {
+          y -= pos2;
+        }
+      }
+
+      if (x > 0) {
+        x = elmnt.offsetLeft - pos1;
+        scope.position.x = elmnt.offsetLeft - pos1 + "px";
+        elmnt.style.left = scope.position.x;
+      } else {
+        if (e.clientX - screenX > 0) {
+          x -= pos1;
+        }
+      }
     }
 
     function closeDragElement() {
