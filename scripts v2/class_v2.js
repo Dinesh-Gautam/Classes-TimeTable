@@ -864,24 +864,23 @@ class GeneralNote {
   // }
   enableDraggable(elmnt) {
     const scope = this;
-    let startX = 0; //-> Mouse position.
+    let startX = 0;
     let startY = 0;
 
-    let offsetX = 0; // -> Element position
+    let offsetX = 0;
     let offsetY = 0;
 
-    let minBoundX = 0; // -> Top Drag Position ( Minimum )
+    let minBoundX = 0;
     let minBoundY = 0;
 
-    let maxBoundX = 0; // -> Bottom Drag Position ( Maximum )
+    let maxBoundX = 0;
     let maxBoundY = 0;
 
-    let dragElement; // -> Pass the target to OnMouseMove Event
+    let dragElement;
 
-    let oldZIndex = 0; // -> Increase Z-Index while drag
+    let oldZIndex = 0;
 
-    // 1)
-    initDragDrop(); // -> initialize 2 Events.
+    initDragDrop();
 
     function initDragDrop() {
       elmnt.querySelector(".general-note-header").onmousedown =
@@ -889,41 +888,33 @@ class GeneralNote {
       document.onmouseup = OnMouseClickUp;
     }
 
-    // 2) Click on Element
     function OnMouseClickDown(event) {
-      let target; // -> Element that triggered the event
+      let target;
 
       target = event.target;
 
-      //  Check which button was clicked and if element has class 'draggable'
       if (target === elmnt.querySelector(".general-note-header")) {
-        // Current Mouse position
         startX = event.clientX;
         startY = event.clientY;
 
-        // Border ( Div Container )
         const closest = target.closest(".general-note-head-container");
-        offsetX = ExtractNumber(elmnt.style.left); // -> Convert to INT
+        offsetX = ExtractNumber(elmnt.style.left);
         offsetY = ExtractNumber(elmnt.style.top);
 
-        minBoundX = closest.offsetLeft; // Minimal -> Top Position.
+        minBoundX = closest.offsetLeft;
         minBoundY = closest.offsetTop;
 
-        maxBoundX = minBoundX + closest.offsetWidth - target.offsetWidth; // Maximal.
+        maxBoundX = minBoundX + closest.offsetWidth - target.offsetWidth;
         maxBoundY = minBoundY + closest.offsetHeight - target.offsetHeight;
 
-        // oldZIndex = target.style.zIndex;
-        // target.style.zIndex = 10; // -> Move element infront of others
+        dragElement = elmnt;
 
-        dragElement = elmnt; // -> Pass to onMouseMove
+        document.onmousemove = OnMouseMove;
 
-        document.onmousemove = OnMouseMove; // -> Begin drag.
-
-        document.body.focus(); // -> Cancel selections
+        document.body.focus();
       }
     }
 
-    // 3) Convert current Element position in INT
     function ExtractNumber(value) {
       let number = parseInt(value);
 
@@ -934,7 +925,6 @@ class GeneralNote {
       }
     }
 
-    // 4) Drag
     function OnMouseMove(event) {
       const left =
           Math.max(
@@ -952,16 +942,10 @@ class GeneralNote {
       dragElement.style.top = scope.position.y;
     }
 
-    // 5) Drop
     function OnMouseClickUp(event) {
-      // if (dragElement != null) {
-      //   dragElement.style.zIndex = oldZIndex; // -> set Z-index 0.
       GENERAL_NOTE.setGeneralNotesInLocalStorage(scope.noteName, scope);
-
       document.onmousemove = null;
-      // document.onselectstart = null;
-
-      dragElement = null; // -> No more element to drag.
+      dragElement = null;
     }
   }
 }
