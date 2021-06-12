@@ -976,32 +976,56 @@ const GENERAL_NOTE = {
     const parentElement = target.closest(".general-note");
     const noteToBeRemoved = this.notes.find((note) => note.id == id);
 
+    this.deletedElements.push({ id, parentElement, noteToBeRemoved });
     this.addUndoFeature(id, parentElement, noteToBeRemoved);
   },
 
   addUndoFeature(id, targetElement, noteToBeRemoved) {
     targetElement.style.display = "none";
 
-    this.deletedElements.push(targetElement);
+    const NoOfItemsDeleted = this.deletedElements.length;
 
-    this.undoTimeOut = setTimeout(() => {
-      console.log("note Deleted from local storage");
-      this.notes = this.notes.filter((note) => note.id != id);
+    const undoInfoText = document.querySelector(".dialog-container .undo-item");
+    const undoContainer = document.querySelector(".dialog-container");
 
-      this.setGeneralNotesInLocalStorage(noteToBeRemoved.noteName, {
-        delete: true,
-      });
+    undoInfoText.innerHTML = `${NoOfItemsDeleted} ${
+      NoOfItemsDeleted < 2 ? "item" : "items"
+    }&nbsp;`;
 
-      targetElement.remove();
-    }, 3000);
+    undoContainer.style.display = "initial";
+
+    if (this.undoTimeOut === null) {
+      this.undoTimeOut = setTimeout(() => {
+        console.log("note Deleted from local storage");
+        this.deletedElements.forEach((deleteNote) => {
+          const { id, parentElement, noteToBeRemoved } = deleteNote;
+          this.notes = this.notes.filter((note) => note.id != id);
+          this.resetUndoContainer();
+          this.setGeneralNotesInLocalStorage(noteToBeRemoved.noteName, {
+            delete: true,
+          });
+        });
+
+        targetElement.remove();
+      }, 10000);
+    }
   },
-
+  resetUndoContainer() {
+    const undoInfoText = document.querySelector(".dialog-container .undo-item");
+    const undoContainer = document.querySelector(".dialog-container");
+    undoContainer.style.display = "none";
+    undoInfoText.innerHTML = "";
+    this.undoTimeOut = null;
+    this.deletedElements = [];
+    clearTimeout(this.undoTimeOut);
+  },
   cancelUndo() {
     console.log("undoing delete");
 
-    this.deletedElements.forEach((e) => (e.style.display = "block"));
-
-    clearTimeout(this.undoTimeOut);
+    this.deletedElements.forEach(
+      (e) => (e.parentElement.style.display = "block")
+    );
+    this.resetUndoContainer();
   },
 
   updateNotesDOM(once = false) {
