@@ -952,7 +952,8 @@ class GeneralNote {
 
 const GENERAL_NOTE = {
   notes: null,
-
+  undoTimeOut: null,
+  deletedElements: [],
   noteUpdated(once = false) {
     if (once) {
       this.getGeneralNotesFromLocalStorage();
@@ -974,13 +975,33 @@ const GENERAL_NOTE = {
     const id = target.id;
     const parentElement = target.closest(".general-note");
     const noteToBeRemoved = this.notes.find((note) => note.id == id);
-    this.notes = this.notes.filter((note) => note.id != id);
 
-    this.setGeneralNotesInLocalStorage(noteToBeRemoved.noteName, {
-      delete: true,
-    });
+    this.addUndoFeature(id, parentElement, noteToBeRemoved);
+  },
 
-    parentElement.remove();
+  addUndoFeature(id, targetElement, noteToBeRemoved) {
+    targetElement.style.display = "none";
+
+    this.deletedElements.push(targetElement);
+
+    this.undoTimeOut = setTimeout(() => {
+      console.log("note Deleted from local storage");
+      this.notes = this.notes.filter((note) => note.id != id);
+
+      this.setGeneralNotesInLocalStorage(noteToBeRemoved.noteName, {
+        delete: true,
+      });
+
+      targetElement.remove();
+    }, 3000);
+  },
+
+  cancelUndo() {
+    console.log("undoing delete");
+
+    this.deletedElements.forEach((e) => (e.style.display = "block"));
+
+    clearTimeout(this.undoTimeOut);
   },
 
   updateNotesDOM(once = false) {
