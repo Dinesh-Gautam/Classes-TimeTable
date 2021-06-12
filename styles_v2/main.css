@@ -898,6 +898,54 @@ main {
   resize: none;
 }
 
+.dialog-container {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  z-index: 1000;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-backdrop-filter: blur(24px);
+          backdrop-filter: blur(24px);
+}
+
+.dialog-container .undo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.dialog-container .undo-info {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.dialog-container button {
+  background: none;
+  color: #6478ff;
+  font-weight: bold;
+}
+
+.dialog-container .undo-info,
+.dialog-container button {
+  padding: 10px 20px;
+}
+
+.dialog-container .undo-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 main {
   -webkit-box-flex: 1;
       -ms-flex: 1;

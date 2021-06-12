@@ -1,0 +1,28 @@
+.dialog-container {
+  position: absolute;
+  bottom: get-padding(default);
+  left: get-padding(default);
+  z-index: 1000;
+  width: fit-content;
+  backdrop-filter: blur($blur-default);
+  .undo {
+    display: flex;
+    width: 100%;
+  }
+  .undo-info {
+    flex: 1;
+  }
+  button {
+    background: none;
+    color: rgba($color: get-color(indicator-4), $alpha: 1);
+    font-weight: bold;
+  }
+  .undo-info,
+  button {
+    padding: get-padding(less) get-padding(less) * 2;
+  }
+
+  .undo-info {
+    @include flex-center;
+  }
+}
