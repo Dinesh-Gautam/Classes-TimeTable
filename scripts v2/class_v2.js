@@ -205,14 +205,14 @@ let timeTable = {
 
 let i = 0;
 
-localStorage.clear(timeTable);
-for (key in timeTable) {
-  timeTable[key].forEach((e, index) => {
-    e.Id = index;
-    e.uid = i;
-    i++;
-  });
-}
+// `localStorage.clear(timeTable);
+// for (key in timeTable) {
+//   timeTable[key].forEach((e, index) => {
+//     e.Id = index;
+//     e.uid = i;
+//     i++;
+//   });
+// }`
 
 if (localStorage.getItem("timeTable") === null) {
   localStorage.setItem("timeTable", JSON.stringify(timeTable));
@@ -582,7 +582,6 @@ const DOM_timeTable = {
   update() {
     this.class_update(CLASS.ongoingClass, "ongoing-active");
     this.class_update(CLASS.upcomingClass, "upcoming-active");
-    AUTO_JOIN.DOM_autoJoin();
   },
   class_update(classInfo, classActive) {
     document
@@ -652,19 +651,6 @@ const AUTO_JOIN = {
     localStorage.setItem("timeTable", JSON.stringify(timeTable));
     complete_update();
   },
-  DOM_autoJoin() {
-    // for (key in timeTable) {
-    //   timeTable[key].forEach((e) => {
-    //     if (e.autoJoin) {
-    //       document.getElementById(`${e.uid}`).classList.add("autoJoin-active");
-    //     } else {
-    //       document
-    //         .getElementById(`${e.uid}`)
-    //         .classList.remove("autoJoin-active");
-    //     }
-    //   });
-    // }
-  },
 };
 
 window.oncontextmenu = (e) => {
@@ -683,8 +669,13 @@ contextMenu.oncontextmenu = () => {
   return false;
 };
 
-window.addEventListener("click", () => {
-  contextMenu.classList.remove("active");
+window.addEventListener("click", (e) => {
+  console.log(e.target.nodeName);
+  const nodeName = e.target.nodeName;
+  const dnr = ["INPUT", "LABEL", "FORM"];
+  if (!dnr.some((e) => e === nodeName)) {
+    contextMenu.classList.remove("active");
+  }
 });
 window.addEventListener("resize", () => {
   contextMenu.classList.remove("active");
@@ -1110,7 +1101,7 @@ const NOTE_MODAL = {
 
       document.querySelector(".popup-buttons .note-svae-btn").style.display =
         "initial";
-      document.querySelector(".popup-buttons .note-cancle-btn").style.display =
+      document.querySelector(".popup-buttons .note-cancel-btn").style.display =
         "initial";
 
       mv.NoteModal.querySelector(
@@ -1171,10 +1162,6 @@ const NOTE_MODAL = {
     }
   },
 };
-
-// document
-//   .getElementById("timeTable")
-//   .addEventListener("mouseover", NOTE_MODAL.set_note_view_position);
 
 TimeTableEdit.forEach((element) => {
   element.addEventListener("mouseenter", NOTE_MODAL.set_note_view_position);
