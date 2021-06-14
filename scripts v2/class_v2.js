@@ -205,14 +205,14 @@ let timeTable = {
 
 let i = 0;
 
-// localStorage.clear(timeTable);
-// for (key in timeTable) {
-//   timeTable[key].forEach((e, index) => {
-//     e.Id = index;
-//     e.uid = i;
-//     i++;
-//   });
-// }
+localStorage.clear(timeTable);
+for (key in timeTable) {
+  timeTable[key].forEach((e, index) => {
+    e.Id = index;
+    e.uid = i;
+    i++;
+  });
+}
 
 if (localStorage.getItem("timeTable") === null) {
   localStorage.setItem("timeTable", JSON.stringify(timeTable));
@@ -805,63 +805,7 @@ class GeneralNote {
       extras.style.display = "none";
     }, 500);
   }
-  // enableDraggable(elmnt) {
-  //   this.draggableEnabled = true;
-  //   const scope = this;
-  //   let pos1 = 0,
-  //     pos2 = 0,
-  //     pos3 = 0,
-  //     pos4 = 0;
-  //   elmnt.querySelector(".general-note-header").onmousedown = dragMouseDown;
 
-  //   function dragMouseDown(e) {
-  //     e = e || window.event;
-  //     e.preventDefault();
-
-  //     pos3 = e.clientX;
-  //     pos4 = e.clientY;
-  //     document.onmouseup = closeDragElement;
-
-  //     document.onmousemove = elementDrag;
-  //   }
-  //   let y = 1,
-  //     x = 1;
-  //   function elementDrag(e) {
-  //     e = e || window.event;
-  //     e.preventDefault();
-
-  //     pos1 = pos3 - e.clientX;
-  //     pos2 = pos4 - e.clientY;
-  //     pos3 = e.clientX;
-  //     pos4 = e.clientY;
-
-  //     if (y > 0) {
-  //       y = elmnt.offsetTop - pos2;
-  //       scope.position.y = elmnt.offsetTop - pos2 + "px";
-  //       elmnt.style.top = scope.position.y;
-  //     } else {
-  //       if (e.clientY - screenY > 0) {
-  //         y -= pos2;
-  //       }
-  //     }
-
-  //     if (x > 0) {
-  //       x = elmnt.offsetLeft - pos1;
-  //       scope.position.x = elmnt.offsetLeft - pos1 + "px";
-  //       elmnt.style.left = scope.position.x;
-  //     } else {
-  //       if (e.clientX - screenX > 0) {
-  //         x -= pos1;
-  //       }
-  //     }
-  //   }
-
-  //   function closeDragElement() {
-  //     GENERAL_NOTE.setGeneralNotesInLocalStorage(scope.noteName, scope);
-  //     document.onmouseup = null;
-  //     document.onmousemove = null;
-  //   }
-  // }
   enableDraggable(elmnt) {
     const scope = this;
     let startX = 0;
