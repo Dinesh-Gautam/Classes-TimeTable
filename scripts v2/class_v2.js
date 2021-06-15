@@ -813,7 +813,7 @@ class GeneralNote {
 
     let dragElement;
 
-    let oldZIndex = 0;
+    let highestZindex = 9999;
 
     initDragDrop();
 
@@ -825,9 +825,15 @@ class GeneralNote {
 
     function OnMouseClickDown(event) {
       let target;
-
+      document.querySelectorAll(".general-note").forEach((e) => {
+        if (e.style.zIndex > highestZindex) {
+          highestZindex += e.style.zIndex;
+        } else {
+          highestZindex++;
+        }
+      });
       target = event.target;
-
+      elmnt.style.zIndex = highestZindex;
       if (target === elmnt.querySelector(".general-note-header")) {
         startX = event.clientX;
         startY = event.clientY;
